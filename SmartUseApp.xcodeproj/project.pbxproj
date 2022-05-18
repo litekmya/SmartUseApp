@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052B9B54CCE02A8EF0C7BEDC /* Pods_SmartUseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3F5E247A714F4A925064C7 /* Pods_SmartUseApp.framework */; };
 		3CB58EDA2835776D001A8DDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58ED92835776D001A8DDB /* AppDelegate.swift */; };
 		3CB58EDC2835776D001A8DDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58EDB2835776D001A8DDB /* SceneDelegate.swift */; };
-		3CB58EDE2835776D001A8DDB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58EDD2835776D001A8DDB /* ViewController.swift */; };
-		3CB58EE12835776D001A8DDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB58EDF2835776D001A8DDB /* Main.storyboard */; };
+		3CB58EDE2835776D001A8DDB /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58EDD2835776D001A8DDB /* AuthorizationViewController.swift */; };
 		3CB58EE32835776F001A8DDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CB58EE22835776F001A8DDB /* Assets.xcassets */; };
 		3CB58EE62835776F001A8DDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB58EE42835776F001A8DDB /* LaunchScreen.storyboard */; };
+		3CB58EF128357964001A8DDB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CB58EF028357964001A8DDB /* GoogleService-Info.plist */; };
+		3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58EF328357B03001A8DDB /* AuthorizationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		099D3760E00188D1A0D5F240 /* Pods-SmartUseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartUseApp.debug.xcconfig"; path = "Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp.debug.xcconfig"; sourceTree = "<group>"; };
 		3CB58ED62835776D001A8DDB /* SmartUseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartUseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB58ED92835776D001A8DDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CB58EDB2835776D001A8DDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3CB58EDD2835776D001A8DDB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3CB58EE02835776D001A8DDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3CB58EDD2835776D001A8DDB /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		3CB58EE22835776F001A8DDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CB58EE52835776F001A8DDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3CB58EE72835776F001A8DDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CB58EF028357964001A8DDB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3CB58EF328357B03001A8DDB /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
+		962348B23283D938C4AF18F2 /* Pods-SmartUseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartUseApp.release.xcconfig"; path = "Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp.release.xcconfig"; sourceTree = "<group>"; };
+		DD3F5E247A714F4A925064C7 /* Pods_SmartUseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartUseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052B9B54CCE02A8EF0C7BEDC /* Pods_SmartUseApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		211F2764CB0651B19D4CE0DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD3F5E247A714F4A925064C7 /* Pods_SmartUseApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2DD10801C1696508A54EC793 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				099D3760E00188D1A0D5F240 /* Pods-SmartUseApp.debug.xcconfig */,
+				962348B23283D938C4AF18F2 /* Pods-SmartUseApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		3CB58ECD2835776D001A8DDB = {
 			isa = PBXGroup;
 			children = (
 				3CB58ED82835776D001A8DDB /* SmartUseApp */,
 				3CB58ED72835776D001A8DDB /* Products */,
+				2DD10801C1696508A54EC793 /* Pods */,
+				211F2764CB0651B19D4CE0DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +82,48 @@
 		3CB58ED82835776D001A8DDB /* SmartUseApp */ = {
 			isa = PBXGroup;
 			children = (
-				3CB58ED92835776D001A8DDB /* AppDelegate.swift */,
-				3CB58EDB2835776D001A8DDB /* SceneDelegate.swift */,
-				3CB58EDD2835776D001A8DDB /* ViewController.swift */,
-				3CB58EDF2835776D001A8DDB /* Main.storyboard */,
-				3CB58EE22835776F001A8DDB /* Assets.xcassets */,
 				3CB58EE42835776F001A8DDB /* LaunchScreen.storyboard */,
-				3CB58EE72835776F001A8DDB /* Info.plist */,
+				3CB58EF228357AAF001A8DDB /* Authorization */,
+				3CB58EEF2835785C001A8DDB /* Sources */,
+				3CB58EEE2835784D001A8DDB /* Application */,
+				3CB58EED28357845001A8DDB /* Info */,
 			);
 			path = SmartUseApp;
+			sourceTree = "<group>";
+		};
+		3CB58EED28357845001A8DDB /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				3CB58EF028357964001A8DDB /* GoogleService-Info.plist */,
+				3CB58EE72835776F001A8DDB /* Info.plist */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		3CB58EEE2835784D001A8DDB /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				3CB58ED92835776D001A8DDB /* AppDelegate.swift */,
+				3CB58EDB2835776D001A8DDB /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		3CB58EEF2835785C001A8DDB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				3CB58EE22835776F001A8DDB /* Assets.xcassets */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		3CB58EF228357AAF001A8DDB /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				3CB58EDD2835776D001A8DDB /* AuthorizationViewController.swift */,
+				3CB58EF328357B03001A8DDB /* AuthorizationViewModel.swift */,
+			);
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +133,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3CB58EEA2835776F001A8DDB /* Build configuration list for PBXNativeTarget "SmartUseApp" */;
 			buildPhases = (
+				04A0B73BA1FD1BEF1714F0D9 /* [CP] Check Pods Manifest.lock */,
 				3CB58ED22835776D001A8DDB /* Sources */,
 				3CB58ED32835776D001A8DDB /* Frameworks */,
 				3CB58ED42835776D001A8DDB /* Resources */,
+				3E358B14199A9E6FABD5D1C8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,18 +188,61 @@
 			files = (
 				3CB58EE62835776F001A8DDB /* LaunchScreen.storyboard in Resources */,
 				3CB58EE32835776F001A8DDB /* Assets.xcassets in Resources */,
-				3CB58EE12835776D001A8DDB /* Main.storyboard in Resources */,
+				3CB58EF128357964001A8DDB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04A0B73BA1FD1BEF1714F0D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SmartUseApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E358B14199A9E6FABD5D1C8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3CB58ED22835776D001A8DDB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CB58EDE2835776D001A8DDB /* ViewController.swift in Sources */,
+				3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */,
+				3CB58EDE2835776D001A8DDB /* AuthorizationViewController.swift in Sources */,
 				3CB58EDA2835776D001A8DDB /* AppDelegate.swift in Sources */,
 				3CB58EDC2835776D001A8DDB /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +251,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3CB58EDF2835776D001A8DDB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3CB58EE02835776D001A8DDB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3CB58EE42835776F001A8DDB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +378,7 @@
 		};
 		3CB58EEB2835776F001A8DDB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 099D3760E00188D1A0D5F240 /* Pods-SmartUseApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -289,10 +386,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MMLYXGU647;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SmartUseApp/Info.plist;
+				INFOPLIST_FILE = SmartUseApp/Info/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -310,6 +406,7 @@
 		};
 		3CB58EEC2835776F001A8DDB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 962348B23283D938C4AF18F2 /* Pods-SmartUseApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -317,10 +414,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MMLYXGU647;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SmartUseApp/Info.plist;
+				INFOPLIST_FILE = SmartUseApp/Info/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
