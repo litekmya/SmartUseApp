@@ -15,6 +15,10 @@
 		3CB58EE62835776F001A8DDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB58EE42835776F001A8DDB /* LaunchScreen.storyboard */; };
 		3CB58EF128357964001A8DDB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CB58EF028357964001A8DDB /* GoogleService-Info.plist */; };
 		3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58EF328357B03001A8DDB /* AuthorizationViewModel.swift */; };
+		3CB8F3D128368D0E00DAAAF4 /* UIButton + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */; };
+		3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */; };
+		3CB8F3D52836B2C100DAAAF4 /* UITextField + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */; };
+		3CB8F3D72836B3C000DAAAF4 /* UIImageView + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D62836B3C000DAAAF4 /* UIImageView + extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		3CB58EE72835776F001A8DDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CB58EF028357964001A8DDB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CB58EF328357B03001A8DDB /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
+		3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + extension.swift"; sourceTree = "<group>"; };
+		3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + extension.swift"; sourceTree = "<group>"; };
+		3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + extension.swift"; sourceTree = "<group>"; };
+		3CB8F3D62836B3C000DAAAF4 /* UIImageView + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + extension.swift"; sourceTree = "<group>"; };
 		962348B23283D938C4AF18F2 /* Pods-SmartUseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartUseApp.release.xcconfig"; path = "Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp.release.xcconfig"; sourceTree = "<group>"; };
 		DD3F5E247A714F4A925064C7 /* Pods_SmartUseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartUseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -84,6 +92,7 @@
 			children = (
 				3CB58EE42835776F001A8DDB /* LaunchScreen.storyboard */,
 				3CB58EF228357AAF001A8DDB /* Authorization */,
+				3CB8F3CF28368CF100DAAAF4 /* Extensions */,
 				3CB58EEF2835785C001A8DDB /* Sources */,
 				3CB58EEE2835784D001A8DDB /* Application */,
 				3CB58EED28357845001A8DDB /* Info */,
@@ -124,6 +133,17 @@
 				3CB58EF328357B03001A8DDB /* AuthorizationViewModel.swift */,
 			);
 			path = Authorization;
+			sourceTree = "<group>";
+		};
+		3CB8F3CF28368CF100DAAAF4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */,
+				3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */,
+				3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */,
+				3CB8F3D62836B3C000DAAAF4 /* UIImageView + extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,10 +261,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */,
 				3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */,
 				3CB58EDE2835776D001A8DDB /* AuthorizationViewController.swift in Sources */,
 				3CB58EDA2835776D001A8DDB /* AppDelegate.swift in Sources */,
+				3CB8F3D72836B3C000DAAAF4 /* UIImageView + extension.swift in Sources */,
 				3CB58EDC2835776D001A8DDB /* SceneDelegate.swift in Sources */,
+				3CB8F3D52836B2C100DAAAF4 /* UITextField + extension.swift in Sources */,
+				3CB8F3D128368D0E00DAAAF4 /* UIButton + extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
