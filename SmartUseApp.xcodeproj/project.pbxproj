@@ -19,6 +19,11 @@
 		3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */; };
 		3CB8F3D52836B2C100DAAAF4 /* UITextField + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */; };
 		3CB8F3D72836B3C000DAAAF4 /* UIImageView + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D62836B3C000DAAAF4 /* UIImageView + extension.swift */; };
+		3CB8F3DB28378CF400DAAAF4 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3DA28378CF400DAAAF4 /* RegistrationViewController.swift */; };
+		3CB8F3DD28378D0100DAAAF4 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3DC28378D0100DAAAF4 /* RegistrationViewModel.swift */; };
+		3CB8F3DF28378FB100DAAAF4 /* ConstantValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3DE28378FB100DAAAF4 /* ConstantValues.swift */; };
+		3CB8F3E128379BE700DAAAF4 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E028379BE700DAAAF4 /* WelcomeViewController.swift */; };
+		3CB8F3E428379C3700DAAAF4 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E328379C3700DAAAF4 /* WelcomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D62836B3C000DAAAF4 /* UIImageView + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + extension.swift"; sourceTree = "<group>"; };
+		3CB8F3DA28378CF400DAAAF4 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		3CB8F3DC28378D0100DAAAF4 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		3CB8F3DE28378FB100DAAAF4 /* ConstantValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantValues.swift; sourceTree = "<group>"; };
+		3CB8F3E028379BE700DAAAF4 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		3CB8F3E328379C3700DAAAF4 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		962348B23283D938C4AF18F2 /* Pods-SmartUseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartUseApp.release.xcconfig"; path = "Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp.release.xcconfig"; sourceTree = "<group>"; };
 		DD3F5E247A714F4A925064C7 /* Pods_SmartUseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartUseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -91,11 +101,12 @@
 			isa = PBXGroup;
 			children = (
 				3CB58EE42835776F001A8DDB /* LaunchScreen.storyboard */,
-				3CB58EF228357AAF001A8DDB /* Authorization */,
+				3CB8F3D828378C9A00DAAAF4 /* Views */,
 				3CB8F3CF28368CF100DAAAF4 /* Extensions */,
 				3CB58EEF2835785C001A8DDB /* Sources */,
 				3CB58EEE2835784D001A8DDB /* Application */,
 				3CB58EED28357845001A8DDB /* Info */,
+				3CB8F3DE28378FB100DAAAF4 /* ConstantValues.swift */,
 			);
 			path = SmartUseApp;
 			sourceTree = "<group>";
@@ -144,6 +155,35 @@
 				3CB8F3D62836B3C000DAAAF4 /* UIImageView + extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3CB8F3D828378C9A00DAAAF4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3CB58EF228357AAF001A8DDB /* Authorization */,
+				3CB8F3D928378CCA00DAAAF4 /* Registarion */,
+				3CB8F3E228379C0400DAAAF4 /* Welcome */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3CB8F3D928378CCA00DAAAF4 /* Registarion */ = {
+			isa = PBXGroup;
+			children = (
+				3CB8F3DA28378CF400DAAAF4 /* RegistrationViewController.swift */,
+				3CB8F3DC28378D0100DAAAF4 /* RegistrationViewModel.swift */,
+			);
+			path = Registarion;
+			sourceTree = "<group>";
+		};
+		3CB8F3E228379C0400DAAAF4 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				3CB8F3E028379BE700DAAAF4 /* WelcomeViewController.swift */,
+				3CB8F3E328379C3700DAAAF4 /* WelcomeViewModel.swift */,
+			);
+			name = Welcome;
+			path = ../Welcome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,10 +303,15 @@
 			files = (
 				3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */,
 				3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */,
+				3CB8F3E428379C3700DAAAF4 /* WelcomeViewModel.swift in Sources */,
 				3CB58EDE2835776D001A8DDB /* AuthorizationViewController.swift in Sources */,
+				3CB8F3DB28378CF400DAAAF4 /* RegistrationViewController.swift in Sources */,
 				3CB58EDA2835776D001A8DDB /* AppDelegate.swift in Sources */,
+				3CB8F3DD28378D0100DAAAF4 /* RegistrationViewModel.swift in Sources */,
 				3CB8F3D72836B3C000DAAAF4 /* UIImageView + extension.swift in Sources */,
+				3CB8F3DF28378FB100DAAAF4 /* ConstantValues.swift in Sources */,
 				3CB58EDC2835776D001A8DDB /* SceneDelegate.swift in Sources */,
+				3CB8F3E128379BE700DAAAF4 /* WelcomeViewController.swift in Sources */,
 				3CB8F3D52836B2C100DAAAF4 /* UITextField + extension.swift in Sources */,
 				3CB8F3D128368D0E00DAAAF4 /* UIButton + extension.swift in Sources */,
 			);
