@@ -8,22 +8,26 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
+    
+    private let label = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+        
+        customizeUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func customizeUI() {
+        view.addSubview(label)
+        
+        label.customize(
+            label: label,
+            view: view,
+            text: "Welcome",
+            top: LabelsConstants.top.rawValue,
+            left: LabelsConstants.left.rawValue
+        )
     }
-    */
 
 }
