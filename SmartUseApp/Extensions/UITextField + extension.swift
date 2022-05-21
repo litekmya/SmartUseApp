@@ -20,4 +20,11 @@ extension UITextField {
         textField.borderStyle = .roundedRect
         textField.clearButtonMode = .always
     }
+    
+    func setupTextInput(_ textField: UITextField, contentType: UITextContentType, delegate: UITextFieldDelegate ) {
+        textField.textContentType = contentType
+        textField.returnKeyType = .done
+        textField.autocapitalizationType = .none
+        textField.delegate = delegate
+    }
 }

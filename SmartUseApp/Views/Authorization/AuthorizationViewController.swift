@@ -15,7 +15,7 @@ class AuthorizationViewController: UIViewController {
     private let authLabel = UILabel()
     private let registrationLabel = UILabel()
     
-    private let loginTextField = UITextField()
+    private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
     
     private let loginButton = UIButton()
@@ -24,12 +24,10 @@ class AuthorizationViewController: UIViewController {
     private let signInWithAppleButton = UIButton()
     
     private let authTitle = "Авторизация"
-    private let loginPlaceholder = "Login"
-    private let passPlaceholder = "Password"
     private let loginButtonTitle = "Войти"
     private let registratonLabelText = "Если у вас нет действующего аккаунта, то вы можете"
     private let registrationButtonTitle = "Зарегистрироваться здесь"
-    private let errorLabelText = "Введен неверный логин и/или пароль"
+    private let errorLabelText = "Введен неверный email и/или пароль"
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -37,16 +35,14 @@ class AuthorizationViewController: UIViewController {
         view.backgroundColor = .white
         
         customizeUI()
-        
-        loginButton.addTarget(self, action: #selector(logIn), for: .touchUpInside)
-        registrationButton.addTarget(self, action: #selector(goToRegistration), for: .touchUpInside)
+        addTarget()
     }
     
     //MARK: - Private methods
     private func customizeUI() {
         view.addSubview(imageView)
         view.addSubview(authLabel)
-        view.addSubview(loginTextField)
+        view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
         view.addSubview(signInWithAppleButton)
@@ -69,17 +65,57 @@ class AuthorizationViewController: UIViewController {
             left: LabelsConstants.left.rawValue
         )
         
-        loginTextField.customize(textField: loginTextField, view: authLabel, placeholder: loginPlaceholder,top: TextFieldConstants.top.rawValue, left: TextFieldConstants.left.rawValue)
-        passwordTextField.customize(textField: passwordTextField, view: loginTextField, placeholder: passPlaceholder,top: 20, left: 50)
+        emailTextField.customize(
+            textField: emailTextField,
+            view: authLabel,
+            placeholder: Text.login.rawValue,
+            top: TextFieldConstants.top.rawValue,
+            left: TextFieldConstants.left.rawValue
+        )
+        emailTextField.setupTextInput(emailTextField, contentType: .emailAddress, delegate: self)
+        
+        passwordTextField.customize(
+            textField: passwordTextField,
+            view: emailTextField,
+            placeholder: Text.password.rawValue,
+            top: TextFieldConstants.top.rawValue,
+            left: TextFieldConstants.left.rawValue
+        )
+        passwordTextField.setupTextInput(passwordTextField, contentType: .password, delegate: self)
         
         loginButton.setup(button: loginButton, title: loginButtonTitle , isEnabled: false)
-        loginButton.customizeCenter(button: loginButton, view: passwordTextField, height: 48, width: 127)
-        loginButton.adjust(button: loginButton, view: passwordTextField, top: -20, bottom: nil)
         
-        registrationLabel.customize(label: registrationLabel, view: loginButton, text: registratonLabelText, top: -35, left: 20)
+        loginButton.customizeCenter(
+            button: loginButton,
+            view: passwordTextField,
+            height: ButtonConstants.height.rawValue,
+            width: ButtonConstants.wigth.rawValue
+        )
+        
+        loginButton.adjust(
+            button: loginButton,
+            view: passwordTextField,
+            top: ButtonConstants.centerTop.rawValue,
+            bottom: nil
+        )
+        
+        registrationLabel.customize(
+            label: registrationLabel,
+            view: loginButton,
+            text: registratonLabelText,
+            top: LabelsConstants.top.rawValue,
+            left: LabelsConstants.left.rawValue
+        )
         
         registrationButton.setup(button: registrationButton, title: registrationButtonTitle, isEnabled: true)
-        registrationButton.customizeCenter(button: registrationButton, view: view, height: 48, width: 250)
+        
+        registrationButton.customizeCenter(
+            button: registrationButton,
+            view: view,
+            height: ButtonConstants.height.rawValue,
+            width: 250
+        )
+        
         registrationButton.adjust(button: registrationButton, view: registrationLabel, top: 8, bottom: nil)
         
         errorLabel.customize(
@@ -89,14 +125,34 @@ class AuthorizationViewController: UIViewController {
             top: LabelsConstants.top.rawValue,
             left: LabelsConstants.left.rawValue
         )
-        
         errorLabel.textColor = .red //Скрыть
         
         signInWithAppleButton.customizeByAppleSign(button: signInWithAppleButton)
-        signInWithAppleButton.adjust(button: signInWithAppleButton, view: view, top: nil, bottom: 40)
-        signInWithAppleButton.adjust(button: signInWithAppleButton, view: view, leading: 45, trailing: 45)
+        
+        signInWithAppleButton.adjust(
+            button: signInWithAppleButton,
+            view: view,
+            top: nil,
+            bottom: ButtonConstants.bottom.rawValue
+        )
+        
+        signInWithAppleButton.adjust(
+            button: signInWithAppleButton,
+            view: view,
+            leading: ButtonConstants.leadingAndTrailing.rawValue,
+            trailing: ButtonConstants.leadingAndTrailing.rawValue
+        )
     }
     
+    private func addTarget() {
+        loginButton.addTarget(self, action: #selector(logIn), for: .touchUpInside)
+        registrationButton.addTarget(self, action: #selector(goToRegistration), for: .touchUpInside)
+        
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    //MARK: - @objc funcs
     @objc private func logIn() {
         // Переход на другой экран, если логин и пароль верны
         print("Log in")
@@ -109,6 +165,14 @@ class AuthorizationViewController: UIViewController {
         let registrationVC = RegistrationViewController()
         present(registrationVC, animated: true)
     }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        if (emailTextField.text != "" && passwordTextField.text != "") {
+            loginButton.isEnabled = true
+        } else {
+            loginButton.isEnabled = false
+        }
+    }
 }
 
 //MARK: - UITextFieldDelegate
@@ -116,6 +180,17 @@ extension AuthorizationViewController: UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            emailTextField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        } else {
+            logIn()
+        }
+        
+        return true
     }
 }
 

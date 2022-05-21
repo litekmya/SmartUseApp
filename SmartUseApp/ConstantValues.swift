@@ -8,11 +8,11 @@
 import Foundation
 
 enum Text: String {
-    case login = "Login"
+    case login = "Email"
     case password = "Password"
     case auth = "Авторизация"
     case registration = "Регистрация"
-    case regText = "Введите логин и пароль"
+    case regText = "Введите email и пароль"
     case loginRegError = "Такой аккаунт уже существует"
     case passRegError = "Пароли должны совпадать"
 }

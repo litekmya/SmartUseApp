@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,10 +16,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
-        window?.makeKeyAndVisible()
-        window?.rootViewController = WelcomeViewController()
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user == nil {
+                print("Пользователь не авторизирован")
+                self.makeAndVisibleView(windowScene, vc: AuthorizationViewController())
+            } else {
+                print("Пользователь прошел авторизацию")
+                self.makeAndVisibleView(windowScene, vc: WelcomeViewController())
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -49,6 +55,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    //MARK: - private methods
+    private func makeAndVisibleView(_ windowScene: UIWindowScene, vc: UIViewController) {
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        window?.makeKeyAndVisible()
+        window?.rootViewController = vc
+    }
 
 }
 

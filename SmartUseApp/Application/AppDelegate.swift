@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Firebase
+//import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,12 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        FirebaseApp.configure()
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if user == nil {
-                self.makeAndVisibleView()
-            }
-        }
+//        FirebaseApp.configure()
+        // проверить правильно ли работает
+        FirebaseManager.shared.firebaseApp.configure()
         return true
     }
 
@@ -37,13 +34,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
-    //MARK: - private methods
-    private func makeAndVisibleView() {
-        print("Пользователь не авторизован")
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        window?.rootViewController = AuthorizationViewController()
-    }
 }
 
