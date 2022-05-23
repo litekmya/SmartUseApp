@@ -31,7 +31,9 @@ class RegistrationViewController: UIViewController {
         
         customizeUI()
         addTarget()
-        changeViewModel()
+        
+        viewModel = RegistrationViewModel(email: emailTextField.text ?? "", password: firstPassTextField.text ?? "")
+
     }
     
     //MARK: - Private Methods
@@ -144,12 +146,16 @@ class RegistrationViewController: UIViewController {
     
     private func checkPasswords() -> Bool {
         if firstPassTextField.text != secondPassTextField.text {
-            errorLabel.text = Text.passRegError.rawValue
-            errorLabel.isHidden = false
+            reportAnError(text: Text.passRegError.rawValue)
             
             print("Пароли не совпадают")
             
             return false
+        } else if firstPassTextField.text?.count ?? 0 < 5 {
+            reportAnError(text: Text.incorrectPassError.rawValue)
+            
+            return false
+            
         } else {
             errorLabel.isHidden = true
             
@@ -157,31 +163,19 @@ class RegistrationViewController: UIViewController {
         }
     }
     
-    private func changeViewModel() {
-        viewModel = RegistrationViewModel(authModel: getData())
-        viewModel.viewModelDidChange = { [unowned self] viewModel in
-//            viewModel.email = emailTextField.text ?? ""
-//            viewModel.password =  firstPassTextField.text ?? ""
-            self.emailTextField.text = viewModel.email
-            self.firstPassTextField.text = viewModel.password
-            print(viewModel.email)
-
-        }
-    }
-    
-    private func getData() -> AuthModel {
-        let authModel = AuthModel(email: emailTextField.text ?? "", password: firstPassTextField.text ?? "")
-//        viewModel = RegistrationViewModel(authModel: authModel)
-//        print(viewModel.email)
-        return authModel
+    private func reportAnError(text: String) {
+        errorLabel.text = text
+        errorLabel.isHidden = false
+        
+        firstPassTextField.text = ""
+        secondPassTextField.text = ""
     }
     
     //MARK: - @objc
     @objc private func registerUser() {
         if checkPasswords() {
-            print("Пользователь был зарегистрирован")
-//            getData()
-            viewModel.transferData(auth: getData())
+            print("Пользователь пытается зарегистрироваться")
+            viewModel.register(email: emailTextField.text ?? "", password: firstPassTextField.text ?? "")
         }
         
     }
@@ -211,7 +205,6 @@ extension RegistrationViewController: UITextFieldDelegate {
             secondPassTextField.becomeFirstResponder()
         } else {
             registerUser()
-//            getData()
         }
     
         return true

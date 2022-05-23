@@ -27,6 +27,31 @@ class FirebaseManager {
             
             guard let result = result else { return }
             print(result.user.uid)
+            
+            let reference = Database.database().reference().child("users")
+            reference.child(result.user.uid).updateChildValues(["email": email, "password": password])
+        }
+    }
+    
+    func signOut() {
+        
+        do {
+            try Auth.auth().signOut()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func signIn(with email: String, and Password: String, completion: @escaping(Error?) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: Password) { result, error in
+            if let error = error {
+                print(error.localizedDescription)
+                completion(error)
+            }
+            
+            guard let result = result else { return }
+            print(result.user.uid)
+            completion(error)
         }
     }
     

@@ -23,23 +23,32 @@ class AuthorizationViewController: UIViewController {
     private let errorLabel = UILabel()
     private let signInWithAppleButton = UIButton()
     
+    private var activityIndicator = UIActivityIndicatorView()
+    
     private let authTitle = "Авторизация"
     private let loginButtonTitle = "Войти"
     private let registratonLabelText = "Если у вас нет действующего аккаунта, то вы можете"
     private let registrationButtonTitle = "Зарегистрироваться здесь"
     private let errorLabelText = "Введен неверный email и/или пароль"
+        
+    private var viewModel: AuthorizationViewModelProtocol!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        addSubviews()
         customizeUI()
         addTarget()
+        
+        errorLabel.isHidden = true
+        
+        viewModel = AuthorizationViewModel(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
     }
     
     //MARK: - Private methods
-    private func customizeUI() {
+    private func addSubviews() {
         view.addSubview(imageView)
         view.addSubview(authLabel)
         view.addSubview(emailTextField)
@@ -49,7 +58,10 @@ class AuthorizationViewController: UIViewController {
         view.addSubview(registrationButton)
         view.addSubview(registrationLabel)
         view.addSubview(errorLabel)
-
+        view.addSubview(activityIndicator)
+    }
+    
+    private func customizeUI() {
         imageView.customize(
             imageView: imageView,
             view: self.view,
@@ -142,6 +154,13 @@ class AuthorizationViewController: UIViewController {
             leading: ButtonConstants.leadingAndTrailing.rawValue,
             trailing: ButtonConstants.leadingAndTrailing.rawValue
         )
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.centerY.equalTo(view)
+        }
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
     }
     
     private func addTarget() {
@@ -154,8 +173,19 @@ class AuthorizationViewController: UIViewController {
     
     //MARK: - @objc funcs
     @objc private func logIn() {
-        // Переход на другой экран, если логин и пароль верны
-        print("Log in")
+        print("Пользователь пытается авторизоваться")
+        self.activityIndicator.startAnimating()
+        
+        self.viewModel.logIn(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "") { error in
+            
+            if error == nil {
+                let welcomeVC = WelcomeViewController()
+                self.present(welcomeVC, animated: true)
+            } else {
+                self.errorLabel.isHidden = false
+                self.activityIndicator.stopAnimating()
+            }
+        }
     }
     
     @objc private func goToRegistration() {

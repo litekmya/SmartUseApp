@@ -15,6 +15,7 @@ enum Text: String {
     case regText = "Введите email и пароль"
     case loginRegError = "Такой аккаунт уже существует"
     case passRegError = "Пароли должны совпадать"
+    case incorrectPassError = "Пароль должен содержать не менее 6 знаков"
 }
 
 enum ImageConstants: Int {

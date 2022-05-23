@@ -10,12 +10,17 @@ import UIKit
 class WelcomeViewController: UIViewController {
     
     private let label = UILabel()
+    private var exitButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        navigationController?.navigationBar.prefersLargeTitles = true
         
+        view.backgroundColor = .white
+        title = "Hello"
         customizeUI()
+        
+        
     }
     
     private func customizeUI() {
@@ -25,9 +30,16 @@ class WelcomeViewController: UIViewController {
             label: label,
             view: view,
             text: "Welcome",
-            top: LabelsConstants.top.rawValue,
-            left: LabelsConstants.left.rawValue
+            top: 300,
+            left: 30
         )
+        
+        exitButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(logOff))
+        navigationItem.leftBarButtonItem = exitButton
     }
-
+    
+    @objc private func logOff() {
+        FirebaseManager.shared.signOut()
+        print("Пользователь вышел")
+    }
 }

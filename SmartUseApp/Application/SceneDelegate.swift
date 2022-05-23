@@ -22,7 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 self.makeAndVisibleView(windowScene, vc: AuthorizationViewController())
             } else {
                 print("Пользователь прошел авторизацию")
-                self.makeAndVisibleView(windowScene, vc: WelcomeViewController())
+//                self.makeAndVisibleView(windowScene, vc: WelcomeViewController())
+                self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+                self.window?.windowScene = windowScene
+                self.window?.makeKeyAndVisible()
+                self.window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())
             }
         }
     }
