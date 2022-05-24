@@ -23,10 +23,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             } else {
                 print("Пользователь прошел авторизацию")
 //                self.makeAndVisibleView(windowScene, vc: WelcomeViewController())
-                self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-                self.window?.windowScene = windowScene
-                self.window?.makeKeyAndVisible()
-                self.window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())
+//                self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+//                self.window?.windowScene = windowScene
+//                self.window?.makeKeyAndVisible()
+//                self.window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())
+                let layout = UICollectionViewFlowLayout()
+                layout.scrollDirection = .horizontal
+                self.makeAndVisibleView(windowScene, vc: AcquaintanceViewController(collectionViewLayout: layout))
             }
         }
     }
@@ -66,6 +69,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = vc
     }
-
+    
+    private func checkFirstInput() {
+        let defaults = UserDefaults.standard
+        
+        if defaults.bool(forKey: "First launch") == true {
+            print("Пользователь входит в приложение не впервый раз")
+            
+            defaults.set(true, forKey: "First launch")
+        } else {
+            print("Пользователь входит в приложение в первый раз")
+            
+            // Сюда вписать код, который будет отрабатывать, когда пользователь будет входить в приложение в первый раз
+            
+            defaults.set(true, forKey: "First launch")
+        }
+    }
 }
 

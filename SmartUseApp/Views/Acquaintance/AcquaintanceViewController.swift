@@ -6,83 +6,175 @@
 //
 
 import UIKit
-
-private let reuseIdentifier = "Cell"
+import SnapKit
 
 class AcquaintanceViewController: UICollectionViewController {
-
+    
+    //MARK: - Private Properties
+    private let reuseIdentifier = "Cell"
+    
+    private var stackView: UIStackView!
+    private let previewButton = UIButton()
+    private let nextViewButton = UIButton()
+    private let pageControl = UIPageControl()
+    
+    private var viewModel: AcquaintanceViewModel! {
+        didSet {
+            viewModel.getPagesData()
+        }
+    }
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel = AcquaintanceViewModel()
+        
+        setupStackView()
+        customizeCollectionView()
+        customizeStackViewLayout()
+        customizeButtons()
+        customizePageControl()
+        addTarget()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    //MARK: - Private methods
+    private func customizeCollectionView() {
+        collectionView!.register(AcquaintanceViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.isPagingEnabled = true
+        collectionView.addSubview(stackView)
     }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    private func setupStackView() {
+        stackView = UIStackView(arrangedSubviews: [previewButton, pageControl, nextViewButton])
+        }
+    
+    private func customizeStackViewLayout() {
+        stackView.snp.makeConstraints { make in
+            make.bottom.equalTo(view).inset(35)
+            make.left.right.equalTo(view).inset(16)
+            make.height.equalTo(48)
+        }
     }
+    
+    private func customizeButtons() {
+        previewButton.setup(button: previewButton, title: "Начать", isEnabled: true)
+        previewButton.adjust(button: previewButton, view: stackView, leading: 16, trailing: nil)
+        
+        nextViewButton.setup(button: nextViewButton, title: "Вперед", isEnabled: true)
+        nextViewButton.adjust(button: nextViewButton, view: stackView, leading: nil, trailing: 16)
+    }
+    
+    private func customizePageControl() {
+        pageControl.currentPage = 0
+        pageControl.numberOfPages = viewModel.returnNumberOfItemsInSection()
+        pageControl.pageIndicatorTintColor = .gray
+        pageControl.currentPageIndicatorTintColor = .blue
+        
+        pageControl.snp.makeConstraints { make in
+            make.center.equalTo(stackView)
+        }
+    }
+    
+    private func setupDisplayOfPageControl(currentPage: Int) {
+        let nextIndex = min(currentPage, viewModel.returnNumberOfItemsInSection() - 1)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControl.currentPage = nextIndex
+        
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
+    }
+    
+    private func addTarget() {
+        previewButton.addTarget(self, action: #selector(previewButtonAction), for: .touchUpInside)
+        nextViewButton.addTarget(self, action: #selector(nextViewButtonAction), for: .touchUpInside)
+    }
+    
+    private func setupButtonTitle() {
+        if pageControl.currentPage < 1 {
+            previewButton.setTitle("Начать", for: .normal)
+        }
+        
+        if pageControl.currentPage >= 1 {
+            previewButton.setTitle("Назад", for: .normal)
+        }
+        
+        if pageControl.currentPage == viewModel.returnNumberOfItemsInSection() - 1 {
+            nextViewButton.setTitle("Начать", for: .normal)
+        } else {
+            nextViewButton.setTitle("Вперед", for: .normal)
+        }
+    }
+    
+    private func goToSomeVC(button: UIButton) { // Переименовать после создания нового VC
+        if button.title(for: .normal) == "Начать" {
+            let someVC = UINavigationController(rootViewController: MainViewController())
+            someVC.modalPresentationStyle = .fullScreen
+            present(someVC, animated: true) {
+                // Возможно понадобится
+            }
+        }
+    }
+    
+    //MARK: - @objc
+    @objc private func previewButtonAction() {
+        setupDisplayOfPageControl(currentPage: pageControl.currentPage - 1)
+        goToSomeVC(button: previewButton)
+        setupButtonTitle()
+    }
+    
+    @objc private func nextViewButtonAction() {
+        setupDisplayOfPageControl(currentPage: pageControl.currentPage + 1)
+        goToSomeVC(button: nextViewButton)
+        setupButtonTitle()
+    }
+}
 
-
+// MARK: UICollectionViewDataSource
+extension AcquaintanceViewController {
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        viewModel.returnNumberOfItemsInSection()
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AcquaintanceViewCell
+        
+        let cellViewModel = viewModel.getCellViewModel(at: indexPath.row)
+        print(indexPath.row)
+        cell.viewModel = cellViewModel
+        print(cell.viewModel.title)
     
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let xCoordinate = targetContentOffset.pointee.x
+        pageControl.currentPage = Int(xCoordinate / view.frame.width)
+        
+        setupButtonTitle()
     }
-    */
+}
 
+//MARK: - UICollectionViewDelegateFlowLayout
+extension AcquaintanceViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        0
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate { _ in
+            self.collectionViewLayout.invalidateLayout()
+
+            let indexPath = IndexPath(item: self.pageControl.currentPage, section: 0)
+
+            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        } completion: { _ in }
+    }
 }

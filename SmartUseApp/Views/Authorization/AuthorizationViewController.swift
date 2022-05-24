@@ -179,7 +179,7 @@ class AuthorizationViewController: UIViewController {
         self.viewModel.logIn(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "") { error in
             
             if error == nil {
-                let welcomeVC = WelcomeViewController()
+                let welcomeVC = MainViewController()
                 self.present(welcomeVC, animated: true)
             } else {
                 self.errorLabel.isHidden = false
