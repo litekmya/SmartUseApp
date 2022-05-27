@@ -18,7 +18,8 @@ class AuthorizationViewController: UIViewController {
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
     
-    private let loginButton = UIButton()
+    private let logInButton = UIButton()
+    private let forgotPassButton = UIButton()
     private let registrationButton = UIButton()
     private let errorLabel = UILabel()
     private let signInWithAppleButton = UIButton()
@@ -26,7 +27,6 @@ class AuthorizationViewController: UIViewController {
     private var activityIndicator = UIActivityIndicatorView()
     
     private let authTitle = "Авторизация"
-    private let loginButtonTitle = "Войти"
     private let registratonLabelText = "Если у вас нет действующего аккаунта, то вы можете"
     private let registrationButtonTitle = "Зарегистрироваться здесь"
     private let errorLabelText = "Введен неверный email и/или пароль"
@@ -53,7 +53,8 @@ class AuthorizationViewController: UIViewController {
         view.addSubview(authLabel)
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
-        view.addSubview(loginButton)
+        view.addSubview(logInButton)
+        view.addSubview(forgotPassButton)
         view.addSubview(signInWithAppleButton)
         view.addSubview(registrationButton)
         view.addSubview(registrationLabel)
@@ -80,7 +81,7 @@ class AuthorizationViewController: UIViewController {
         emailTextField.customize(
             textField: emailTextField,
             view: authLabel,
-            placeholder: Text.login.rawValue,
+            placeholder: Text.email.rawValue,
             top: TextFieldConstants.top.rawValue,
             left: TextFieldConstants.left.rawValue
         )
@@ -95,25 +96,49 @@ class AuthorizationViewController: UIViewController {
         )
         passwordTextField.setupTextInput(passwordTextField, contentType: .password, delegate: self)
         
-        loginButton.setup(button: loginButton, title: loginButtonTitle , isEnabled: false)
+        logInButton.setup(
+            button: logInButton,
+            title: Text.logInButtonTitle.rawValue,
+            isEnabled: false
+        )
         
-        loginButton.customizeCenter(
-            button: loginButton,
+        logInButton.customizeCenter(
+            button: logInButton,
             view: passwordTextField,
             height: ButtonConstants.height.rawValue,
             width: ButtonConstants.wigth.rawValue
         )
         
-        loginButton.adjust(
-            button: loginButton,
+        logInButton.adjust(
+            button: logInButton,
             view: passwordTextField,
+            top: ButtonConstants.centerTop.rawValue,
+            bottom: nil
+        )
+        
+        forgotPassButton.setup(
+            button: forgotPassButton,
+            title: Text.forgotPassButonTitle.rawValue,
+            isEnabled: true
+        )
+        
+        forgotPassButton.customizeCenter(
+            button: forgotPassButton,
+            view: logInButton,
+            height: ButtonConstants.height.rawValue,
+            width: 250
+        )
+        
+        forgotPassButton.adjust(
+            button: forgotPassButton,
+            view: logInButton,
             top: ButtonConstants.centerTop.rawValue,
             bottom: nil
         )
         
         registrationLabel.customize(
             label: registrationLabel,
-            view: loginButton,
+            view: forgotPassButton,
             text: registratonLabelText,
             top: LabelsConstants.top.rawValue,
             left: LabelsConstants.left.rawValue
@@ -164,14 +189,15 @@ class AuthorizationViewController: UIViewController {
     }
     
     private func addTarget() {
-        loginButton.addTarget(self, action: #selector(logIn), for: .touchUpInside)
+        logInButton.addTarget(self, action: #selector(logIn), for: .touchUpInside)
         registrationButton.addTarget(self, action: #selector(goToRegistration), for: .touchUpInside)
+        forgotPassButton.addTarget(self, action: #selector(goToPassRecovery), for: .touchUpInside)
         
         emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
-    //MARK: - @objc funcs
+    //MARK: - @objc
     @objc private func logIn() {
         print("Пользователь пытается авторизоваться")
         self.activityIndicator.startAnimating()
@@ -189,7 +215,6 @@ class AuthorizationViewController: UIViewController {
     }
     
     @objc private func goToRegistration() {
-        // Переход на экран регистрации
         print("Registration")
         
         let registrationVC = RegistrationViewController()
@@ -198,10 +223,17 @@ class AuthorizationViewController: UIViewController {
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
         if (emailTextField.text != "" && passwordTextField.text != "") {
-            loginButton.isEnabled = true
+            logInButton.isEnabled = true
         } else {
-            loginButton.isEnabled = false
+            logInButton.isEnabled = false
         }
+    }
+    
+    @objc private func goToPassRecovery() {
+        print("Pass recovery")
+        
+        let passRecoveryVC = PassRecoveryViewController()
+        present(passRecoveryVC, animated: true)
     }
 }
 

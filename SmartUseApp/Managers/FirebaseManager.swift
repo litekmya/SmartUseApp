@@ -55,5 +55,15 @@ class FirebaseManager {
         }
     }
     
+    func recoverPassword(with email: String, completion: @escaping(Error?) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+            completion(error)
+        }
+    }
+    
     
 }

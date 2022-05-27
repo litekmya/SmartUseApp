@@ -10,6 +10,7 @@ import UIKit
 class AcquaintanceViewCell: UICollectionViewCell {
     
     //MARK: - Public properties
+    static let reuseIdentifier = "AcquaintanceCell"
     var viewModel: AcquaintanceCellViewModelProtocol! {
         didSet {
             titleLabel.text = viewModel.title

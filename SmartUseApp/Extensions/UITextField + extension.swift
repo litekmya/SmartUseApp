@@ -25,6 +25,7 @@ extension UITextField {
         textField.textContentType = contentType
         textField.returnKeyType = .done
         textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
         textField.delegate = delegate
     }
 }

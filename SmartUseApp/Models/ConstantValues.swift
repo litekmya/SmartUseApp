@@ -8,14 +8,23 @@
 import Foundation
 
 enum Text: String {
-    case login = "Email"
+    case email = "Email"
     case password = "Password"
     case auth = "Авторизация"
     case registration = "Регистрация"
     case regText = "Введите email и пароль"
-    case loginRegError = "Такой аккаунт уже существует"
+    case logInButtonTitle = "Войти"
+    case forgotPassButonTitle = "Забыли пароль?"
+    case resetPassButtonTitle = "Сбросить"
+}
+
+enum ErrorText: String {
+    case emailRegError = "Такой аккаунт уже существует"
     case passRegError = "Пароли должны совпадать"
     case incorrectPassError = "Пароль должен содержать не менее 6 знаков"
+    case emailRecoveryError = "Введен неправильный email адресс"
+
+
 }
 
 enum ImageConstants: Int {
@@ -35,7 +44,7 @@ enum TextFieldConstants: Int {
 }
 
 enum ButtonConstants: Int {
-    case centerTop = -20
+    case centerTop = -5
     case bottom = 40
     case height = 48
     case wigth = 127

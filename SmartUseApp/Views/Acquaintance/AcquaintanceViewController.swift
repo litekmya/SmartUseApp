@@ -11,14 +11,12 @@ import SnapKit
 class AcquaintanceViewController: UICollectionViewController {
     
     //MARK: - Private Properties
-    private let reuseIdentifier = "Cell"
-    
     private var stackView: UIStackView!
     private let previewButton = UIButton()
     private let nextViewButton = UIButton()
     private let pageControl = UIPageControl()
     
-    private var viewModel: AcquaintanceViewModel! {
+    private var viewModel: AcquaintanceViewModelProtocol! {
         didSet {
             viewModel.getPagesData()
         }
@@ -41,7 +39,7 @@ class AcquaintanceViewController: UICollectionViewController {
 
     //MARK: - Private methods
     private func customizeCollectionView() {
-        collectionView!.register(AcquaintanceViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView!.register(AcquaintanceViewCell.self, forCellWithReuseIdentifier: AcquaintanceViewCell.reuseIdentifier)
         collectionView.isPagingEnabled = true
         collectionView.addSubview(stackView)
     }
@@ -107,11 +105,11 @@ class AcquaintanceViewController: UICollectionViewController {
         }
     }
     
-    private func goToSomeVC(button: UIButton) { // Переименовать после создания нового VC
+    private func goToMainVC(button: UIButton) {
         if button.title(for: .normal) == "Начать" {
-            let someVC = UINavigationController(rootViewController: MainViewController())
-            someVC.modalPresentationStyle = .fullScreen
-            present(someVC, animated: true) {
+            let mainVC = UINavigationController(rootViewController: MainViewController())
+            mainVC.modalPresentationStyle = .fullScreen
+            present(mainVC, animated: true) {
                 // Возможно понадобится
             }
         }
@@ -120,13 +118,13 @@ class AcquaintanceViewController: UICollectionViewController {
     //MARK: - @objc
     @objc private func previewButtonAction() {
         setupDisplayOfPageControl(currentPage: pageControl.currentPage - 1)
-        goToSomeVC(button: previewButton)
+        goToMainVC(button: previewButton)
         setupButtonTitle()
     }
     
     @objc private func nextViewButtonAction() {
         setupDisplayOfPageControl(currentPage: pageControl.currentPage + 1)
-        goToSomeVC(button: nextViewButton)
+        goToMainVC(button: nextViewButton)
         setupButtonTitle()
     }
 }
@@ -139,12 +137,10 @@ extension AcquaintanceViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AcquaintanceViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AcquaintanceViewCell.reuseIdentifier, for: indexPath) as! AcquaintanceViewCell
         
         let cellViewModel = viewModel.getCellViewModel(at: indexPath.row)
-        print(indexPath.row)
         cell.viewModel = cellViewModel
-        print(cell.viewModel.title)
     
         return cell
     }

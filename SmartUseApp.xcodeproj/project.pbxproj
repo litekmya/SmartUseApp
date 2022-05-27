@@ -17,6 +17,8 @@
 		3CA9D761283BF66900CF88D2 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D760283BF66900CF88D2 /* Page.swift */; };
 		3CA9D764283D2DD400CF88D2 /* MainViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D763283D2DD400CF88D2 /* MainViewCell.swift */; };
 		3CA9D766283D2DE500CF88D2 /* MainCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D765283D2DE500CF88D2 /* MainCellViewModel.swift */; };
+		3CA9D769283D310D00CF88D2 /* PassRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D768283D310D00CF88D2 /* PassRecoveryViewController.swift */; };
+		3CA9D76B283D312400CF88D2 /* PassRecoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D76A283D312400CF88D2 /* PassRecoveryViewModel.swift */; };
 		3CB58EDA2835776D001A8DDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58ED92835776D001A8DDB /* AppDelegate.swift */; };
 		3CB58EDC2835776D001A8DDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58EDB2835776D001A8DDB /* SceneDelegate.swift */; };
 		3CB58EDE2835776D001A8DDB /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58EDD2835776D001A8DDB /* AuthorizationViewController.swift */; };
@@ -47,6 +49,8 @@
 		3CA9D760283BF66900CF88D2 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		3CA9D763283D2DD400CF88D2 /* MainViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCell.swift; sourceTree = "<group>"; };
 		3CA9D765283D2DE500CF88D2 /* MainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellViewModel.swift; sourceTree = "<group>"; };
+		3CA9D768283D310D00CF88D2 /* PassRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassRecoveryViewController.swift; sourceTree = "<group>"; };
+		3CA9D76A283D312400CF88D2 /* PassRecoveryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassRecoveryViewModel.swift; sourceTree = "<group>"; };
 		3CB58ED62835776D001A8DDB /* SmartUseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartUseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB58ED92835776D001A8DDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CB58EDB2835776D001A8DDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 		3C9564B228392A0C00A7ED87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3CB8F3DE28378FB100DAAAF4 /* ConstantValues.swift */,
 				3C9564B328392A2500A7ED87 /* AuthModel.swift */,
 				3CA9D760283BF66900CF88D2 /* Page.swift */,
 			);
@@ -136,6 +141,15 @@
 			path = MainCell;
 			sourceTree = "<group>";
 		};
+		3CA9D767283D30D700CF88D2 /* PassRecovery */ = {
+			isa = PBXGroup;
+			children = (
+				3CA9D768283D310D00CF88D2 /* PassRecoveryViewController.swift */,
+				3CA9D76A283D312400CF88D2 /* PassRecoveryViewModel.swift */,
+			);
+			path = PassRecovery;
+			sourceTree = "<group>";
+		};
 		3CB58ECD2835776D001A8DDB = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +179,6 @@
 				3CB58EEF2835785C001A8DDB /* Sources */,
 				3CB58EEE2835784D001A8DDB /* Application */,
 				3CB58EED28357845001A8DDB /* Info */,
-				3CB8F3DE28378FB100DAAAF4 /* ConstantValues.swift */,
 			);
 			path = SmartUseApp;
 			sourceTree = "<group>";
@@ -220,6 +233,7 @@
 		3CB8F3D828378C9A00DAAAF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3CA9D767283D30D700CF88D2 /* PassRecovery */,
 				3CA9D756283BB55500CF88D2 /* Acquaintance */,
 				3CB58EF228357AAF001A8DDB /* Authorization */,
 				3CB8F3D928378CCA00DAAAF4 /* Registarion */,
@@ -374,11 +388,13 @@
 				3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */,
 				3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */,
 				3CA9D761283BF66900CF88D2 /* Page.swift in Sources */,
+				3CA9D76B283D312400CF88D2 /* PassRecoveryViewModel.swift in Sources */,
 				3CB8F3E72837F5A100DAAAF4 /* FirebaseManager.swift in Sources */,
 				3CA9D75F283BC03200CF88D2 /* AquaintanceCellViewModel.swift in Sources */,
 				3CB8F3E428379C3700DAAAF4 /* WelcomeViewModel.swift in Sources */,
 				3CA9D766283D2DE500CF88D2 /* MainCellViewModel.swift in Sources */,
 				3CB58EDE2835776D001A8DDB /* AuthorizationViewController.swift in Sources */,
+				3CA9D769283D310D00CF88D2 /* PassRecoveryViewController.swift in Sources */,
 				3CB8F3DB28378CF400DAAAF4 /* RegistrationViewController.swift in Sources */,
 				3CB58EDA2835776D001A8DDB /* AppDelegate.swift in Sources */,
 				3CB8F3DD28378D0100DAAAF4 /* RegistrationViewModel.swift in Sources */,

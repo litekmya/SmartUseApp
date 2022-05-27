@@ -65,7 +65,7 @@ class RegistrationViewController: UIViewController {
         emailTextField.customize(
             textField: emailTextField,
             view: registrationLabel,
-            placeholder: Text.login.rawValue,
+            placeholder: Text.email.rawValue,
             top: TextFieldConstants.top.rawValue,
             left: TextFieldConstants.left.rawValue
         )
@@ -112,7 +112,7 @@ class RegistrationViewController: UIViewController {
         errorLabel.customize(
             label: errorLabel,
             view: registrationButton,
-            text: Text.passRegError.rawValue,
+            text: ErrorText.passRegError.rawValue,
             top: LabelsConstants.errorTop.rawValue,
             left: LabelsConstants.errorLeft.rawValue
         )
@@ -146,13 +146,12 @@ class RegistrationViewController: UIViewController {
     
     private func checkPasswords() -> Bool {
         if firstPassTextField.text != secondPassTextField.text {
-            reportAnError(text: Text.passRegError.rawValue)
-            
+            reportAnError(text: ErrorText.passRegError.rawValue)
             print("Пароли не совпадают")
             
             return false
         } else if firstPassTextField.text?.count ?? 0 < 5 {
-            reportAnError(text: Text.incorrectPassError.rawValue)
+            reportAnError(text: ErrorText.incorrectPassError.rawValue)
             
             return false
             

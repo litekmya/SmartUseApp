@@ -10,12 +10,10 @@ import UIKit
 class MainViewController: UIViewController {
     
     //MARK: - Private properties
-    private let label = UILabel()
     private var exitButton: UIBarButtonItem! // Времено
     private var addButton: UIBarButtonItem!
     
     private var collectionView: UICollectionView!
-    private let reuseIdentifier = "Cell"
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -31,19 +29,7 @@ class MainViewController: UIViewController {
     //MARK: - Private methods
     private func customizeUI() {
         customizeCollectionView()
-        view.addSubview(label)
-        view.addSubview(collectionView)
-        
-        label.customize(
-            label: label,
-            view: view,
-            text: "Welcome",
-            top: 300,
-            left: 30
-        )
-        
         customizeButtons()
-        customizeCollectionView()
     }
     
     private func customizeButtons() {
@@ -56,10 +42,14 @@ class MainViewController: UIViewController {
     
     private func customizeCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
+        layout.scrollDirection = .vertical
+        
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.delegate = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(MainViewCell.self, forCellWithReuseIdentifier: MainViewCell.reuseIdentifier)
         collectionView.backgroundColor = .red
+        
+        view.addSubview(collectionView)
     }
     
     //MARK: - @objc
@@ -69,7 +59,7 @@ class MainViewController: UIViewController {
     }
     
     @objc private func addButtonAction() {
-        
+        // переход на экран создания
     }
 }
 
@@ -80,12 +70,16 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         3
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainViewCell.reuseIdentifier, for: indexPath) as! MainViewCell
         
         return cell
     }
+}
+
+extension MainViewController: UICollectionViewDelegateFlowLayout {
     
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 100, height: 100)
+    }
 }

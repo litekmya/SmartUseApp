@@ -25,7 +25,7 @@ class RegistrationViewModel: RegistrationViewModelProtocol {
         didSet {}
     }
     
-    var viewModelDidChange: ((RegistrationViewModelProtocol) -> Void)?
+//    var viewModelDidChange: ((RegistrationViewModelProtocol) -> Void)?
     
     required init(email: String, password: String) {
         self.email = email
