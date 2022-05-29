@@ -8,8 +8,6 @@
 import Foundation
 
 enum Text: String {
-    case email = "Email"
-    case password = "Password"
     case auth = "Авторизация"
     case registration = "Регистрация"
     case regText = "Введите email и пароль"
@@ -23,8 +21,13 @@ enum ErrorText: String {
     case passRegError = "Пароли должны совпадать"
     case incorrectPassError = "Пароль должен содержать не менее 6 знаков"
     case emailRecoveryError = "Введен неправильный email адресс"
+}
 
-
+enum PlaceholderText: String {
+    case email = "Email"
+    case password = "Password"
+    case name = "Наименование"
+    case cost = "Цена"
 }
 
 enum ImageConstants: Int {

@@ -61,7 +61,7 @@ class PassRecoveryViewController: UIViewController {
         emailTextField.customize(
             textField: emailTextField,
             view: titleLabel,
-            placeholder: Text.email.rawValue,
+            placeholder: PlaceholderText.email.rawValue,
             top: TextFieldConstants.top.rawValue,
             left: TextFieldConstants.left.rawValue
         )

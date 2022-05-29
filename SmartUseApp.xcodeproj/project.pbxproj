@@ -19,6 +19,9 @@
 		3CA9D766283D2DE500CF88D2 /* MainCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D765283D2DE500CF88D2 /* MainCellViewModel.swift */; };
 		3CA9D769283D310D00CF88D2 /* PassRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D768283D310D00CF88D2 /* PassRecoveryViewController.swift */; };
 		3CA9D76B283D312400CF88D2 /* PassRecoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D76A283D312400CF88D2 /* PassRecoveryViewModel.swift */; };
+		3CA9D76D28411E6600CF88D2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D76C28411E6600CF88D2 /* DatabaseManager.swift */; };
+		3CA9D7722841207800CF88D2 /* NewObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D7712841207800CF88D2 /* NewObjectViewController.swift */; };
+		3CA9D774284120D800CF88D2 /* NewObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D773284120D800CF88D2 /* NewObjectViewModel.swift */; };
 		3CB58EDA2835776D001A8DDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58ED92835776D001A8DDB /* AppDelegate.swift */; };
 		3CB58EDC2835776D001A8DDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58EDB2835776D001A8DDB /* SceneDelegate.swift */; };
 		3CB58EDE2835776D001A8DDB /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58EDD2835776D001A8DDB /* AuthorizationViewController.swift */; };
@@ -51,6 +54,9 @@
 		3CA9D765283D2DE500CF88D2 /* MainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellViewModel.swift; sourceTree = "<group>"; };
 		3CA9D768283D310D00CF88D2 /* PassRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassRecoveryViewController.swift; sourceTree = "<group>"; };
 		3CA9D76A283D312400CF88D2 /* PassRecoveryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassRecoveryViewModel.swift; sourceTree = "<group>"; };
+		3CA9D76C28411E6600CF88D2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		3CA9D7712841207800CF88D2 /* NewObjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewObjectViewController.swift; sourceTree = "<group>"; };
+		3CA9D773284120D800CF88D2 /* NewObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewObjectViewModel.swift; sourceTree = "<group>"; };
 		3CB58ED62835776D001A8DDB /* SmartUseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartUseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CB58ED92835776D001A8DDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CB58EDB2835776D001A8DDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +156,35 @@
 			path = PassRecovery;
 			sourceTree = "<group>";
 		};
+		3CA9D76E28411F9000CF88D2 /* Login screens */ = {
+			isa = PBXGroup;
+			children = (
+				3CB58EF228357AAF001A8DDB /* Authorization */,
+				3CB8F3D928378CCA00DAAAF4 /* Registarion */,
+				3CA9D767283D30D700CF88D2 /* PassRecovery */,
+			);
+			path = "Login screens";
+			sourceTree = "<group>";
+		};
+		3CA9D76F28411FDE00CF88D2 /* Main screens */ = {
+			isa = PBXGroup;
+			children = (
+				3CA9D756283BB55500CF88D2 /* Acquaintance */,
+				3CB8F3E228379C0400DAAAF4 /* Main */,
+				3CA9D7702841201A00CF88D2 /* New object */,
+			);
+			path = "Main screens";
+			sourceTree = "<group>";
+		};
+		3CA9D7702841201A00CF88D2 /* New object */ = {
+			isa = PBXGroup;
+			children = (
+				3CA9D7712841207800CF88D2 /* NewObjectViewController.swift */,
+				3CA9D773284120D800CF88D2 /* NewObjectViewModel.swift */,
+			);
+			path = "New object";
+			sourceTree = "<group>";
+		};
 		3CB58ECD2835776D001A8DDB = {
 			isa = PBXGroup;
 			children = (
@@ -233,11 +268,8 @@
 		3CB8F3D828378C9A00DAAAF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3CA9D767283D30D700CF88D2 /* PassRecovery */,
-				3CA9D756283BB55500CF88D2 /* Acquaintance */,
-				3CB58EF228357AAF001A8DDB /* Authorization */,
-				3CB8F3D928378CCA00DAAAF4 /* Registarion */,
-				3CB8F3E228379C0400DAAAF4 /* Main */,
+				3CA9D76E28411F9000CF88D2 /* Login screens */,
+				3CA9D76F28411FDE00CF88D2 /* Main screens */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -258,14 +290,14 @@
 				3CB8F3E328379C3700DAAAF4 /* WelcomeViewModel.swift */,
 				3CA9D762283D2DB200CF88D2 /* MainCell */,
 			);
-			name = Main;
-			path = ../Main;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		3CB8F3E52837F58600DAAAF4 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				3CB8F3E62837F5A100DAAAF4 /* FirebaseManager.swift */,
+				3CA9D76C28411E6600CF88D2 /* DatabaseManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -385,8 +417,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CA9D774284120D800CF88D2 /* NewObjectViewModel.swift in Sources */,
 				3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */,
 				3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */,
+				3CA9D76D28411E6600CF88D2 /* DatabaseManager.swift in Sources */,
+				3CA9D7722841207800CF88D2 /* NewObjectViewController.swift in Sources */,
 				3CA9D761283BF66900CF88D2 /* Page.swift in Sources */,
 				3CA9D76B283D312400CF88D2 /* PassRecoveryViewModel.swift in Sources */,
 				3CB8F3E72837F5A100DAAAF4 /* FirebaseManager.swift in Sources */,

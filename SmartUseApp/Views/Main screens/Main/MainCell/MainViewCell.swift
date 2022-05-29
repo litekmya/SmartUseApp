@@ -43,7 +43,7 @@ class MainViewCell: UICollectionViewCell {
             label: titleLabel,
             view: imageView,
             text: "Sometext",
-            top: 10,
+            top: -6,
             left: 8
         )
     }

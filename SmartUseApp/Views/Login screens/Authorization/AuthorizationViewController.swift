@@ -81,7 +81,7 @@ class AuthorizationViewController: UIViewController {
         emailTextField.customize(
             textField: emailTextField,
             view: authLabel,
-            placeholder: Text.email.rawValue,
+            placeholder: PlaceholderText.email.rawValue,
             top: TextFieldConstants.top.rawValue,
             left: TextFieldConstants.left.rawValue
         )
@@ -90,7 +90,7 @@ class AuthorizationViewController: UIViewController {
         passwordTextField.customize(
             textField: passwordTextField,
             view: emailTextField,
-            placeholder: Text.password.rawValue,
+            placeholder: PlaceholderText.password.rawValue,
             top: TextFieldConstants.top.rawValue,
             left: TextFieldConstants.left.rawValue
         )

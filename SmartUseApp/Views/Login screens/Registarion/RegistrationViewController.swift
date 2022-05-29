@@ -65,7 +65,7 @@ class RegistrationViewController: UIViewController {
         emailTextField.customize(
             textField: emailTextField,
             view: registrationLabel,
-            placeholder: Text.email.rawValue,
+            placeholder: PlaceholderText.email.rawValue,
             top: TextFieldConstants.top.rawValue,
             left: TextFieldConstants.left.rawValue
         )
@@ -74,7 +74,7 @@ class RegistrationViewController: UIViewController {
         firstPassTextField.customize(
             textField: firstPassTextField,
             view: emailTextField,
-            placeholder: Text.password.rawValue,
+            placeholder: PlaceholderText.password.rawValue,
             top: TextFieldConstants.top.rawValue,
             left: TextFieldConstants.left.rawValue
         )
@@ -83,7 +83,7 @@ class RegistrationViewController: UIViewController {
         secondPassTextField.customize(
             textField: secondPassTextField,
             view: firstPassTextField,
-            placeholder: Text.password.rawValue,
+            placeholder: PlaceholderText.password.rawValue,
             top: TextFieldConstants.top.rawValue,
             left: TextFieldConstants.left.rawValue
         )

@@ -46,8 +46,8 @@ class MainViewController: UIViewController {
         
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.register(MainViewCell.self, forCellWithReuseIdentifier: MainViewCell.reuseIdentifier)
-        collectionView.backgroundColor = .red
         
         view.addSubview(collectionView)
     }
@@ -59,7 +59,10 @@ class MainViewController: UIViewController {
     }
     
     @objc private func addButtonAction() {
-        // переход на экран создания
+        let newObjectVC = UINavigationController(rootViewController: NewObjectViewController())
+        newObjectVC.modalPresentationStyle = .fullScreen
+        
+        present(newObjectVC, animated: true)
     }
 }
 
@@ -81,5 +84,9 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: 100, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
     }
 }

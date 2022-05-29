@@ -59,11 +59,11 @@ class FirebaseManager {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
                 print(error.localizedDescription)
+            } else {
+                print("Востановление пользователя")
             }
             
             completion(error)
         }
     }
-    
-    
 }
