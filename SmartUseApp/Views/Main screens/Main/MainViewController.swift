@@ -24,7 +24,19 @@ class MainViewController: UIViewController {
         title = "Hello"
         customizeUI()
         
+        let button = UIButton(type: .roundedRect)
+              button.frame = CGRect(x: 40, y: 100, width: 100, height: 30)
+              button.setTitle("Test Crash", for: [])
+              button.addTarget(self, action: #selector(crashButtonTapped), for: .touchUpInside)
+              collectionView.addSubview(button)
+
+        
     }
+    
+    @objc func crashButtonTapped() {
+          let numbers = [0]
+          let _ = numbers[1]
+      }
     
     //MARK: - Private methods
     private func customizeUI() {
