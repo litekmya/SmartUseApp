@@ -17,16 +17,10 @@ protocol RegistrationViewModelProtocol {
 
 class RegistrationViewModel: RegistrationViewModelProtocol {
     
-    var email: String {
-        didSet {}
-    }
+    var email: String = ""
     
-    var password: String {
-        didSet {}
-    }
-    
-//    var viewModelDidChange: ((RegistrationViewModelProtocol) -> Void)?
-    
+    var password: String = ""
+        
     required init(email: String, password: String) {
         self.email = email
         self.password = password

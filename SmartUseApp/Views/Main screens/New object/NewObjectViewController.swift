@@ -20,20 +20,27 @@ class NewObjectViewController: UIViewController {
     private var exitButton: UIBarButtonItem!
     private var saveButton: UIBarButtonItem!
     
+    private var addImageButton = UIButton()
+    
+    private var viewModel: NewObjectViewModelProtocol!
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .white
         title = "someTitle"
-
+        
         addSubviews()
         customizeUI()
+        
+        viewModel = NewObjectViewModel()
     }
     
     //MARK: - Private methods
     private func addSubviews() {
         view.addSubview(imageView)
+        view.addSubview(addImageButton)
         view.addSubview(nameTextField)
         view.addSubview(costTextField)
         view.addSubview(dateLabel)
@@ -49,8 +56,8 @@ class NewObjectViewController: UIViewController {
         )
         
         customizeTextFields()
-        someAction()
-        setupBarButtonItems()
+        customizeDateObjects()
+        setupButtons()
     }
     
     private func customizeTextFields() {
@@ -72,7 +79,7 @@ class NewObjectViewController: UIViewController {
         costTextField.keyboardType = .numberPad
     }
     
-    private func someAction() {
+    private func customizeDateObjects() {
         dateLabel.snp.makeConstraints { make in
             make.left.equalTo(view).inset(30)
             make.top.equalTo(costTextField.snp.bottom).inset(-30)
@@ -87,7 +94,14 @@ class NewObjectViewController: UIViewController {
         datePicker.datePickerMode = .date
     }
     
-    private func setupBarButtonItems() {
+    private func setupButtons() {
+        addImageButton.snp.makeConstraints { make in
+            make.center.equalTo(imageView)
+            make.width.equalTo(ImageConstants.topAndHeight.rawValue)
+            make.height.equalTo(ImageConstants.topAndHeight.rawValue)
+        }
+        
+        addImageButton.addTarget(self, action: #selector(addImageButtonAction), for: .touchUpInside)
         exitButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(exitButtonAction))
         saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonItem))
         
@@ -102,5 +116,16 @@ class NewObjectViewController: UIViewController {
     
     @objc private func saveButtonItem() {
         print("Нажата кнопка сохранения")
+        let dateInteger = datePicker.date.formatted()
+        
+        viewModel.save(name: nameTextField.text ?? "", cost: costTextField.text ?? "", date: dateInteger)
+        dismiss(animated: true)
+    }
+    
+    @objc private func addImageButtonAction() {
+        print("Нажата кнопка добавления картинки")
+        let addedVC = AddedImageCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        
+        navigationController?.pushViewController(addedVC, animated: true)
     }
 }

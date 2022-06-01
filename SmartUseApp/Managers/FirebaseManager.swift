@@ -12,12 +12,8 @@ class FirebaseManager {
     
     static let shared = FirebaseManager()
     let firebaseApp = FirebaseApp.self
-
-    private init() {}
-    
-    func send() {
         
-    }
+    private init() {}
     
     func createUser(with email: String, and password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -28,8 +24,7 @@ class FirebaseManager {
             guard let result = result else { return }
             print(result.user.uid)
             
-            let reference = Database.database().reference().child("users")
-            reference.child(result.user.uid).updateChildValues(["email": email, "password": password])
+            Database.database().reference().child(result.user.uid).updateChildValues(["email": email, "password": password])
         }
     }
     
@@ -64,6 +59,35 @@ class FirebaseManager {
             }
             
             completion(error)
+        }
+    }
+    
+    func addNewThing(thing: Thing) {
+        guard let user = Auth.auth().currentUser else { return }
+        print(user.uid)
+        Database.database()
+            .reference()
+            .child("users")
+            .child(user.uid)
+            .child("things")
+            .child("\(thing.name)")
+            .setValue(["name": thing.name,
+                       "cost": thing.cost,
+                       "date": thing.date])
+    }
+    
+    func getThingsFromDatabase(completion: @escaping([String: AnyObject]) -> Void) {
+        guard let user = Auth.auth().currentUser else { return }
+        
+        Database.database()
+            .reference()
+            .child("users")
+            .child(user.uid)
+            .child("things")
+            .observeSingleEvent(of: .value) { snapshot in
+            guard let value = snapshot.value as? [String: AnyObject] else { return }
+                
+            completion(value)
         }
     }
 }

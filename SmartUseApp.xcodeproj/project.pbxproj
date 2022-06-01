@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		052B9B54CCE02A8EF0C7BEDC /* Pods_SmartUseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3F5E247A714F4A925064C7 /* Pods_SmartUseApp.framework */; };
+		3C10AEB92844C776002A1ED0 /* AddedImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEB82844C776002A1ED0 /* AddedImageCollectionViewController.swift */; };
+		3C10AEBB2844C785002A1ED0 /* AddedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEBA2844C785002A1ED0 /* AddedImageViewModel.swift */; };
+		3C10AEBE2844CCC8002A1ED0 /* AddedImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEBD2844CCC8002A1ED0 /* AddedImageViewCell.swift */; };
+		3C10AEC12844CCEE002A1ED0 /* AddedImageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEC02844CCEE002A1ED0 /* AddedImageCellViewModel.swift */; };
+		3C10AEEF28463E15002A1ED0 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEEE28463E15002A1ED0 /* Icon.swift */; };
+		3C10AEF1284654D3002A1ED0 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEF0284654D3002A1ED0 /* Thing.swift */; };
 		3C9564B428392A2500A7ED87 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9564B328392A2500A7ED87 /* AuthModel.swift */; };
 		3CA9D755283A59DA00CF88D2 /* NavigationController + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D754283A59DA00CF88D2 /* NavigationController + extension.swift */; };
 		3CA9D758283BB5C900CF88D2 /* AcquaintanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D757283BB5C900CF88D2 /* AcquaintanceViewController.swift */; };
@@ -37,12 +43,18 @@
 		3CB8F3DD28378D0100DAAAF4 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3DC28378D0100DAAAF4 /* RegistrationViewModel.swift */; };
 		3CB8F3DF28378FB100DAAAF4 /* ConstantValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3DE28378FB100DAAAF4 /* ConstantValues.swift */; };
 		3CB8F3E128379BE700DAAAF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E028379BE700DAAAF4 /* MainViewController.swift */; };
-		3CB8F3E428379C3700DAAAF4 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E328379C3700DAAAF4 /* WelcomeViewModel.swift */; };
+		3CB8F3E428379C3700DAAAF4 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E328379C3700DAAAF4 /* MainViewModel.swift */; };
 		3CB8F3E72837F5A100DAAAF4 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E62837F5A100DAAAF4 /* FirebaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		099D3760E00188D1A0D5F240 /* Pods-SmartUseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartUseApp.debug.xcconfig"; path = "Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp.debug.xcconfig"; sourceTree = "<group>"; };
+		3C10AEB82844C776002A1ED0 /* AddedImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedImageCollectionViewController.swift; sourceTree = "<group>"; };
+		3C10AEBA2844C785002A1ED0 /* AddedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedImageViewModel.swift; sourceTree = "<group>"; };
+		3C10AEBD2844CCC8002A1ED0 /* AddedImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedImageViewCell.swift; sourceTree = "<group>"; };
+		3C10AEC02844CCEE002A1ED0 /* AddedImageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedImageCellViewModel.swift; sourceTree = "<group>"; };
+		3C10AEEE28463E15002A1ED0 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		3C10AEF0284654D3002A1ED0 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		3C9564B328392A2500A7ED87 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		3CA9D754283A59DA00CF88D2 /* NavigationController + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController + extension.swift"; sourceTree = "<group>"; };
 		3CA9D757283BB5C900CF88D2 /* AcquaintanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcquaintanceViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +86,7 @@
 		3CB8F3DC28378D0100DAAAF4 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		3CB8F3DE28378FB100DAAAF4 /* ConstantValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantValues.swift; sourceTree = "<group>"; };
 		3CB8F3E028379BE700DAAAF4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		3CB8F3E328379C3700DAAAF4 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		3CB8F3E328379C3700DAAAF4 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		3CB8F3E62837F5A100DAAAF4 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		962348B23283D938C4AF18F2 /* Pods-SmartUseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartUseApp.release.xcconfig"; path = "Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp.release.xcconfig"; sourceTree = "<group>"; };
 		DD3F5E247A714F4A925064C7 /* Pods_SmartUseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartUseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,12 +121,33 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		3C10AEB72844C6C5002A1ED0 /* ImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3C10AEB82844C776002A1ED0 /* AddedImageCollectionViewController.swift */,
+				3C10AEBA2844C785002A1ED0 /* AddedImageViewModel.swift */,
+				3C10AEBC2844CC94002A1ED0 /* AddedImageCell */,
+			);
+			path = ImageViewController;
+			sourceTree = "<group>";
+		};
+		3C10AEBC2844CC94002A1ED0 /* AddedImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				3C10AEBD2844CCC8002A1ED0 /* AddedImageViewCell.swift */,
+				3C10AEC02844CCEE002A1ED0 /* AddedImageCellViewModel.swift */,
+			);
+			path = AddedImageCell;
+			sourceTree = "<group>";
+		};
 		3C9564B228392A0C00A7ED87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				3CB8F3DE28378FB100DAAAF4 /* ConstantValues.swift */,
 				3C9564B328392A2500A7ED87 /* AuthModel.swift */,
 				3CA9D760283BF66900CF88D2 /* Page.swift */,
+				3C10AEEE28463E15002A1ED0 /* Icon.swift */,
+				3C10AEF0284654D3002A1ED0 /* Thing.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -181,6 +214,7 @@
 			children = (
 				3CA9D7712841207800CF88D2 /* NewObjectViewController.swift */,
 				3CA9D773284120D800CF88D2 /* NewObjectViewModel.swift */,
+				3C10AEB72844C6C5002A1ED0 /* ImageViewController */,
 			);
 			path = "New object";
 			sourceTree = "<group>";
@@ -287,7 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				3CB8F3E028379BE700DAAAF4 /* MainViewController.swift */,
-				3CB8F3E328379C3700DAAAF4 /* WelcomeViewModel.swift */,
+				3CB8F3E328379C3700DAAAF4 /* MainViewModel.swift */,
 				3CA9D762283D2DB200CF88D2 /* MainCell */,
 			);
 			path = Main;
@@ -442,26 +476,32 @@
 				3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */,
 				3CA9D76D28411E6600CF88D2 /* DatabaseManager.swift in Sources */,
 				3CA9D7722841207800CF88D2 /* NewObjectViewController.swift in Sources */,
+				3C10AEEF28463E15002A1ED0 /* Icon.swift in Sources */,
+				3C10AEBB2844C785002A1ED0 /* AddedImageViewModel.swift in Sources */,
+				3C10AEB92844C776002A1ED0 /* AddedImageCollectionViewController.swift in Sources */,
 				3CA9D761283BF66900CF88D2 /* Page.swift in Sources */,
 				3CA9D76B283D312400CF88D2 /* PassRecoveryViewModel.swift in Sources */,
 				3CB8F3E72837F5A100DAAAF4 /* FirebaseManager.swift in Sources */,
 				3CA9D75F283BC03200CF88D2 /* AquaintanceCellViewModel.swift in Sources */,
-				3CB8F3E428379C3700DAAAF4 /* WelcomeViewModel.swift in Sources */,
+				3CB8F3E428379C3700DAAAF4 /* MainViewModel.swift in Sources */,
 				3CA9D766283D2DE500CF88D2 /* MainCellViewModel.swift in Sources */,
 				3CB58EDE2835776D001A8DDB /* AuthorizationViewController.swift in Sources */,
 				3CA9D769283D310D00CF88D2 /* PassRecoveryViewController.swift in Sources */,
 				3CB8F3DB28378CF400DAAAF4 /* RegistrationViewController.swift in Sources */,
 				3CB58EDA2835776D001A8DDB /* AppDelegate.swift in Sources */,
 				3CB8F3DD28378D0100DAAAF4 /* RegistrationViewModel.swift in Sources */,
+				3C10AEBE2844CCC8002A1ED0 /* AddedImageViewCell.swift in Sources */,
 				3CA9D75D283BC00700CF88D2 /* AcquaintanceViewCell.swift in Sources */,
 				3CA9D758283BB5C900CF88D2 /* AcquaintanceViewController.swift in Sources */,
 				3CB8F3D72836B3C000DAAAF4 /* UIImageView + extension.swift in Sources */,
 				3CA9D764283D2DD400CF88D2 /* MainViewCell.swift in Sources */,
 				3CB8F3DF28378FB100DAAAF4 /* ConstantValues.swift in Sources */,
 				3CA9D75A283BB5E400CF88D2 /* AcquaintanceViewModel.swift in Sources */,
+				3C10AEC12844CCEE002A1ED0 /* AddedImageCellViewModel.swift in Sources */,
 				3CB58EDC2835776D001A8DDB /* SceneDelegate.swift in Sources */,
 				3CB8F3E128379BE700DAAAF4 /* MainViewController.swift in Sources */,
 				3CB8F3D52836B2C100DAAAF4 /* UITextField + extension.swift in Sources */,
+				3C10AEF1284654D3002A1ED0 /* Thing.swift in Sources */,
 				3CA9D755283A59DA00CF88D2 /* NavigationController + extension.swift in Sources */,
 				3CB8F3D128368D0E00DAAAF4 /* UIButton + extension.swift in Sources */,
 				3C9564B428392A2500A7ED87 /* AuthModel.swift in Sources */,

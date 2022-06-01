@@ -15,28 +15,24 @@ class MainViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     
+    private var viewModel: MainViewModelProtocol! {
+        didSet {
+            viewModel.getDataFromDatabase {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
-        
         view.backgroundColor = .white
         title = "Hello"
+        
+        viewModel = MainViewModel()
         customizeUI()
-        
-        let button = UIButton(type: .roundedRect)
-              button.frame = CGRect(x: 40, y: 100, width: 100, height: 30)
-              button.setTitle("Test Crash", for: [])
-              button.addTarget(self, action: #selector(crashButtonTapped), for: .touchUpInside)
-              collectionView.addSubview(button)
-
-        
     }
-    
-    @objc func crashButtonTapped() {
-          let numbers = [0]
-          let _ = numbers[1]
-      }
     
     //MARK: - Private methods
     private func customizeUI() {
@@ -82,7 +78,8 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        print(viewModel.returnNumberOfItemsInSection())
+        return viewModel.returnNumberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

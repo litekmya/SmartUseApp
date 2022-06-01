@@ -44,7 +44,7 @@ class AuthorizationViewController: UIViewController {
         
         errorLabel.isHidden = true
         
-        viewModel = AuthorizationViewModel(email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
+        viewModel = AuthorizationViewModel()
     }
     
     //MARK: - Private methods
