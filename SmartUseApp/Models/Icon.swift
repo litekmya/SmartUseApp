@@ -28,7 +28,7 @@ extension Icon {
             Icon(imageName: "icons8-cocktail-60"),
             Icon(imageName: "icons8-cocktail-60"),
             Icon(imageName: "icons8-cocktail-60"),
-            Icon(imageName: "icons8-cocktail-60")
+            Icon(imageName: "icons8-женский-торс-50")
         ]
         
         return icons

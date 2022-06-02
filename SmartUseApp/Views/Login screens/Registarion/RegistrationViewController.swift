@@ -32,7 +32,7 @@ class RegistrationViewController: UIViewController {
         customizeUI()
         addTarget()
         
-        viewModel = RegistrationViewModel(email: emailTextField.text ?? "", password: firstPassTextField.text ?? "")
+        viewModel = RegistrationViewModel()
 
     }
     

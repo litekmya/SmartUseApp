@@ -25,7 +25,6 @@
 		3CA9D766283D2DE500CF88D2 /* MainCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D765283D2DE500CF88D2 /* MainCellViewModel.swift */; };
 		3CA9D769283D310D00CF88D2 /* PassRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D768283D310D00CF88D2 /* PassRecoveryViewController.swift */; };
 		3CA9D76B283D312400CF88D2 /* PassRecoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D76A283D312400CF88D2 /* PassRecoveryViewModel.swift */; };
-		3CA9D76D28411E6600CF88D2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D76C28411E6600CF88D2 /* DatabaseManager.swift */; };
 		3CA9D7722841207800CF88D2 /* NewObjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D7712841207800CF88D2 /* NewObjectViewController.swift */; };
 		3CA9D774284120D800CF88D2 /* NewObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D773284120D800CF88D2 /* NewObjectViewModel.swift */; };
 		3CB58EDA2835776D001A8DDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58ED92835776D001A8DDB /* AppDelegate.swift */; };
@@ -66,7 +65,6 @@
 		3CA9D765283D2DE500CF88D2 /* MainCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCellViewModel.swift; sourceTree = "<group>"; };
 		3CA9D768283D310D00CF88D2 /* PassRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassRecoveryViewController.swift; sourceTree = "<group>"; };
 		3CA9D76A283D312400CF88D2 /* PassRecoveryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassRecoveryViewModel.swift; sourceTree = "<group>"; };
-		3CA9D76C28411E6600CF88D2 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		3CA9D7712841207800CF88D2 /* NewObjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewObjectViewController.swift; sourceTree = "<group>"; };
 		3CA9D773284120D800CF88D2 /* NewObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewObjectViewModel.swift; sourceTree = "<group>"; };
 		3CB58ED62835776D001A8DDB /* SmartUseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartUseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,7 +329,6 @@
 			isa = PBXGroup;
 			children = (
 				3CB8F3E62837F5A100DAAAF4 /* FirebaseManager.swift */,
-				3CA9D76C28411E6600CF88D2 /* DatabaseManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -474,7 +471,6 @@
 				3CA9D774284120D800CF88D2 /* NewObjectViewModel.swift in Sources */,
 				3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */,
 				3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */,
-				3CA9D76D28411E6600CF88D2 /* DatabaseManager.swift in Sources */,
 				3CA9D7722841207800CF88D2 /* NewObjectViewController.swift in Sources */,
 				3C10AEEF28463E15002A1ED0 /* Icon.swift in Sources */,
 				3C10AEBB2844C785002A1ED0 /* AddedImageViewModel.swift in Sources */,
