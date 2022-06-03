@@ -7,7 +7,11 @@
 
 import UIKit
 
-class NewObjectViewController: UIViewController {
+protocol NewObjectViewControllerDelegate: AnyObject {
+    func update(image: UIImage)
+}
+
+class NewObjectViewController: UIViewController, UINavigationControllerDelegate {
     
     //MARK: - Private properties
     private let imageView = UIImageView()
@@ -36,6 +40,12 @@ class NewObjectViewController: UIViewController {
         
         viewModel = NewObjectViewModel()
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destination = segue.destination as? AddedImageCollectionViewController {
+//            destination.delegate = self
+//        }
+//    }
     
     //MARK: - Private methods
     private func addSubviews() {
@@ -124,8 +134,23 @@ class NewObjectViewController: UIViewController {
     
     @objc private func addImageButtonAction() {
         print("Нажата кнопка добавления картинки")
-        let addedVC = AddedImageCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: view.frame.width, height: view.frame.height)
         
+//        let addedVC = UINavigationController(rootViewController: AddedImageCollectionViewController(collectionViewLayout: layout))
+//        addedVC.delegate = self
+//
+//        present(addedVC, animated: true)
+        let addedVC = AddedImageCollectionViewController(collectionViewLayout: layout)
+        addedVC.delegate = self
         navigationController?.pushViewController(addedVC, animated: true)
+    }
+}
+
+extension NewObjectViewController: NewObjectViewControllerDelegate {
+    
+    func update(image: UIImage) {
+        imageView.image = image
+        print("delegate сработал")
     }
 }

@@ -16,6 +16,7 @@ protocol AddedImageViewModelProtocol {
 }
 
 class AddedImageViewModel: AddedImageViewModelProtocol {
+        
     var icons: [Icon] = []
     
     func getIcons() {
