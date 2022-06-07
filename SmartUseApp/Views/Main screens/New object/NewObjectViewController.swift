@@ -41,12 +41,6 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
         viewModel = NewObjectViewModel()
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destination = segue.destination as? AddedImageCollectionViewController {
-//            destination.delegate = self
-//        }
-//    }
-    
     //MARK: - Private methods
     private func addSubviews() {
         view.addSubview(imageView)
@@ -64,6 +58,8 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
             top: 180,
             height: ImageConstants.topAndHeight.rawValue
         )
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
         
         customizeTextFields()
         customizeDateObjects()
@@ -127,8 +123,11 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
     @objc private func saveButtonItem() {
         print("Нажата кнопка сохранения")
         let dateInteger = datePicker.date.formatted()
+        guard let imageData = imageView.image?.pngData() else {
+            print("Не получилось преобразовать image")
+            return }
         
-        viewModel.save(name: nameTextField.text ?? "", cost: costTextField.text ?? "", date: dateInteger)
+        viewModel.save(name: nameTextField.text ?? "", cost: costTextField.text ?? "", date: dateInteger, imageURL: "", imageData: imageData)
         dismiss(animated: true)
     }
     
@@ -142,8 +141,11 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
 //
 //        present(addedVC, animated: true)
         let addedVC = AddedImageCollectionViewController(collectionViewLayout: layout)
+//        addedVC.modalPresentationStyle = .fullScreen
+        addedVC.accessibilityNavigationStyle = .separate
         addedVC.delegate = self
-        navigationController?.pushViewController(addedVC, animated: true)
+//        navigationController?.pushViewController(addedVC, animated: true)
+        present(addedVC, animated: true)
     }
 }
 

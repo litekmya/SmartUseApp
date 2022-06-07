@@ -11,5 +11,6 @@ struct Thing {
     var name: String
     var cost: String
     var date: String
+    var imageURL: String
 }
 

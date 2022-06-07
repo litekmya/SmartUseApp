@@ -58,7 +58,7 @@ class AddedImageCollectionViewController: UICollectionViewController {
         print("save button")
         print(image.size)
         delegate?.update(image: image)
-//        dismiss(animated: true)
+        dismiss(animated: true)
     }
 
     // MARK: UICollectionViewDataSource

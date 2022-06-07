@@ -67,9 +67,13 @@ class MainViewController: UIViewController {
     }
     
     @objc private func addButtonAction() {
-        let newObjectVC = NewObjectViewController()
-        newObjectVC.modalPresentationStyle = .fullScreen
-        navigationController?.pushViewController(newObjectVC, animated: true)
+//        let newObjectVC = NewObjectViewController()
+//        newObjectVC.modalPresentationStyle = .fullScreen
+//        navigationController?.pushViewController(newObjectVC, animated: true)
+        
+        let newObjectVC = UINavigationController(rootViewController: NewObjectViewController())
+        
+        present(newObjectVC, animated: true)
     }
 }
 
