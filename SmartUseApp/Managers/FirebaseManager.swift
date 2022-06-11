@@ -77,7 +77,6 @@ class FirebaseManager {
                            "date": thing.date,
                            "urlString": urlString])
         }
-        
     }
     
     func getThingsFromDatabase(completion: @escaping([String: AnyObject]) -> Void) {
@@ -91,11 +90,12 @@ class FirebaseManager {
             .child(user.uid)
             .child("things")
             .observeSingleEvent(of: .value) { snapshot in
-            guard let value = snapshot.value as? [String: AnyObject] else {
-                print("Ошибка при получении данных из базы")
-                return }
-            completion(value)
-        }
+                guard let values = snapshot.value as? [String: AnyObject] else {
+                    print("Ошибка при получении данных из базы")
+                    return }
+                
+                completion(values)
+            }
     }
     
     private func uploadImage(data: Data, user: User, thing: Thing, completion: @escaping(String) -> Void) {

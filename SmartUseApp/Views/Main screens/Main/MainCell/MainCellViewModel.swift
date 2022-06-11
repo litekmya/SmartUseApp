@@ -26,18 +26,17 @@ class MainCellViewModel: MainCellViewModelProtocol {
     }
     
     func getImageData(completion: @escaping(Data) ->Void) {
-        let things = CoreDataManager.shared.fetchData(thingName: thing.name)
-        
-        if things.first == nil {
-            NetworkManager.shared.getImage(from: self.thing.urlString) { data in
-                print("Данные из интернета получены")
-                completion(data)
+        guard let urlString = thing.urlString else {
+            guard let data = thing.imageData else {
+                return
             }
-        } else {
-            guard let thing = things.first else { return }
-            guard let imageData = thing.imageData else { return }
-            print("Данные из базы получены")
-            completion(imageData)
+            completion(data)
+            return
+            
+        }
+        NetworkManager.shared.getImage(from: urlString) { data in
+            print("Данные из интернета получены")
+            completion(data)
         }
     }
 }

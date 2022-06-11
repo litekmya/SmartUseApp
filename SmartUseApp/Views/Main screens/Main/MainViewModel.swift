@@ -9,8 +9,9 @@ import Foundation
 
 protocol MainViewModelProtocol {
     var things: [Thing] { get }
+    var coreDataThings: [CoreDataThing]! { get }
     
-    func getDataFromDatabase(completion: @escaping() -> Void)
+    func getData(completion: @escaping() -> Void)
     func returnNumberOfItemsInSection() -> Int
     func getCellViewModel(index: Int) -> MainCellViewModelProtocol
 }
@@ -18,20 +19,40 @@ protocol MainViewModelProtocol {
 class MainViewModel: MainViewModelProtocol {
     
     var things: [Thing] = []
+    var coreDataThings: [CoreDataThing]!
     
-    func getDataFromDatabase(completion: @escaping() -> Void) {
-        FirebaseManager.shared.getThingsFromDatabase { values in
-            for (_, value) in values {
-                guard let name = value["name"] as? String,
-                      let cost = value["cost"] as? String,
-                      let date = value["date"] as? String,
-                      let urlString = value["urlString"] as? String
-                else {
-                    print("Ошибка во MainViewModel/values ")
-                    return }
+    func getData(completion: @escaping() -> Void) {
+        coreDataThings = CoreDataManager.shared.fetchData()
+        
+        if coreDataThings == [] {
+            FirebaseManager.shared.getThingsFromDatabase { values in
+                for (_, value) in values {
+                    guard let name = value["name"] as? String,
+                          let cost = value["cost"] as? String,
+                          let date = value["date"] as? String,
+                          let urlString = value["urlString"] as? String
+                    else {
+                        print("Ошибка во MainViewModel/values ")
+                        return }
+                    
+                    let thing = Thing(name: name, cost: cost, date: date, urlString: urlString)
+                    self.things.append(thing)
+                    print("Данные из firebase получены")
+                }
                 
-                let thing = Thing(name: name, cost: cost, date: date, urlString: urlString)
-                self.things.append(thing)
+                completion()
+            }
+        } else {
+            for coreDataThing in coreDataThings {
+                let thing = Thing(
+                    name: coreDataThing.name ?? "",
+                    cost: coreDataThing.cost ?? "",
+                    date: coreDataThing.date ?? "",
+                    urlString: nil,
+                    imageData: coreDataThing.imageData
+                )
+                things.append(thing)
+                print("Данные из coreData получены")
             }
             
             completion()

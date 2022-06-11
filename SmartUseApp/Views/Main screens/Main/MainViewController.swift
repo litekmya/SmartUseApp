@@ -17,7 +17,8 @@ class MainViewController: UIViewController {
     
     private var viewModel: MainViewModelProtocol! {
         didSet {
-            viewModel.getDataFromDatabase {
+            self.customizeCollectionView()
+            viewModel.getData {
                 self.collectionView.reloadData()
             }
         }
@@ -44,9 +45,7 @@ class MainViewController: UIViewController {
     }
     
     private func customizeUI() {
-        customizeCollectionView()
         customizeButtons()
-        
         view.addSubview(collectionView)
     }
     

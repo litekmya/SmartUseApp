@@ -44,15 +44,17 @@ class CoreDataManager {
         guard let coreDataThing = NSManagedObject(entity: entityDescription, insertInto: context) as? CoreDataThing else { return }
         
         coreDataThing.name = thing.name
+        coreDataThing.cost = thing.cost
+        coreDataThing.date = thing.date
         coreDataThing.imageData = imageData
         
         saveContext()
     }
     
-    func fetchData(thingName: String) -> [CoreDataThing] {
+    func fetchData() -> [CoreDataThing] {
         var things: [CoreDataThing]!
         let fetchRequest: NSFetchRequest<CoreDataThing> = CoreDataThing.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: thingName, ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         
         fetchRequest.sortDescriptors = [sortDescriptor]
         

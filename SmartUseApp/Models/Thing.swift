@@ -11,6 +11,7 @@ struct Thing: Codable {
     var name: String
     var cost: String
     var date: String
-    var urlString: String
+    var urlString: String?
+    var imageData: Data?
 }
 
