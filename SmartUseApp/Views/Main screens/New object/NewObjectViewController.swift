@@ -41,6 +41,11 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
         viewModel = NewObjectViewModel()
     }
     
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        print("viewDidAppear")
+//    }
+    
     //MARK: - Private methods
     private func addSubviews() {
         view.addSubview(imageView)
@@ -127,7 +132,7 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
             print("Не получилось преобразовать image")
             return }
         
-        viewModel.save(name: nameTextField.text ?? "", cost: costTextField.text ?? "", date: dateInteger, imageURL: "", imageData: imageData)
+        viewModel.save(name: nameTextField.text ?? "", cost: costTextField.text ?? "", date: dateInteger, urlString: "", imageData: imageData)
         dismiss(animated: true)
     }
     
@@ -135,23 +140,20 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
         print("Нажата кнопка добавления картинки")
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: view.frame.width, height: view.frame.height)
-        
-//        let addedVC = UINavigationController(rootViewController: AddedImageCollectionViewController(collectionViewLayout: layout))
-//        addedVC.delegate = self
-//
-//        present(addedVC, animated: true)
+
         let addedVC = AddedImageCollectionViewController(collectionViewLayout: layout)
-//        addedVC.modalPresentationStyle = .fullScreen
         addedVC.accessibilityNavigationStyle = .separate
         addedVC.delegate = self
-//        navigationController?.pushViewController(addedVC, animated: true)
+
         present(addedVC, animated: true)
     }
 }
 
+//MARK: - NewObjectViewControllerDelegate
 extension NewObjectViewController: NewObjectViewControllerDelegate {
     
     func update(image: UIImage) {
+        print(image.size)
         imageView.image = image
         print("delegate сработал")
     }

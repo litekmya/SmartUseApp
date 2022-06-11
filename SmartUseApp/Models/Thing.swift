@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Thing {
+struct Thing: Codable {
     var name: String
     var cost: String
     var date: String
-    var imageURL: String
+    var urlString: String
 }
 

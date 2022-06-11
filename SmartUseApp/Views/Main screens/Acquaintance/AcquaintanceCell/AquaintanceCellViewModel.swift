@@ -10,7 +10,7 @@ import Foundation
 protocol AcquaintanceCellViewModelProtocol {
     var title: String { get }
     var text: String { get }
-    var image: String { get }
+    var imageURL: String { get }
     
     init(page: Page)
 }
@@ -25,7 +25,7 @@ class AcquaintanceCellViewModel: AcquaintanceCellViewModelProtocol {
         page.text
     }
     
-    var image: String {
+    var imageURL: String {
         page.image
     }
     

@@ -16,7 +16,7 @@ class AcquaintanceViewCell: UICollectionViewCell {
             titleLabel.text = viewModel.title
             textLabel.text = viewModel.text
             
-            let image = UIImage(systemName: viewModel.image)
+            let image = UIImage(systemName: viewModel.imageURL)
             imageView.image = image
         }
     }

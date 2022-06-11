@@ -94,7 +94,6 @@ class FirebaseManager {
             guard let value = snapshot.value as? [String: AnyObject] else {
                 print("Ошибка при получении данных из базы")
                 return }
-                print("value: \(value.count)")
             completion(value)
         }
     }

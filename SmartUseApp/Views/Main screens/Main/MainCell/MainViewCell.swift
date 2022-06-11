@@ -10,6 +10,17 @@ import UIKit
 class MainViewCell: UICollectionViewCell {
     
     static let reuseIdentifier = "MainCell"
+    var thing: Thing!
+    var viewModel: MainCellViewModelProtocol! {
+        didSet {
+            titleLabel.text = viewModel.title
+           
+                self.viewModel.getImageData { data in
+                    let image = UIImage(data: data)
+                    self.imageView.image = image
+                }
+        }
+    }
     
     private let imageView = UIImageView()
     private let titleLabel = UILabel()

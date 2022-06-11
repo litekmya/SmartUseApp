@@ -33,3 +33,4 @@ class AddedImageViewModel: AddedImageViewModelProtocol {
         return AddedImageCellViewModel(icon: icon)
     }
 }
+

@@ -25,7 +25,7 @@ class AddedImageCollectionViewController: UICollectionViewController {
         return picker
     }
     
-    private var image: UIImage!
+    private var currentImage: UIImage!
     private var viewModel: AddedImageViewModelProtocol! {
         didSet {
             viewModel.getIcons()
@@ -56,8 +56,7 @@ class AddedImageCollectionViewController: UICollectionViewController {
     //MARK: - @objc
     @objc private func saveBarButtonItemAction() {
         print("save button")
-        print(image.size)
-        delegate?.update(image: image)
+        delegate?.update(image: currentImage)
         dismiss(animated: true)
     }
 
@@ -79,7 +78,7 @@ class AddedImageCollectionViewController: UICollectionViewController {
         if icon.imageName == "icons8-женский-торс-50" { // Изменить на константу
             presentPHPicker()
         } else {
-            self.image = UIImage(named: icon.imageName)
+            self.currentImage = UIImage(named: icon.imageName)
             saveBarButtonItemAction()
         }
     }
@@ -114,9 +113,11 @@ extension AddedImageCollectionViewController: PHPickerViewControllerDelegate {
                     }
                     
                     DispatchQueue.main.async {
-                        if let image = image as? UIImage {
-                            print(image.size)
-                            self.image = image
+                        if var image = image as? UIImage {
+                            image = image.resize(image: image, scaledTo: CGSize(width: 200, height: 200))
+                            guard let imageData = image.jpegData(compressionQuality: 1) else { return }
+                            
+                            self.currentImage = UIImage(data: imageData)
                             self.saveBarButtonItemAction()
                         }
                     }

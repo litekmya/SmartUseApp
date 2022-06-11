@@ -26,18 +26,28 @@ class MainViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        view.backgroundColor = .white
-        title = "Hello"
-        
+        setupView()
         viewModel = MainViewModel()
         customizeUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView.reloadData()
+    }
+    
     //MARK: - Private methods
+    private func setupView() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Hello"
+        view.backgroundColor = .white
+    }
+    
     private func customizeUI() {
         customizeCollectionView()
         customizeButtons()
+        
+        view.addSubview(collectionView)
     }
     
     private func customizeButtons() {
@@ -56,8 +66,6 @@ class MainViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MainViewCell.self, forCellWithReuseIdentifier: MainViewCell.reuseIdentifier)
-        
-        view.addSubview(collectionView)
     }
     
     //MARK: - @objc
@@ -67,12 +75,8 @@ class MainViewController: UIViewController {
     }
     
     @objc private func addButtonAction() {
-//        let newObjectVC = NewObjectViewController()
-//        newObjectVC.modalPresentationStyle = .fullScreen
-//        navigationController?.pushViewController(newObjectVC, animated: true)
-        
         let newObjectVC = UINavigationController(rootViewController: NewObjectViewController())
-        
+        newObjectVC.modalPresentationStyle = .fullScreen
         present(newObjectVC, animated: true)
     }
 }
@@ -81,17 +85,19 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(viewModel.returnNumberOfItemsInSection())
-        return viewModel.returnNumberOfItemsInSection()
+        viewModel.returnNumberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainViewCell.reuseIdentifier, for: indexPath) as! MainViewCell
         
+        let cellViewModel = viewModel.getCellViewModel(index: indexPath.row)
+        cell.viewModel = cellViewModel
         return cell
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

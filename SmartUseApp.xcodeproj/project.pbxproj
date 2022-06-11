@@ -14,6 +14,7 @@
 		3C10AEC12844CCEE002A1ED0 /* AddedImageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEC02844CCEE002A1ED0 /* AddedImageCellViewModel.swift */; };
 		3C10AEEF28463E15002A1ED0 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEEE28463E15002A1ED0 /* Icon.swift */; };
 		3C10AEF1284654D3002A1ED0 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEF0284654D3002A1ED0 /* Thing.swift */; };
+		3C6B09722851EE6F001B2552 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B09712851EE6F001B2552 /* NetworkManager.swift */; };
 		3CA9D755283A59DA00CF88D2 /* NavigationController + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D754283A59DA00CF88D2 /* NavigationController + extension.swift */; };
 		3CA9D758283BB5C900CF88D2 /* AcquaintanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D757283BB5C900CF88D2 /* AcquaintanceViewController.swift */; };
 		3CA9D75A283BB5E400CF88D2 /* AcquaintanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D759283BB5E400CF88D2 /* AcquaintanceViewModel.swift */; };
@@ -33,6 +34,7 @@
 		3CB58EE62835776F001A8DDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB58EE42835776F001A8DDB /* LaunchScreen.storyboard */; };
 		3CB58EF128357964001A8DDB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3CB58EF028357964001A8DDB /* GoogleService-Info.plist */; };
 		3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58EF328357B03001A8DDB /* AuthorizationViewModel.swift */; };
+		3CB790952853E0EB00869268 /* UIImage + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB790942853E0EB00869268 /* UIImage + extension.swift */; };
 		3CB8F3D128368D0E00DAAAF4 /* UIButton + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */; };
 		3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */; };
 		3CB8F3D52836B2C100DAAAF4 /* UITextField + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */; };
@@ -43,6 +45,9 @@
 		3CB8F3E128379BE700DAAAF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E028379BE700DAAAF4 /* MainViewController.swift */; };
 		3CB8F3E428379C3700DAAAF4 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E328379C3700DAAAF4 /* MainViewModel.swift */; };
 		3CB8F3E72837F5A100DAAAF4 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E62837F5A100DAAAF4 /* FirebaseManager.swift */; };
+		3CC472D42854BABB004792C8 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC472D32854BABB004792C8 /* CacheManager.swift */; };
+		3CC472D62854F1B4004792C8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC472D52854F1B4004792C8 /* CoreDataManager.swift */; };
+		3CC472DF2854F69B004792C8 /* Things.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3CC472DD2854F69B004792C8 /* Things.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +58,7 @@
 		3C10AEC02844CCEE002A1ED0 /* AddedImageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedImageCellViewModel.swift; sourceTree = "<group>"; };
 		3C10AEEE28463E15002A1ED0 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		3C10AEF0284654D3002A1ED0 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
+		3C6B09712851EE6F001B2552 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3CA9D754283A59DA00CF88D2 /* NavigationController + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController + extension.swift"; sourceTree = "<group>"; };
 		3CA9D757283BB5C900CF88D2 /* AcquaintanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcquaintanceViewController.swift; sourceTree = "<group>"; };
 		3CA9D759283BB5E400CF88D2 /* AcquaintanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcquaintanceViewModel.swift; sourceTree = "<group>"; };
@@ -74,6 +80,7 @@
 		3CB58EE72835776F001A8DDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CB58EF028357964001A8DDB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CB58EF328357B03001A8DDB /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
+		3CB790942853E0EB00869268 /* UIImage + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + extension.swift"; sourceTree = "<group>"; };
@@ -84,6 +91,9 @@
 		3CB8F3E028379BE700DAAAF4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3CB8F3E328379C3700DAAAF4 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		3CB8F3E62837F5A100DAAAF4 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		3CC472D32854BABB004792C8 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		3CC472D52854F1B4004792C8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		3CC472DE2854F69B004792C8 /* Things.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Things.xcdatamodel; sourceTree = "<group>"; };
 		962348B23283D938C4AF18F2 /* Pods-SmartUseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartUseApp.release.xcconfig"; path = "Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp.release.xcconfig"; sourceTree = "<group>"; };
 		DD3F5E247A714F4A925064C7 /* Pods_SmartUseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartUseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -243,6 +253,7 @@
 				3CB58EEF2835785C001A8DDB /* Sources */,
 				3CB58EEE2835784D001A8DDB /* Application */,
 				3CB58EED28357845001A8DDB /* Info */,
+				3CC472DD2854F69B004792C8 /* Things.xcdatamodeld */,
 			);
 			path = SmartUseApp;
 			sourceTree = "<group>";
@@ -290,6 +301,7 @@
 				3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */,
 				3CB8F3D62836B3C000DAAAF4 /* UIImageView + extension.swift */,
 				3CA9D754283A59DA00CF88D2 /* NavigationController + extension.swift */,
+				3CB790942853E0EB00869268 /* UIImage + extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -326,6 +338,9 @@
 			isa = PBXGroup;
 			children = (
 				3CB8F3E62837F5A100DAAAF4 /* FirebaseManager.swift */,
+				3C6B09712851EE6F001B2552 /* NetworkManager.swift */,
+				3CC472D32854BABB004792C8 /* CacheManager.swift */,
+				3CC472D52854F1B4004792C8 /* CoreDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -470,6 +485,8 @@
 				3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */,
 				3CA9D7722841207800CF88D2 /* NewObjectViewController.swift in Sources */,
 				3C10AEEF28463E15002A1ED0 /* Icon.swift in Sources */,
+				3CC472D42854BABB004792C8 /* CacheManager.swift in Sources */,
+				3CC472D62854F1B4004792C8 /* CoreDataManager.swift in Sources */,
 				3C10AEBB2844C785002A1ED0 /* AddedImageViewModel.swift in Sources */,
 				3C10AEB92844C776002A1ED0 /* AddedImageCollectionViewController.swift in Sources */,
 				3CA9D761283BF66900CF88D2 /* Page.swift in Sources */,
@@ -480,15 +497,18 @@
 				3CA9D766283D2DE500CF88D2 /* MainCellViewModel.swift in Sources */,
 				3CB58EDE2835776D001A8DDB /* AuthorizationViewController.swift in Sources */,
 				3CA9D769283D310D00CF88D2 /* PassRecoveryViewController.swift in Sources */,
+				3C6B09722851EE6F001B2552 /* NetworkManager.swift in Sources */,
 				3CB8F3DB28378CF400DAAAF4 /* RegistrationViewController.swift in Sources */,
 				3CB58EDA2835776D001A8DDB /* AppDelegate.swift in Sources */,
 				3CB8F3DD28378D0100DAAAF4 /* RegistrationViewModel.swift in Sources */,
+				3CC472DF2854F69B004792C8 /* Things.xcdatamodeld in Sources */,
 				3C10AEBE2844CCC8002A1ED0 /* AddedImageViewCell.swift in Sources */,
 				3CA9D75D283BC00700CF88D2 /* AcquaintanceViewCell.swift in Sources */,
 				3CA9D758283BB5C900CF88D2 /* AcquaintanceViewController.swift in Sources */,
 				3CB8F3D72836B3C000DAAAF4 /* UIImageView + extension.swift in Sources */,
 				3CA9D764283D2DD400CF88D2 /* MainViewCell.swift in Sources */,
 				3CB8F3DF28378FB100DAAAF4 /* ConstantValues.swift in Sources */,
+				3CB790952853E0EB00869268 /* UIImage + extension.swift in Sources */,
 				3CA9D75A283BB5E400CF88D2 /* AcquaintanceViewModel.swift in Sources */,
 				3C10AEC12844CCEE002A1ED0 /* AddedImageCellViewModel.swift in Sources */,
 				3CB58EDC2835776D001A8DDB /* SceneDelegate.swift in Sources */,
@@ -707,6 +727,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3CC472DD2854F69B004792C8 /* Things.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3CC472DE2854F69B004792C8 /* Things.xcdatamodel */,
+			);
+			currentVersion = 3CC472DE2854F69B004792C8 /* Things.xcdatamodel */;
+			path = Things.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3CB58ECE2835776D001A8DDB /* Project object */;
 }
