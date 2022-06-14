@@ -17,7 +17,7 @@ extension UIImageView {
             maker.top.equalToSuperview().inset(top)
         }
         
-        imageView.layer.cornerRadius = 45 // Это нужно исправить
+        imageView.layer.cornerRadius = CGFloat(height / 2) // Это нужно исправить
         imageView.backgroundColor = .blue
     }
 }

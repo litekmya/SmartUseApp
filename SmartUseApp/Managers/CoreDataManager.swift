@@ -25,7 +25,6 @@ class CoreDataManager {
         return persistantContainer.viewContext
     }
     
-    
     private init() {}
     
     func saveContext() {

@@ -8,13 +8,14 @@
 import Foundation
 
 protocol MainViewModelProtocol {
-    var things: [Thing] { get }
+    var things: [Thing] { get set }
     var coreDataThings: [CoreDataThing]! { get }
     
     func getData(completion: @escaping() -> Void)
     func returnNumberOfItemsInSection() -> Int
     func getCellViewModel(index: Int) -> MainCellViewModelProtocol
 }
+
 
 class MainViewModel: MainViewModelProtocol {
     
@@ -43,6 +44,9 @@ class MainViewModel: MainViewModelProtocol {
                 completion()
             }
         } else {
+            
+            var things: [Thing] = []
+            
             for coreDataThing in coreDataThings {
                 let thing = Thing(
                     name: coreDataThing.name ?? "",
@@ -55,6 +59,7 @@ class MainViewModel: MainViewModelProtocol {
                 print("Данные из coreData получены")
             }
             
+            self.things = things
             completion()
         }
     }
@@ -65,7 +70,9 @@ class MainViewModel: MainViewModelProtocol {
     
     func getCellViewModel(index: Int) -> MainCellViewModelProtocol {
         let thing = things[index]
-        
+        print(things.count)
         return MainCellViewModel(thing: thing)
     }
 }
+
+

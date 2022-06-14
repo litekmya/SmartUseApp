@@ -17,8 +17,10 @@ class MainViewController: UIViewController {
     
     private var viewModel: MainViewModelProtocol! {
         didSet {
-            self.customizeCollectionView()
+            
+            print("viewModel")
             viewModel.getData {
+                self.customizeCollectionView()
                 self.collectionView.reloadData()
             }
         }
@@ -31,10 +33,12 @@ class MainViewController: UIViewController {
         viewModel = MainViewModel()
         customizeUI()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        collectionView.reloadData()
+        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+//        collectionView.reloadData()
+        viewModel = MainViewModel()
     }
     
     //MARK: - Private methods
@@ -69,14 +73,22 @@ class MainViewController: UIViewController {
     
     //MARK: - @objc
     @objc private func logOff() {
-        FirebaseManager.shared.signOut()
-        print("Пользователь вышел")
+//        FirebaseManager.shared.signOut()
+//        print("Пользователь вышел")
+        viewModel.getData {
+            self.customizeCollectionView()
+            self.collectionView.reloadData()
+        }
     }
     
     @objc private func addButtonAction() {
-        let newObjectVC = UINavigationController(rootViewController: NewObjectViewController())
+        let newObjectVC = NewObjectViewController()
         newObjectVC.modalPresentationStyle = .fullScreen
-        present(newObjectVC, animated: true)
+        
+        let navController = UINavigationController(rootViewController: newObjectVC)
+        navController.modalPresentationStyle = .fullScreen
+        
+        present(navController, animated: true)
     }
 }
 
@@ -84,16 +96,23 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.returnNumberOfItemsInSection()
+        viewModel.getData {
+            print("viewModel из numberItems")
+        }
+        return viewModel.returnNumberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainViewCell.reuseIdentifier, for: indexPath) as! MainViewCell
-        
+        print("cell")
         let cellViewModel = viewModel.getCellViewModel(index: indexPath.row)
         cell.viewModel = cellViewModel
         return cell
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        self.collectionView.reloadData()
+//    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
@@ -104,6 +123,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
+        UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     }
 }
+

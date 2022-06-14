@@ -221,7 +221,7 @@ class AuthorizationViewController: UIViewController {
         present(registrationVC, animated: true)
     }
     
-    @objc private func textFieldDidChange(_ textField: UITextField) {
+    @objc private func textFieldDidChange() {
         if (emailTextField.text != "" && passwordTextField.text != "") {
             logInButton.isEnabled = true
         } else {

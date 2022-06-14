@@ -112,6 +112,10 @@ class AcquaintanceViewController: UICollectionViewController {
             present(mainVC, animated: true) {
                 // Возможно понадобится
             }
+//            let mainVC = MainViewController()
+//            mainVC.modalPresentationStyle = .fullScreen
+//            
+//            present(mainVC, animated: true)
         }
     }
     

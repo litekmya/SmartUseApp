@@ -45,9 +45,9 @@
 		3CB8F3E128379BE700DAAAF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E028379BE700DAAAF4 /* MainViewController.swift */; };
 		3CB8F3E428379C3700DAAAF4 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E328379C3700DAAAF4 /* MainViewModel.swift */; };
 		3CB8F3E72837F5A100DAAAF4 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E62837F5A100DAAAF4 /* FirebaseManager.swift */; };
-		3CC472D42854BABB004792C8 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC472D32854BABB004792C8 /* CacheManager.swift */; };
 		3CC472D62854F1B4004792C8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC472D52854F1B4004792C8 /* CoreDataManager.swift */; };
 		3CC472DF2854F69B004792C8 /* Things.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3CC472DD2854F69B004792C8 /* Things.xcdatamodeld */; };
+		3CC472E52859192A004792C8 /* AppleAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC472E42859192A004792C8 /* AppleAuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,9 +91,10 @@
 		3CB8F3E028379BE700DAAAF4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3CB8F3E328379C3700DAAAF4 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		3CB8F3E62837F5A100DAAAF4 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
-		3CC472D32854BABB004792C8 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		3CC472D52854F1B4004792C8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3CC472DE2854F69B004792C8 /* Things.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Things.xcdatamodel; sourceTree = "<group>"; };
+		3CC472E42859192A004792C8 /* AppleAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthManager.swift; sourceTree = "<group>"; };
+		3CC472E628591AA2004792C8 /* SmartUseApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SmartUseApp.entitlements; sourceTree = "<group>"; };
 		962348B23283D938C4AF18F2 /* Pods-SmartUseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartUseApp.release.xcconfig"; path = "Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp.release.xcconfig"; sourceTree = "<group>"; };
 		DD3F5E247A714F4A925064C7 /* Pods_SmartUseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartUseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -245,6 +246,7 @@
 		3CB58ED82835776D001A8DDB /* SmartUseApp */ = {
 			isa = PBXGroup;
 			children = (
+				3CC472E628591AA2004792C8 /* SmartUseApp.entitlements */,
 				3CB58EE42835776F001A8DDB /* LaunchScreen.storyboard */,
 				3CB8F3D828378C9A00DAAAF4 /* Views */,
 				3CB8F3E52837F58600DAAAF4 /* Managers */,
@@ -339,8 +341,8 @@
 			children = (
 				3CB8F3E62837F5A100DAAAF4 /* FirebaseManager.swift */,
 				3C6B09712851EE6F001B2552 /* NetworkManager.swift */,
-				3CC472D32854BABB004792C8 /* CacheManager.swift */,
 				3CC472D52854F1B4004792C8 /* CoreDataManager.swift */,
+				3CC472E42859192A004792C8 /* AppleAuthManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -485,7 +487,6 @@
 				3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */,
 				3CA9D7722841207800CF88D2 /* NewObjectViewController.swift in Sources */,
 				3C10AEEF28463E15002A1ED0 /* Icon.swift in Sources */,
-				3CC472D42854BABB004792C8 /* CacheManager.swift in Sources */,
 				3CC472D62854F1B4004792C8 /* CoreDataManager.swift in Sources */,
 				3C10AEBB2844C785002A1ED0 /* AddedImageViewModel.swift in Sources */,
 				3C10AEB92844C776002A1ED0 /* AddedImageCollectionViewController.swift in Sources */,
@@ -516,6 +517,7 @@
 				3CB8F3D52836B2C100DAAAF4 /* UITextField + extension.swift in Sources */,
 				3C10AEF1284654D3002A1ED0 /* Thing.swift in Sources */,
 				3CA9D755283A59DA00CF88D2 /* NavigationController + extension.swift in Sources */,
+				3CC472E52859192A004792C8 /* AppleAuthManager.swift in Sources */,
 				3CB8F3D128368D0E00DAAAF4 /* UIButton + extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -654,6 +656,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SmartUseApp/SmartUseApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -683,6 +686,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SmartUseApp/SmartUseApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MMLYXGU647;
