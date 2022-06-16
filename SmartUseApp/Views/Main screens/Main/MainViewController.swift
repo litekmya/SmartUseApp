@@ -73,12 +73,8 @@ class MainViewController: UIViewController {
     
     //MARK: - @objc
     @objc private func logOff() {
-//        FirebaseManager.shared.signOut()
-//        print("Пользователь вышел")
-        viewModel.getData {
-            self.customizeCollectionView()
-            self.collectionView.reloadData()
-        }
+        FirebaseManager.shared.signOut()
+        print("Пользователь вышел")
     }
     
     @objc private func addButtonAction() {
@@ -110,9 +106,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        self.collectionView.reloadData()
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let thingDescriptionVC = ThingDescriptionViewController()
+        thingDescriptionVC.viewModel = viewModel.getDescriptionViewModel(index: indexPath.row)
+        
+        navigationController?.pushViewController(thingDescriptionVC, animated: true)
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
@@ -124,6 +123,10 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        30
     }
 }
 

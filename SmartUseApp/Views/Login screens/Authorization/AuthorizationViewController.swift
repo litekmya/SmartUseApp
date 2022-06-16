@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import AuthenticationServices
 
 class AuthorizationViewController: UIViewController {
     
@@ -22,7 +23,7 @@ class AuthorizationViewController: UIViewController {
     private let forgotPassButton = UIButton()
     private let registrationButton = UIButton()
     private let errorLabel = UILabel()
-    private let signInWithAppleButton = UIButton()
+    private var signInWithAppleButton: ASAuthorizationAppleIDButton!
     
     private var activityIndicator = UIActivityIndicatorView()
     
@@ -47,7 +48,7 @@ class AuthorizationViewController: UIViewController {
         viewModel = AuthorizationViewModel()
     }
     
-    //MARK: - Private methods
+    //MARK: - Private methods 'Layout'
     private func addSubviews() {
         view.addSubview(imageView)
         view.addSubview(authLabel)
@@ -55,7 +56,6 @@ class AuthorizationViewController: UIViewController {
         view.addSubview(passwordTextField)
         view.addSubview(logInButton)
         view.addSubview(forgotPassButton)
-        view.addSubview(signInWithAppleButton)
         view.addSubview(registrationButton)
         view.addSubview(registrationLabel)
         view.addSubview(errorLabel)
@@ -159,26 +159,16 @@ class AuthorizationViewController: UIViewController {
             label: errorLabel,
             view: registrationButton,
             text: errorLabelText,
-            top: LabelsConstants.top.rawValue,
+            top: -15,
             left: LabelsConstants.left.rawValue
         )
         errorLabel.textColor = .red //Скрыть
         
-        signInWithAppleButton.customizeByAppleSign(button: signInWithAppleButton)
+        signInWithAppleButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+        view.addSubview(signInWithAppleButton)
+        signInWithAppleButton.setupLayout(button: signInWithAppleButton, with: view)
+        signInWithAppleButton.addTarget(self, action: #selector(logInWithApple), for: .touchUpInside)
         
-        signInWithAppleButton.adjust(
-            button: signInWithAppleButton,
-            view: view,
-            top: nil,
-            bottom: ButtonConstants.bottom.rawValue
-        )
-        
-        signInWithAppleButton.adjust(
-            button: signInWithAppleButton,
-            view: view,
-            leading: ButtonConstants.leadingAndTrailing.rawValue,
-            trailing: ButtonConstants.leadingAndTrailing.rawValue
-        )
         
         activityIndicator.snp.makeConstraints { make in
             make.centerX.equalTo(view)
@@ -188,6 +178,7 @@ class AuthorizationViewController: UIViewController {
         activityIndicator.style = .large
     }
     
+    //MARK: - Private methods
     private func addTarget() {
         logInButton.addTarget(self, action: #selector(logIn), for: .touchUpInside)
         registrationButton.addTarget(self, action: #selector(goToRegistration), for: .touchUpInside)
@@ -235,6 +226,11 @@ class AuthorizationViewController: UIViewController {
         let passRecoveryVC = PassRecoveryViewController()
         present(passRecoveryVC, animated: true)
     }
+    
+    @objc private func logInWithApple() {
+        print("Пользователь пытается войти с помощью AppleID")
+        viewModel.logInWithApple(delegate: self, contextController: self)
+    }
 }
 
 //MARK: - UITextFieldDelegate
@@ -256,3 +252,26 @@ extension AuthorizationViewController: UITextFieldDelegate {
     }
 }
 
+//MARK: - ASAuthorizationControllerDelegate
+extension AuthorizationViewController: ASAuthorizationControllerDelegate {
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("У пользователя не получилось авторизироваться с помощью AppleID")
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let credentials as ASAuthorizationAppleIDCredential: let email = credentials.email
+        default: break
+        }
+    }
+}
+
+//MARK: - ASAuthorizationControllerPresentationContextProviding
+extension AuthorizationViewController: ASAuthorizationControllerPresentationContextProviding {
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        guard let window = view.window else { return ASPresentationAnchor()}
+        return window
+    }
+}

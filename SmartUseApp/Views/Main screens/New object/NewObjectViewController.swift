@@ -61,7 +61,7 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
         imageView.customize(
             imageView: imageView,
             view: view,
-            top: 180,
+            top: ImageConstants.topAndHeight.rawValue,
             height: 150
         )
         imageView.clipsToBounds = true
@@ -96,18 +96,8 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
     }
     
     private func customizeDateObjects() {
-        dateLabel.snp.makeConstraints { make in
-            make.left.equalTo(view).inset(30)
-            make.top.equalTo(costTextField.snp.bottom).inset(-30)
-            make.width.equalTo(200)
-        }
-        dateLabel.text = "Дата покупки:"
-        
-        datePicker.snp.makeConstraints { make in
-            make.right.equalTo(view).inset(30)
-            make.centerY.equalTo(dateLabel)
-        }
-        datePicker.datePickerMode = .date
+        dateLabel.customizeDate(label: dateLabel, view: view, topView: costTextField)
+        datePicker.customize(datePicker: datePicker, view: view, dateLabel: dateLabel)
     }
     
     private func setupButtons() {

@@ -14,6 +14,7 @@ protocol MainViewModelProtocol {
     func getData(completion: @escaping() -> Void)
     func returnNumberOfItemsInSection() -> Int
     func getCellViewModel(index: Int) -> MainCellViewModelProtocol
+    func getDescriptionViewModel(index: Int) -> ThingDescriptionViewModelProtocol
 }
 
 
@@ -72,6 +73,11 @@ class MainViewModel: MainViewModelProtocol {
         let thing = things[index]
         print(things.count)
         return MainCellViewModel(thing: thing)
+    }
+    
+    func getDescriptionViewModel(index: Int) -> ThingDescriptionViewModelProtocol {
+        let thing = things[index]
+        return  ThingDescriptionViewModel(thing: thing)
     }
 }
 

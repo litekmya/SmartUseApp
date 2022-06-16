@@ -119,7 +119,7 @@ class RegistrationViewController: UIViewController {
         errorLabel.textColor = .red
         errorLabel.isHidden = true
         
-        signInWithAppleButton.customizeByAppleSign(button: signInWithAppleButton)
+//        signInWithAppleButton.customizeByAppleSign(button: signInWithAppleButton)
         
         signInWithAppleButton.adjust(
             button: signInWithAppleButton,

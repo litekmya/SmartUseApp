@@ -25,18 +25,6 @@ extension UIButton {
         }
     }
     
-    func customizeByAppleSign(button: UIButton) {
-        var config = UIButton.Configuration.filled()
-        config.title = "Sign in with Apple"
-        config.image = UIImage(systemName: "applelogo")
-        config.imagePadding = 16
-        config.baseForegroundColor = .white
-        config.baseBackgroundColor = .black
-        config.cornerStyle = .small
-        
-        button.configuration = config
-    }
-    
     func adjust(button: UIButton, view: UIView, top: Int?, bottom: Int?) {
         button.snp.makeConstraints { make in
             if top == nil {

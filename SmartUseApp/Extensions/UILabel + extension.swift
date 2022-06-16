@@ -20,5 +20,15 @@ extension UILabel {
         label.textAlignment = .center
         label.numberOfLines = 0
     }
+    
+    func customizeDate(label:UILabel, view: UIView, topView: UIView) {
+        label.snp.makeConstraints { make in
+            make.leading.equalTo(view).inset(30)
+            make.top.equalTo(topView.snp.bottom).inset(-30)
+            make.width.equalTo(200)
+        }
+        
+        label.text = "Дата покупки:"
+    }
 }
 

@@ -12,12 +12,12 @@ extension UIImageView {
     
     func customize(imageView: UIImageView, view: UIView, top: Int, height: Int) {
         imageView.snp.makeConstraints { maker in
-            maker.centerX.equalToSuperview()
+            maker.centerX.equalTo(view)
             maker.height.width.equalTo(height)
-            maker.top.equalToSuperview().inset(top)
+            maker.top.equalTo(view.safeAreaLayoutGuide).inset(30)
         }
         
-        imageView.layer.cornerRadius = CGFloat(height / 2) // Это нужно исправить
+        imageView.layer.cornerRadius = CGFloat(height / 2)
         imageView.backgroundColor = .blue
     }
 }

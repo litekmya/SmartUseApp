@@ -18,14 +18,14 @@ class AppleAuthManager {
     
     private init() {}
     
-    func suthorize(delegate: ASAuthorizationControllerDelegate, contextController: ASAuthorizationControllerPresentationContextProviding) {
+    func authorize(delegate: ASAuthorizationControllerDelegate, contextController: ASAuthorizationControllerPresentationContextProviding) {
         let provider = ASAuthorizationAppleIDProvider()
         let request = provider.createRequest()
+        request.requestedScopes = [.email]
         
         let controller = ASAuthorizationController(authorizationRequests: [request])
         controller.delegate = delegate
         controller.presentationContextProvider = contextController
         controller.performRequests()
-        
     }
 }
