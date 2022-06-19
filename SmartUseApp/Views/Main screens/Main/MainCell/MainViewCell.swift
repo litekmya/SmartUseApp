@@ -48,7 +48,6 @@ class MainViewCell: UICollectionViewCell {
             top: 0,
             height: 90
         )
-        imageView.backgroundColor = .blue
         
         titleLabel.customize(
             label: titleLabel,

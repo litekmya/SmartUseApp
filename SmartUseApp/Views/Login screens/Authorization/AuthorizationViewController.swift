@@ -254,10 +254,26 @@ extension AuthorizationViewController: ASAuthorizationControllerDelegate {
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        switch authorization.credential {
-        case let credentials as ASAuthorizationAppleIDCredential: let email = credentials.email
-        default: break
-        }
+//        switch authorization.credential {
+//        case let credentials as ASAuthorizationAppleIDCredential: let email = credentials.email
+//        default: break
+//        }
+        
+//        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+//            guard let nonce = viewModel.getNonce() else {
+//                print("Неверное состояние: обратный вызов для входа получен, но запрос на вход не отправлен")
+//                return
+//            }
+//            guard let appleIDToken = appleIDCredential.identityToken else {
+//                print("Не удалось получить токен идентификации")
+//                return
+//            }
+//            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+//                print("Невозможно сериализовать строку токена из данных: \(appleIDToken.debugDescription)")
+//                return
+//            }
+//        }
+        viewModel.checkAuthWithApple(auth: authorization)
     }
 }
 

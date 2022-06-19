@@ -50,6 +50,18 @@ class FirebaseManager {
         }
     }
     
+    func signInWithAppleID(idTokenString: String, nonce: String?) {
+        let credential = OAuthProvider.credential(withProviderID: "apple.com,", idToken: idTokenString, rawNonce: nonce)
+        
+        Auth.auth().signIn(with: credential) { authResult, error in
+            if let error = error {
+                print("Error Firebase/signInWithAppleID: \(error)")
+            }
+            
+            
+        }
+    }
+    
     func recoverPassword(with email: String, completion: @escaping(Error?) -> Void) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
