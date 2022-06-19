@@ -51,7 +51,7 @@ class FirebaseManager {
     }
     
     func signInWithAppleID(idTokenString: String, nonce: String?) {
-        let credential = OAuthProvider.credential(withProviderID: "apple.com,", idToken: idTokenString, rawNonce: nonce)
+        let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
         
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {
