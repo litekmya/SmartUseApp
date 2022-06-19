@@ -12,7 +12,7 @@ protocol NewObjectViewControllerDelegate: AnyObject {
 }
 
 class NewObjectViewController: UIViewController, UINavigationControllerDelegate {
-        
+            
     //MARK: - Private properties
     private let imageView = UIImageView()
     private let nameTextField = UITextField()
@@ -25,7 +25,7 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
     private var saveButton: UIBarButtonItem!
     private var addImageButton = UIButton()
     
-    private var viewModel: NewObjectViewModelProtocol!
+    var viewModel: NewObjectViewModelProtocol!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -36,11 +36,6 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
         
         viewModel = NewObjectViewModel()
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        print("viewDidAppear")
-//    }
     
     //MARK: - Private methods
     private func customizeView() {
@@ -134,7 +129,6 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
             date: dateInteger, urlString: "",
             imageData: imageData
         )
-        
         
         self.dismiss(animated: true)
     }

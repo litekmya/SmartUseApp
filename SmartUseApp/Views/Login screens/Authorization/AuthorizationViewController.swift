@@ -44,7 +44,6 @@ class AuthorizationViewController: UIViewController {
         addTarget()
         
         errorLabel.isHidden = true
-        
         viewModel = AuthorizationViewModel()
     }
     
@@ -206,8 +205,6 @@ class AuthorizationViewController: UIViewController {
     }
     
     @objc private func goToRegistration() {
-        print("Registration")
-        
         let registrationVC = RegistrationViewController()
         present(registrationVC, animated: true)
     }
@@ -221,14 +218,11 @@ class AuthorizationViewController: UIViewController {
     }
     
     @objc private func goToPassRecovery() {
-        print("Pass recovery")
-        
         let passRecoveryVC = PassRecoveryViewController()
         present(passRecoveryVC, animated: true)
     }
     
     @objc private func logInWithApple() {
-        print("Пользователь пытается войти с помощью AppleID")
         viewModel.logInWithApple(delegate: self, contextController: self)
     }
 }

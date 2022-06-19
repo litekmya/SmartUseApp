@@ -76,6 +76,7 @@ class FirebaseManager {
                            "cost": thing.cost,
                            "date": thing.date,
                            "urlString": urlString])
+            print("Новая вещт была сохранена")
         }
     }
     

@@ -14,14 +14,21 @@ class MainViewController: UIViewController {
     private var addButton: UIBarButtonItem!
     
     private var collectionView: UICollectionView!
+    private var coreDataIsEmpty = true
     
     private var viewModel: MainViewModelProtocol! {
         didSet {
-            
-            print("viewModel")
             viewModel.getData {
                 self.customizeCollectionView()
-                self.collectionView.reloadData()
+                self.customizeUI()
+                self.coreDataIsEmpty = false
+                print("%")
+            }
+            
+            if coreDataIsEmpty {
+                self.customizeCollectionView()
+                self.customizeUI()
+                print("^")
             }
         }
     }
@@ -30,14 +37,10 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        viewModel = MainViewModel()
-        customizeUI()
     }
         
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
-//        collectionView.reloadData()
         viewModel = MainViewModel()
     }
     
@@ -92,15 +95,11 @@ class MainViewController: UIViewController {
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.getData {
-            print("viewModel из numberItems")
-        }
-        return viewModel.returnNumberOfItemsInSection()
+        viewModel.returnNumberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainViewCell.reuseIdentifier, for: indexPath) as! MainViewCell
-        print("cell")
         let cellViewModel = viewModel.getCellViewModel(index: indexPath.row)
         cell.viewModel = cellViewModel
         return cell

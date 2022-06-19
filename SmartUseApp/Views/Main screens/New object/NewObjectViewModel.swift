@@ -8,16 +8,13 @@
 import Foundation
 
 protocol NewObjectViewModelProtocol {
-   
     func save(name: String, cost: String, date: String, urlString: String, imageData: Data)
 }
 
 class NewObjectViewModel: NewObjectViewModelProtocol {
-    
-    private var thing: Thing!
-    
+            
     func save(name: String, cost: String, date: String, urlString: String, imageData: Data) {
-        thing = Thing(name: name, cost: cost, date: date, urlString: urlString)
+        let thing = Thing(name: name, cost: cost, date: date, urlString: urlString)
         
         CoreDataManager.shared.save(from: thing, imageData: imageData)
         FirebaseManager.shared.addNewThing(thing: thing, imageData: imageData)
