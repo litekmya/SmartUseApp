@@ -103,7 +103,6 @@ class AuthorizationViewController: UIViewController {
         
         logInButton.customizeCenter(
             button: logInButton,
-            view: passwordTextField,
             height: ButtonConstants.height.rawValue,
             width: ButtonConstants.wigth.rawValue
         )
@@ -123,7 +122,6 @@ class AuthorizationViewController: UIViewController {
         
         forgotPassButton.customizeCenter(
             button: forgotPassButton,
-            view: logInButton,
             height: ButtonConstants.height.rawValue,
             width: 250
         )
@@ -147,7 +145,6 @@ class AuthorizationViewController: UIViewController {
         
         registrationButton.customizeCenter(
             button: registrationButton,
-            view: view,
             height: ButtonConstants.height.rawValue,
             width: 250
         )
@@ -254,25 +251,6 @@ extension AuthorizationViewController: ASAuthorizationControllerDelegate {
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-//        switch authorization.credential {
-//        case let credentials as ASAuthorizationAppleIDCredential: let email = credentials.email
-//        default: break
-//        }
-        
-//        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-//            guard let nonce = viewModel.getNonce() else {
-//                print("Неверное состояние: обратный вызов для входа получен, но запрос на вход не отправлен")
-//                return
-//            }
-//            guard let appleIDToken = appleIDCredential.identityToken else {
-//                print("Не удалось получить токен идентификации")
-//                return
-//            }
-//            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-//                print("Невозможно сериализовать строку токена из данных: \(appleIDToken.debugDescription)")
-//                return
-//            }
-//        }
         viewModel.checkAuthWithApple(auth: authorization)
     }
 }

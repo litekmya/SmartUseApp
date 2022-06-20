@@ -91,7 +91,6 @@ class RegistrationViewController: UIViewController {
         
         registrationButton.customizeCenter(
             button: registrationButton,
-            view: secondPassTextField,
             height: ButtonConstants.height.rawValue,
             width: ButtonConstants.wigth.rawValue
         )

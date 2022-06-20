@@ -19,4 +19,11 @@ extension UIImage {
         
         return scaledImage
     }
+    
+    func getImage(from data: Data?) -> UIImage {
+        guard let imageData = data else { return UIImage() } // Заменить на загрушку
+        guard let image = UIImage(data: imageData) else { return UIImage() }
+        return image
+    }
+    
 }

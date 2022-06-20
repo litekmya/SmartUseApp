@@ -12,4 +12,5 @@ target 'SmartUseApp' do
   pod 'Firebase/Database'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Storage'
+  pod 'Charts'
 end

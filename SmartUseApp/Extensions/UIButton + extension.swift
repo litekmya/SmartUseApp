@@ -17,7 +17,7 @@ extension UIButton {
         button.isEnabled = isEnabled
     }
     
-    func customizeCenter(button: UIButton, view: UIView, height: Int, width: Int) {
+    func customizeCenter(button: UIButton, height: Int, width: Int) {
         button.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.height.equalTo(height)
