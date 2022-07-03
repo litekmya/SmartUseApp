@@ -35,6 +35,7 @@
 		3CB58EE62835776F001A8DDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB58EE42835776F001A8DDB /* LaunchScreen.storyboard */; };
 		3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB58EF328357B03001A8DDB /* AuthorizationViewModel.swift */; };
 		3CB790952853E0EB00869268 /* UIImage + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB790942853E0EB00869268 /* UIImage + extension.swift */; };
+		3CB7A57E2871D084000E80E8 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A57D2871D084000E80E8 /* DescriptionView.swift */; };
 		3CB8F3D128368D0E00DAAAF4 /* UIButton + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */; };
 		3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */; };
 		3CB8F3D52836B2C100DAAAF4 /* UITextField + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */; };
@@ -85,6 +86,7 @@
 		3CB58EE72835776F001A8DDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CB58EF328357B03001A8DDB /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		3CB790942853E0EB00869268 /* UIImage + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + extension.swift"; sourceTree = "<group>"; };
+		3CB7A57D2871D084000E80E8 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + extension.swift"; sourceTree = "<group>"; };
@@ -257,7 +259,8 @@
 			children = (
 				3CC472E628591AA2004792C8 /* SmartUseApp.entitlements */,
 				3CB58EE42835776F001A8DDB /* LaunchScreen.storyboard */,
-				3CB8F3D828378C9A00DAAAF4 /* Views */,
+				3CB8F3D828378C9A00DAAAF4 /* ViewControllers */,
+				3CB7A57C2871D06D000E80E8 /* Views */,
 				3CB8F3E52837F58600DAAAF4 /* Managers */,
 				3C9564B228392A0C00A7ED87 /* Models */,
 				3CB8F3CF28368CF100DAAAF4 /* Extensions */,
@@ -304,6 +307,14 @@
 			path = Authorization;
 			sourceTree = "<group>";
 		};
+		3CB7A57C2871D06D000E80E8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3CB7A57D2871D084000E80E8 /* DescriptionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		3CB8F3CF28368CF100DAAAF4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,13 +330,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		3CB8F3D828378C9A00DAAAF4 /* Views */ = {
+		3CB8F3D828378C9A00DAAAF4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				3CA9D76E28411F9000CF88D2 /* Login screens */,
 				3CA9D76F28411FDE00CF88D2 /* Main screens */,
 			);
-			path = Views;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		3CB8F3D928378CCA00DAAAF4 /* Registarion */ = {
@@ -517,6 +528,7 @@
 				3CB8F3E428379C3700DAAAF4 /* MainViewModel.swift in Sources */,
 				3CC472E828592119004792C8 /* ASAuthorizationAppleIDButton + extension.swift in Sources */,
 				3CA9D766283D2DE500CF88D2 /* MainCellViewModel.swift in Sources */,
+				3CB7A57E2871D084000E80E8 /* DescriptionView.swift in Sources */,
 				3CB58EDE2835776D001A8DDB /* AuthorizationViewController.swift in Sources */,
 				3CC472EB285B7894004792C8 /* ThingDescriptionViewController.swift in Sources */,
 				3CA9D769283D310D00CF88D2 /* PassRecoveryViewController.swift in Sources */,

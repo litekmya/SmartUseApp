@@ -118,7 +118,11 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
     
     @objc private func saveButtonAction() {
         print("Нажата кнопка сохранения")
-        let dateInteger = datePicker.date.formatted()
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateStyle = .short
+        
+        let dateString = dateFormatter.string(from: datePicker.date)
         guard let imageData = imageView.image?.pngData() else {
             print("Не получилось преобразовать image")
             return }
@@ -126,7 +130,7 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
         viewModel.save(
             name: nameTextField.text ?? "",
             cost: costTextField.text ?? "",
-            date: dateInteger, urlString: "",
+            date: dateString, urlString: "",
             imageData: imageData
         )
         
