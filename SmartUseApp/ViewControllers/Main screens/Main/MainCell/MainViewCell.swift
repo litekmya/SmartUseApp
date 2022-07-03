@@ -51,7 +51,8 @@ class MainViewCell: UICollectionViewCell {
         
         titleLabel.customize(
             label: titleLabel,
-            view: imageView,
+            parrentView: self,
+            topView: imageView,
             text: "Sometext",
             top: -6,
             left: 8

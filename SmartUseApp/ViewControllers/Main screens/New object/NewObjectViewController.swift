@@ -75,7 +75,7 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
             top: TextFieldConstants.top.rawValue,
             left: TextFieldConstants.left.rawValue
         )
-        nameTextField.setupTextInput(nameTextField, contentType: .name, delegate: self)
+        nameTextField.setupTextInput(nameTextField, contentType: .name)
         nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .allEditingEvents)
         
         costTextField.customize(
@@ -85,7 +85,7 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
             top: TextFieldConstants.top.rawValue,
             left: TextFieldConstants.left.rawValue
         )
-        costTextField.setupTextInput(costTextField, contentType: .telephoneNumber, delegate: self)
+        costTextField.setupTextInput(costTextField, contentType: .telephoneNumber)
         costTextField.keyboardType = .numberPad
         costTextField.addTarget(self, action: #selector(textFieldDidChange), for: .allEditingEvents)
     }

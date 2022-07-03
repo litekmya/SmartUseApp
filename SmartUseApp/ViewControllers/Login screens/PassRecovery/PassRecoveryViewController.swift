@@ -10,108 +10,31 @@ import UIKit
 class PassRecoveryViewController: UIViewController {
     
     //MARK: - Private properties
-    private let imageView = UIImageView()
-    private let titleLabel = UILabel()
-    private let emailTextField = UITextField()
-    
-    private let resetPassButton = UIButton()
-    private let errorLabel = UILabel()
-    private let activityindicator = UIActivityIndicatorView()
-    
+    private let contentView = PassRecoveryView()    
     private var viewModel: PassRecoveryViewModelProtocol!
     
     //MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        
-        addSubviews()
-        customizeUI()
-        
+    override func viewDidLayoutSubviews() {
         viewModel = PassRecoveryViewModel()
-
+        customizeUI()
     }
     
     //MARK: - Private methods
-    private func addSubviews() {
-        view.addSubview(imageView)
-        view.addSubview(titleLabel)
-        view.addSubview(emailTextField)
-        view.addSubview(resetPassButton)
-        view.addSubview(errorLabel)
-        view.addSubview(activityindicator)
-    }
-    
     private func customizeUI() {
-        imageView.customize(
-            imageView: imageView,
-            view: view,
-            top: ImageConstants.topAndHeight.rawValue,
-            height: ImageConstants.topAndHeight.rawValue
-        )
+        view.addSubview(contentView)
+        view.backgroundColor = .white
         
-        titleLabel.customize(
-            label: titleLabel,
-            view: imageView,
-            text: "Сброс пароля",
-            top: LabelsConstants.top.rawValue,
-            left: LabelsConstants.left.rawValue
-        )
-        
-        emailTextField.customize(
-            textField: emailTextField,
-            view: titleLabel,
-            placeholder: PlaceholderText.email.rawValue,
-            top: TextFieldConstants.top.rawValue,
-            left: TextFieldConstants.left.rawValue
-        )
-        emailTextField.setupTextInput(emailTextField, contentType: .emailAddress, delegate: self)
-        
-        resetPassButton.snp.makeConstraints { make in
-            make.centerX.equalTo(emailTextField)
-            make.height.equalTo(ButtonConstants.height.rawValue)
-            make.width.equalTo(ButtonConstants.wigth.rawValue)
-        }
-        
-        resetPassButton.setup(
-            button: resetPassButton,
-            title: Text.resetPassButtonTitle.rawValue,
-            isEnabled: true
-        )
-        
-        resetPassButton.adjust(
-            button: resetPassButton,
-            view: emailTextField,
-            top: -5,
-            bottom: nil
-        )
-        resetPassButton.addTarget(self, action: #selector(resetPassButtonAction), for: .touchUpInside)
-
-        
-        errorLabel.customize(
-            label: errorLabel,
-            view: resetPassButton,
-            text: ErrorText.emailRecoveryError.rawValue,
-            top: -30,
-            left: LabelsConstants.errorLeft.rawValue
-        )
-        errorLabel.isHidden = true
-        errorLabel.textColor = .red
-        
-        activityindicator.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
-        activityindicator.hidesWhenStopped = true
-        activityindicator.style = .large
+        contentView.frame = view.frame
+        contentView.resetPassButton.addTarget(self, action: #selector(resetPassButtonAction), for: .touchUpInside)
     }
-    
+
     //MARK: - @objc
     @objc private func resetPassButtonAction() {
-        activityindicator.startAnimating()
-        viewModel.recoverPass(with: emailTextField.text ?? "") { error in
+        contentView.activityindicator.startAnimating()
+        viewModel.recoverPass(with: contentView.emailTextField.text ?? "") { error in
             if error != nil {
-                self.errorLabel.isHidden = false
-                self.activityindicator.stopAnimating()
+                self.contentView.errorLabel.isHidden = false
+                self.contentView.activityindicator.stopAnimating()
             } else {
                 print("Dismiss")
                 self.dismiss(animated: true, completion: nil)
@@ -128,7 +51,7 @@ extension PassRecoveryViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
+        if textField == contentView.emailTextField {
             resetPassButtonAction()
         }
 

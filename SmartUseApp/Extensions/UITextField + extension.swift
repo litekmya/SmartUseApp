@@ -21,11 +21,10 @@ extension UITextField {
         textField.clearButtonMode = .always
     }
     
-    func setupTextInput(_ textField: UITextField, contentType: UITextContentType, delegate: UITextFieldDelegate ) {
+    func setupTextInput(_ textField: UITextField, contentType: UITextContentType) {
         textField.textContentType = contentType
         textField.returnKeyType = .done
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
-        textField.delegate = delegate
     }
 }

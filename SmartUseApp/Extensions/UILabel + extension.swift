@@ -10,12 +10,12 @@ import SnapKit
 
 extension UILabel {
     
-    func customize(label: UILabel, view: UIView, text: String, top: Int, left: Int) {
-        label.snp.makeConstraints { maker in
-            maker.top.equalTo(view.snp.bottom).inset(top)
-            maker.left.right.equalToSuperview().inset(left)
+    func customize(label: UILabel, parrentView: UIView, topView: UIView, text: String, top: Int, left: Int) {
+        label.snp.makeConstraints { make in
+            make.top.equalTo(topView.snp.bottom).offset(top)
+            make.leading.equalTo(parrentView).offset(left)
+            make.trailing.equalTo(parrentView).offset(-left)
         }
-        
         label.text = text
         label.textAlignment = .center
         label.numberOfLines = 0

@@ -54,7 +54,14 @@ class AcquaintanceViewCell: UICollectionViewCell {
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.systemFont(ofSize: 24)
         
-        textLabel.customize(label: textLabel, view: titleLabel, text: "viewModel.text", top: -71, left: 16)
+        textLabel.customize(
+            label: textLabel,
+            parrentView: self,
+            topView: titleLabel,
+            text: "viewModel.text",
+            top: 71,
+            left: 16
+        )
     }
     
     private func customizeImageView() {

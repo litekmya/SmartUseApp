@@ -14,6 +14,9 @@ enum Text: String {
     case logInButtonTitle = "Войти"
     case forgotPassButonTitle = "Забыли пароль?"
     case resetPassButtonTitle = "Сбросить"
+    case registratonLabelText = "Если у вас нет действующего аккаунта, то вы можете"
+    case registrationButtonTitle = "Зарегистрироваться здесь"
+    case errorLabelText = "Введен неверный email и/или пароль"
 }
 
 enum ErrorText: String {
@@ -35,9 +38,9 @@ enum ImageConstants: Int {
 }
 
 enum LabelsConstants: Int {
-    case top = -35
+    case top = 35
     case left = 20
-    case errorTop = -10
+    case errorTop = 10
     case errorLeft = 30
 }
 
