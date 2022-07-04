@@ -39,6 +39,7 @@
 		3CB7A5802871D7BA000E80E8 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A57F2871D7BA000E80E8 /* AuthorizationView.swift */; };
 		3CB7A5822871E7F9000E80E8 /* PassRecoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A5812871E7F9000E80E8 /* PassRecoveryView.swift */; };
 		3CB7A5842871EAF7000E80E8 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A5832871EAF7000E80E8 /* RegistrationView.swift */; };
+		3CB7A586287212FE000E80E8 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A585287212FE000E80E8 /* AlertController.swift */; };
 		3CB8F3D128368D0E00DAAAF4 /* UIButton + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */; };
 		3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */; };
 		3CB8F3D52836B2C100DAAAF4 /* UITextField + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */; };
@@ -93,6 +94,7 @@
 		3CB7A57F2871D7BA000E80E8 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		3CB7A5812871E7F9000E80E8 /* PassRecoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassRecoveryView.swift; sourceTree = "<group>"; };
 		3CB7A5832871EAF7000E80E8 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		3CB7A585287212FE000E80E8 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + extension.swift"; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				3CB7A57F2871D7BA000E80E8 /* AuthorizationView.swift */,
 				3CB7A5812871E7F9000E80E8 /* PassRecoveryView.swift */,
 				3CB7A5832871EAF7000E80E8 /* RegistrationView.swift */,
+				3CB7A585287212FE000E80E8 /* AlertController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				3CB790952853E0EB00869268 /* UIImage + extension.swift in Sources */,
 				3CA9D75A283BB5E400CF88D2 /* AcquaintanceViewModel.swift in Sources */,
 				3C10AEC12844CCEE002A1ED0 /* AddedImageCellViewModel.swift in Sources */,
+				3CB7A586287212FE000E80E8 /* AlertController.swift in Sources */,
 				3CB7A5822871E7F9000E80E8 /* PassRecoveryView.swift in Sources */,
 				3CB58EDC2835776D001A8DDB /* SceneDelegate.swift in Sources */,
 				3CC472EF285B7E78004792C8 /* UIDatePicker + extension.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 import Charts
-// Добавить scrollView
+
 class ThingDescriptionViewController: UIViewController {
     
     var viewModel: ThingDescriptionViewModelProtocol!
@@ -27,7 +27,7 @@ class ThingDescriptionViewController: UIViewController {
         getDataForCharts()
     }
     
-    //MARK: - Private methods
+    //MARK: - Private methods layout
     private func customizeView() {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = viewModel.name
@@ -48,6 +48,8 @@ class ThingDescriptionViewController: UIViewController {
             make.top.bottom.equalTo(scrollView)
             make.leading.trailing.equalTo(view)
         }
+        
+        contentView.chart.delegate = self
     }
     
     private func customizeButtons() {
@@ -67,13 +69,29 @@ class ThingDescriptionViewController: UIViewController {
         guard let date = dateFormatter.date(from: viewModel.date) else { return }
         contentView.datePicker.date = date
         
-        contentView.costLabel.text = "Цена: \(viewModel.cost)"
+        contentView.costLabel.text = viewModel.cost
     }
     
     private func getDataForCharts() {
-        let entry = BarChartDataEntry(x: 10, y: 1)
-        let set = BarChartDataSet(entries: [entry])
+        guard let cost = contentView.costLabel.text else { return }
+        var entries: [BarChartDataEntry] = []
+        
+        for x in 1..<8 {
+            guard let costDouble = Double(cost) else { return }
+            
+            let newSomeCost = costDouble/Double(x)
+            print(Double(x))
+            print(newSomeCost)
+            
+            let entry = BarChartDataEntry(x: Double(x) , y: newSomeCost)
+            entries.append(entry)
+        }
+        
+        let set = BarChartDataSet(entries: entries)
+        set.colors = ChartColorTemplates.joyful()
+        
         let data = BarChartData(dataSet: set)
+        data.setDrawValues(false)
         contentView.chart.data = data
     }
     
@@ -83,6 +101,19 @@ class ThingDescriptionViewController: UIViewController {
     }
     
     @objc private func deleteButtonAction() {
+        let alert = AlertController(title: "Внимание!", message: "Вы уверены, что хотите удалить данную вещь?", preferredStyle: .alert)
+        alert.showAlert {
+            print("Вещь была удалена")
+        }
         
+        present(alert, animated: true)
+    }
+}
+
+//MARK: - ChartViewDelegate
+extension ThingDescriptionViewController: ChartViewDelegate {
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        print(Float(entry.y))
     }
 }

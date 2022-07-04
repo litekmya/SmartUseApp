@@ -80,6 +80,12 @@ class DescriptionView: UIView {
             make.height.equalTo(chart.snp.width)
             make.top.equalTo(costLabel.snp.bottom).offset(30)
         }
+        
+        chart.rightAxis.enabled = false
+        chart.xAxis.labelPosition = .bottom
+        chart.xAxis.labelFont = .boldSystemFont(ofSize: 16)
+        chart.leftAxis.labelFont = .boldSystemFont(ofSize: 16)
+        chart.animate(xAxisDuration: 4)
     }
     
     private func customizeDeleteButton() {
