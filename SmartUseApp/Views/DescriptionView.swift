@@ -98,4 +98,5 @@ class DescriptionView: UIView {
         deleteButton.setTitleColor(.red, for: .normal)
         deleteButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
     }
+    
 }

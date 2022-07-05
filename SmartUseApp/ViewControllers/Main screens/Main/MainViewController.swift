@@ -7,14 +7,17 @@
 
 import UIKit
 
+
+
 class MainViewController: UIViewController {
     
     //MARK: - Private properties
-    private var exitButton: UIBarButtonItem! // Времено
-    private var addButton: UIBarButtonItem!
+    private let contentView = MainView()
     
     private var collectionView: UICollectionView!
     private var coreDataIsEmpty = true
+    
+    var delegate: MainViewControllerDelegate!
     
     private var viewModel: MainViewModelProtocol! {
         didSet {
@@ -52,23 +55,38 @@ class MainViewController: UIViewController {
     }
     
     private func customizeUI() {
+        customizeContentView()
         customizeButtons()
+        
+    }
+    
+    private func customizeContentView() {
+        view.addSubview(contentView)
         view.addSubview(collectionView)
+        
+        contentView.snp.makeConstraints { make in
+            make.top.equalTo(view)
+            make.leading.trailing.equalTo(view)
+            make.height.equalTo(150)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.bottom)
+            make.width.equalTo(view)
+            make.bottom.equalTo(view)
+        }
     }
     
     private func customizeButtons() {
-        exitButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(logOff))
-        addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonAction))
-        
-        navigationItem.leftBarButtonItem = exitButton
-        navigationItem.rightBarButtonItem = addButton
+        contentView.menuButton.addTarget(self, action: #selector(logOff), for: .touchUpInside)
+        contentView.addButton.addTarget(self, action: #selector(addButtonAction), for: .touchUpInside)
     }
     
     private func customizeCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MainViewCell.self, forCellWithReuseIdentifier: MainViewCell.reuseIdentifier)
@@ -76,11 +94,14 @@ class MainViewController: UIViewController {
     
     //MARK: - @objc
     @objc private func logOff() {
-        FirebaseManager.shared.signOut()
-        print("Пользователь вышел")
+//        FirebaseManager.shared.signOut()
+//        print("Пользователь вышел")
+        
+        delegate.toggleMenu()
     }
     
     @objc private func addButtonAction() {
+        print("Кнопкв нажата")
         let newObjectVC = NewObjectViewController()
         newObjectVC.modalPresentationStyle = .fullScreen
         
@@ -128,4 +149,5 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         30
     }
 }
+
 

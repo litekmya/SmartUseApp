@@ -107,7 +107,7 @@ class AcquaintanceViewController: UICollectionViewController {
     
     private func goToMainVC(button: UIButton) {
         if button.title(for: .normal) == "Начать" {
-            let mainVC = UINavigationController(rootViewController: MainViewController())
+            let mainVC = UINavigationController(rootViewController: ContainerViewController())
             mainVC.modalPresentationStyle = .fullScreen
             present(mainVC, animated: true) {
                 // Возможно понадобится

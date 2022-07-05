@@ -40,6 +40,12 @@
 		3CB7A5822871E7F9000E80E8 /* PassRecoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A5812871E7F9000E80E8 /* PassRecoveryView.swift */; };
 		3CB7A5842871EAF7000E80E8 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A5832871EAF7000E80E8 /* RegistrationView.swift */; };
 		3CB7A586287212FE000E80E8 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A585287212FE000E80E8 /* AlertController.swift */; };
+		3CB7A5892873441B000E80E8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A5882873441B000E80E8 /* MenuViewController.swift */; };
+		3CB7A58B2873442B000E80E8 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A58A2873442B000E80E8 /* MenuViewModel.swift */; };
+		3CB7A58D287344FC000E80E8 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A58C287344FC000E80E8 /* ContainerViewController.swift */; };
+		3CB7A590287373D9000E80E8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A58F287373D9000E80E8 /* MainView.swift */; };
+		3CB7A59328741BC5000E80E8 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A59228741BC4000E80E8 /* MenuViewCell.swift */; };
+		3CB7A59528741BDB000E80E8 /* MenuCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A59428741BDB000E80E8 /* MenuCellViewModel.swift */; };
 		3CB8F3D128368D0E00DAAAF4 /* UIButton + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */; };
 		3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */; };
 		3CB8F3D52836B2C100DAAAF4 /* UITextField + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */; };
@@ -95,6 +101,12 @@
 		3CB7A5812871E7F9000E80E8 /* PassRecoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassRecoveryView.swift; sourceTree = "<group>"; };
 		3CB7A5832871EAF7000E80E8 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		3CB7A585287212FE000E80E8 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		3CB7A5882873441B000E80E8 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		3CB7A58A2873442B000E80E8 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		3CB7A58C287344FC000E80E8 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		3CB7A58F287373D9000E80E8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		3CB7A59228741BC4000E80E8 /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
+		3CB7A59428741BDB000E80E8 /* MenuCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellViewModel.swift; sourceTree = "<group>"; };
 		3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + extension.swift"; sourceTree = "<group>"; };
@@ -226,10 +238,12 @@
 		3CA9D76F28411FDE00CF88D2 /* Main screens */ = {
 			isa = PBXGroup;
 			children = (
+				3CB7A58E28734503000E80E8 /* Container */,
 				3CA9D756283BB55500CF88D2 /* Acquaintance */,
 				3CB8F3E228379C0400DAAAF4 /* Main */,
 				3CA9D7702841201A00CF88D2 /* New object */,
 				3CC472E9285B7832004792C8 /* ThingDescription */,
+				3CB7A587287343A9000E80E8 /* Menu */,
 			);
 			path = "Main screens";
 			sourceTree = "<group>";
@@ -323,8 +337,36 @@
 				3CB7A5812871E7F9000E80E8 /* PassRecoveryView.swift */,
 				3CB7A5832871EAF7000E80E8 /* RegistrationView.swift */,
 				3CB7A585287212FE000E80E8 /* AlertController.swift */,
+				3CB7A58F287373D9000E80E8 /* MainView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3CB7A587287343A9000E80E8 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				3CB7A5882873441B000E80E8 /* MenuViewController.swift */,
+				3CB7A58A2873442B000E80E8 /* MenuViewModel.swift */,
+				3CB7A59128741B9C000E80E8 /* MenuCell */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		3CB7A58E28734503000E80E8 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				3CB7A58C287344FC000E80E8 /* ContainerViewController.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		3CB7A59128741B9C000E80E8 /* MenuCell */ = {
+			isa = PBXGroup;
+			children = (
+				3CB7A59228741BC4000E80E8 /* MenuViewCell.swift */,
+				3CB7A59428741BDB000E80E8 /* MenuCellViewModel.swift */,
+			);
+			path = MenuCell;
 			sourceTree = "<group>";
 		};
 		3CB8F3CF28368CF100DAAAF4 /* Extensions */ = {
@@ -529,16 +571,20 @@
 				3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */,
 				3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */,
 				3CA9D7722841207800CF88D2 /* NewObjectViewController.swift in Sources */,
+				3CB7A5892873441B000E80E8 /* MenuViewController.swift in Sources */,
 				3C10AEEF28463E15002A1ED0 /* Icon.swift in Sources */,
 				3CC472D62854F1B4004792C8 /* CoreDataManager.swift in Sources */,
+				3CB7A59528741BDB000E80E8 /* MenuCellViewModel.swift in Sources */,
 				3C10AEBB2844C785002A1ED0 /* AddedImageViewModel.swift in Sources */,
 				3C10AEB92844C776002A1ED0 /* AddedImageCollectionViewController.swift in Sources */,
 				3CA9D761283BF66900CF88D2 /* Page.swift in Sources */,
 				3CA9D76B283D312400CF88D2 /* PassRecoveryViewModel.swift in Sources */,
 				3CB8F3E72837F5A100DAAAF4 /* FirebaseManager.swift in Sources */,
 				3CA9D75F283BC03200CF88D2 /* AquaintanceCellViewModel.swift in Sources */,
+				3CB7A590287373D9000E80E8 /* MainView.swift in Sources */,
 				3CB8F3E428379C3700DAAAF4 /* MainViewModel.swift in Sources */,
 				3CC472E828592119004792C8 /* ASAuthorizationAppleIDButton + extension.swift in Sources */,
+				3CB7A58B2873442B000E80E8 /* MenuViewModel.swift in Sources */,
 				3CA9D766283D2DE500CF88D2 /* MainCellViewModel.swift in Sources */,
 				3CB7A57E2871D084000E80E8 /* DescriptionView.swift in Sources */,
 				3CB58EDE2835776D001A8DDB /* AuthorizationViewController.swift in Sources */,
@@ -553,6 +599,7 @@
 				3CA9D75D283BC00700CF88D2 /* AcquaintanceViewCell.swift in Sources */,
 				3CA9D758283BB5C900CF88D2 /* AcquaintanceViewController.swift in Sources */,
 				3CB8F3D72836B3C000DAAAF4 /* UIImageView + extension.swift in Sources */,
+				3CB7A58D287344FC000E80E8 /* ContainerViewController.swift in Sources */,
 				3CA9D764283D2DD400CF88D2 /* MainViewCell.swift in Sources */,
 				3CC472ED285B78AC004792C8 /* ThingDescriptionViewModel.swift in Sources */,
 				3CB8F3DF28378FB100DAAAF4 /* ConstantValues.swift in Sources */,
@@ -568,6 +615,7 @@
 				3CB7A5842871EAF7000E80E8 /* RegistrationView.swift in Sources */,
 				3C10AEF1284654D3002A1ED0 /* Thing.swift in Sources */,
 				3CA9D755283A59DA00CF88D2 /* NavigationController + extension.swift in Sources */,
+				3CB7A59328741BC5000E80E8 /* MenuViewCell.swift in Sources */,
 				3CC472E52859192A004792C8 /* AppleAuthManager.swift in Sources */,
 				3CB8F3D128368D0E00DAAAF4 /* UIButton + extension.swift in Sources */,
 				3CB7A5802871D7BA000E80E8 /* AuthorizationView.swift in Sources */,
