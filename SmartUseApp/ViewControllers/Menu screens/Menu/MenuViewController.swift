@@ -9,17 +9,25 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
+    //MARK: - Private properties
+    private var viewModel: MenuViewModelProtocol! {
+        didSet {
+            viewModel.getMenuDescriptionData()
+        }
+    }
     private var tableView: UITableView!
-
-    override func viewDidLoad() { // убрать, если не понадобится
+    
+    //MARK: - Lifecycle
+    override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewModel = MenuViewModel()
     }
     
     override func viewDidLayoutSubviews() {
         customizeTableView()
     }
     
+    //MARK: - Private methods
     private func customizeTableView() {
         tableView = UITableView()
         tableView.frame = view.frame
@@ -37,15 +45,12 @@ class MenuViewController: UIViewController {
 extension MenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        viewModel.returnNumberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MenuViewCell.identifier, for: indexPath) as! MenuViewCell
-        let model = MenuModel(rawValue: indexPath.row)
-        
-        cell.titleLabel.text = model?.description
-        cell.iconImageView.image = model?.iconImage
+        cell.viewModel = viewModel.getCellViewModel(at: indexPath.row)
         
         return cell
     }

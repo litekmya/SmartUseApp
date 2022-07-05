@@ -46,7 +46,7 @@
 		3CB7A590287373D9000E80E8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A58F287373D9000E80E8 /* MainView.swift */; };
 		3CB7A59328741BC5000E80E8 /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A59228741BC4000E80E8 /* MenuViewCell.swift */; };
 		3CB7A59528741BDB000E80E8 /* MenuCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A59428741BDB000E80E8 /* MenuCellViewModel.swift */; };
-		3CB7A59728745F25000E80E8 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A59628745F25000E80E8 /* MenuModel.swift */; };
+		3CB7A59A2874B86C000E80E8 /* MenuDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A5992874B86C000E80E8 /* MenuDescription.swift */; };
 		3CB8F3D128368D0E00DAAAF4 /* UIButton + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */; };
 		3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */; };
 		3CB8F3D52836B2C100DAAAF4 /* UITextField + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */; };
@@ -108,7 +108,7 @@
 		3CB7A58F287373D9000E80E8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3CB7A59228741BC4000E80E8 /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
 		3CB7A59428741BDB000E80E8 /* MenuCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCellViewModel.swift; sourceTree = "<group>"; };
-		3CB7A59628745F25000E80E8 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		3CB7A5992874B86C000E80E8 /* MenuDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDescription.swift; sourceTree = "<group>"; };
 		3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + extension.swift"; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 				3CA9D760283BF66900CF88D2 /* Page.swift */,
 				3C10AEEE28463E15002A1ED0 /* Icon.swift */,
 				3C10AEF0284654D3002A1ED0 /* Thing.swift */,
-				3CB7A59628745F25000E80E8 /* MenuModel.swift */,
+				3CB7A5992874B86C000E80E8 /* MenuDescription.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -599,6 +599,7 @@
 				3CA9D766283D2DE500CF88D2 /* MainCellViewModel.swift in Sources */,
 				3CB7A57E2871D084000E80E8 /* DescriptionView.swift in Sources */,
 				3CB58EDE2835776D001A8DDB /* AuthorizationViewController.swift in Sources */,
+				3CB7A59A2874B86C000E80E8 /* MenuDescription.swift in Sources */,
 				3CC472EB285B7894004792C8 /* ThingDescriptionViewController.swift in Sources */,
 				3CA9D769283D310D00CF88D2 /* PassRecoveryViewController.swift in Sources */,
 				3C6B09722851EE6F001B2552 /* NetworkManager.swift in Sources */,
@@ -618,7 +619,6 @@
 				3CA9D75A283BB5E400CF88D2 /* AcquaintanceViewModel.swift in Sources */,
 				3C10AEC12844CCEE002A1ED0 /* AddedImageCellViewModel.swift in Sources */,
 				3CB7A586287212FE000E80E8 /* AlertController.swift in Sources */,
-				3CB7A59728745F25000E80E8 /* MenuModel.swift in Sources */,
 				3CB7A5822871E7F9000E80E8 /* PassRecoveryView.swift in Sources */,
 				3CB58EDC2835776D001A8DDB /* SceneDelegate.swift in Sources */,
 				3CC472EF285B7E78004792C8 /* UIDatePicker + extension.swift in Sources */,

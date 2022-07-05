@@ -10,12 +10,17 @@ import UIKit
 class MenuViewCell: UITableViewCell {
     
     static let identifier = "MenuViewCell"
+    var viewModel: MenuCellViewModelProtocol! {
+        didSet {
+            imageView?.image = UIImage(systemName: viewModel.image)
+            titleLabel.text = viewModel.title
+        }
+    }
     
     let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 10
-        imageView.backgroundColor = .blue
         
         return imageView
     }()
@@ -27,11 +32,6 @@ class MenuViewCell: UITableViewCell {
         
         return label
     }()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
