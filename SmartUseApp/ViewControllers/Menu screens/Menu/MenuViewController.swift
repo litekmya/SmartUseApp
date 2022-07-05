@@ -37,11 +37,15 @@ class MenuViewController: UIViewController {
 extension MenuViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5 // изменить
+        3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MenuViewCell.identifier, for: indexPath) as! MenuViewCell
+        let model = MenuModel(rawValue: indexPath.row)
+        
+        cell.titleLabel.text = model?.description
+        cell.iconImageView.image = model?.iconImage
         
         return cell
     }

@@ -50,7 +50,7 @@ class MenuViewCell: UITableViewCell {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(iconImageView.snp.trailing).offset(30)
+            make.leading.equalTo(iconImageView.snp.trailing).offset(16)
             make.centerY.equalTo(iconImageView)
         }
     }

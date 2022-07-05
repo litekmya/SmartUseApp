@@ -14,7 +14,7 @@ protocol MainViewControllerDelegate {
 class ContainerViewController: UIViewController, MainViewControllerDelegate {
     
     private var menuViewController: UIViewController!
-    private var controller: MainViewController!
+    var controller: UIViewController!
     private var isMove = false
     
     override func viewDidLoad() {
@@ -22,9 +22,16 @@ class ContainerViewController: UIViewController, MainViewControllerDelegate {
         configureMainVC()
     }
     
+    func toggleMenu() {
+        configureMenuVC()
+        isMove.toggle()
+        showMenu(shouldMove: isMove)
+    }
+    
     private func configureMainVC() {
-        controller = MainViewController()
-        controller.delegate = self
+        let viewController = MainViewController()
+        viewController.delegate = self
+        controller = viewController
         
         view.addSubview(controller.view)
         addChild(controller)
@@ -64,11 +71,5 @@ class ContainerViewController: UIViewController, MainViewControllerDelegate {
                     
                 }
         }
-    }
-    
-    func toggleMenu() {
-        configureMenuVC()
-        isMove.toggle()
-        showMenu(shouldMove: isMove)
     }
 }

@@ -16,6 +16,7 @@ class ThingDescriptionViewController: UIViewController {
     private let scrollView = UIScrollView()
     private let contentView = DescriptionView()
     private var editButton: UIBarButtonItem!
+    private var backButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +55,10 @@ class ThingDescriptionViewController: UIViewController {
     
     private func customizeButtons() {
         editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonAction))
+        backButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(backButtonAction))
+        
         navigationItem.rightBarButtonItem = editButton
+        navigationItem.leftBarButtonItem = backButton
         
         contentView.deleteButton.addTarget(self, action: #selector(deleteButtonAction), for: .touchUpInside)
     }
@@ -98,6 +102,10 @@ class ThingDescriptionViewController: UIViewController {
     //MARK: - @objc
     @objc private func editButtonAction() {
         
+    }
+    
+    @objc private func backButtonAction() {
+        dismiss(animated: true)
     }
     
     @objc private func deleteButtonAction() {

@@ -127,10 +127,14 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("GLGGLGLGLGLGLGLGLLGLGL")
         let thingDescriptionVC = ThingDescriptionViewController()
         thingDescriptionVC.viewModel = viewModel.getDescriptionViewModel(index: indexPath.row)
         
-        navigationController?.pushViewController(thingDescriptionVC, animated: true)
+        let navC = UINavigationController(rootViewController: thingDescriptionVC)
+        navC.modalPresentationStyle = .fullScreen
+        present(navC, animated: true)
+//        navigationController?.pushViewController(thingDescriptionVC, animated: true)
     }
 }
 
