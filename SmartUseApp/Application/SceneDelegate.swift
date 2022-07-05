@@ -11,25 +11,21 @@ import Firebase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var windowScene: UIWindowScene!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+        guard let scene = (scene as? UIWindowScene) else { return }
+        windowScene = scene
         
         Auth.auth().addStateDidChangeListener { auth, user in
             if user == nil {
                 print("Пользователь не авторизирован")
-                self.makeAndVisibleView(windowScene, vc: AuthorizationViewController())
+                self.makeAndVisibleView(self.windowScene, vc: AuthorizationViewController())
             } else {
                 print("Пользователь прошел авторизацию")
-//                self.makeAndVisibleView(windowScene, vc: WelcomeViewController())
-//                self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-//                self.window?.windowScene = windowScene
-//                self.window?.makeKeyAndVisible()
-//                self.window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())
-                let layout = UICollectionViewFlowLayout()
-                layout.scrollDirection = .horizontal
-                self.makeAndVisibleView(windowScene, vc: AcquaintanceViewController(collectionViewLayout: layout))
+
+                self.checkFirstInput()
             }
         }
     }
@@ -75,12 +71,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if defaults.bool(forKey: "First launch") == true {
             print("Пользователь входит в приложение не впервый раз")
-            
-            defaults.set(true, forKey: "First launch")
+            let containerVC = ContainerViewController()
+            self.makeAndVisibleView(windowScene, vc: containerVC)
         } else {
             print("Пользователь входит в приложение в первый раз")
             
-            // Сюда вписать код, который будет отрабатывать, когда пользователь будет входить в приложение в первый раз
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            
+            self.makeAndVisibleView(
+                windowScene,
+                vc: AcquaintanceViewController(collectionViewLayout: layout)
+            )
             
             defaults.set(true, forKey: "First launch")
         }

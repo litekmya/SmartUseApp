@@ -67,7 +67,7 @@ class MainViewController: UIViewController {
         contentView.snp.makeConstraints { make in
             make.top.equalTo(view)
             make.leading.trailing.equalTo(view)
-            make.height.equalTo(150)
+            make.height.equalTo(200)
         }
         
         collectionView.snp.makeConstraints { make in
@@ -101,7 +101,7 @@ class MainViewController: UIViewController {
     }
     
     @objc private func addButtonAction() {
-        print("Кнопкв нажата")
+        print("Кнопкa нажата")
         let newObjectVC = NewObjectViewController()
         newObjectVC.modalPresentationStyle = .fullScreen
         

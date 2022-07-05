@@ -50,6 +50,7 @@ class MainView: UIView {
         menuButton.snp.makeConstraints { make in
             make.leading.equalTo(self).inset(30)
             make.top.equalTo(self).inset(70)
+            make.height.width.equalTo(45)
         }
         menuButton.setImage(UIImage(systemName: "star"), for: .normal)
         menuButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
@@ -57,7 +58,7 @@ class MainView: UIView {
         addButton.snp.makeConstraints { make in
             make.centerY.equalTo(menuButton)
             make.trailing.equalTo(self).inset(30)
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(45)
         }
         addButton.setImage(UIImage(systemName: "plus"), for: .normal)
         addButton.setImage(UIImage(systemName: "plus.square"), for: .highlighted)
@@ -65,7 +66,7 @@ class MainView: UIView {
     
     private func customizeTitlelabel() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(menuButton).offset(30)
+            make.top.equalTo(menuButton.snp.bottom).offset(16)
             make.leading.equalTo(self).inset(30)
         }
         titleLabel.text = "Hello, world"

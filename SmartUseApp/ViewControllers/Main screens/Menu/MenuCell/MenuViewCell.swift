@@ -22,7 +22,7 @@ class MenuViewCell: UITableViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.text = "Hello,world"
         
         return label
