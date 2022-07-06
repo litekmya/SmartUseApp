@@ -11,12 +11,13 @@ import UIKit
 struct MenuDescription {
     var title: String
     var image: String
+    var controller: UIViewController
     
     static func getData() -> [MenuDescription] {
         return [
-            MenuDescription(title: "Профиль", image: "star"),
-            MenuDescription(title: "Настройки", image: "star"),
-            MenuDescription(title: "О приложении", image: "star")
+            MenuDescription(title: "Профиль", image: "star", controller: ProfileViewController()),
+            MenuDescription(title: "Настройки", image: "star", controller: SettingsViewController()),
+            MenuDescription(title: "О приложении", image: "star", controller: AboutViewController())
         ]
     }
 }

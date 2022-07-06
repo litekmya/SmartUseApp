@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MenuViewModelProtocol {
     var menuDescriptions: [MenuDescription] { get }
@@ -13,6 +14,7 @@ protocol MenuViewModelProtocol {
     func returnNumberOfRows() -> Int
     func getMenuDescriptionData()
     func getCellViewModel(at index: Int) -> MenuCellViewModelProtocol
+    func goToNextVC(at index: Int) -> UIViewController
 }
 
 class MenuViewModel: MenuViewModelProtocol {
@@ -31,5 +33,11 @@ class MenuViewModel: MenuViewModelProtocol {
         let description = menuDescriptions[index]
         
         return MenuCellViewModel(menuDescription: description)
+    }
+    
+    func goToNextVC(at index: Int) -> UIViewController {
+        let controller = menuDescriptions[index].controller
+        
+        return controller
     }
 }

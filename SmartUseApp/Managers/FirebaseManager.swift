@@ -16,6 +16,7 @@ class FirebaseManager {
         
     private init() {}
     
+    //MARK: - Auth
     func createUser(with email: String, and password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
@@ -57,8 +58,6 @@ class FirebaseManager {
             if let error = error {
                 print("Error Firebase/signInWithAppleID: \(error)")
             }
-            
-            
         }
     }
     
@@ -74,6 +73,23 @@ class FirebaseManager {
         }
     }
     
+    func change(password: String) {
+        Auth.auth().currentUser?.updatePassword(to: password, completion: { error in
+            if let error = error {
+                print("Ошибка при смене пароля: \(error.localizedDescription)")
+            }
+        })
+    }
+    
+    func change(email: String) {
+        Auth.auth().currentUser?.updateEmail(to: email, completion: { error in
+            if let error = error {
+                print("Ошибка при смене email: \(error.localizedDescription)")
+            }
+        })
+    }
+    
+    //MARK: - Objects
     func addNewThing(thing: Thing, imageData: Data) {
         guard let user = Auth.auth().currentUser else { return }
         print(user.uid)

@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum Controllers {
+    case profileVC
+    case settingsVC
+    case about
+}
+
 class MenuViewController: UIViewController {
     
     //MARK: - Private properties
@@ -61,5 +67,9 @@ extension MenuViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let controller = viewModel.goToNextVC(at: indexPath.row)
+        let navController = UINavigationController(rootViewController: controller)
+        present(navController, animated: true)
     }
 }
