@@ -10,6 +10,8 @@ import Foundation
 protocol PassRecoveryViewModelProtocol {
 
     func recoverPass(with email: String, completion: @escaping(Error?) -> Void)
+    func change(password: String)
+    func change(email: String)
 }
 
 class PassRecoveryViewModel: PassRecoveryViewModelProtocol {
@@ -18,5 +20,13 @@ class PassRecoveryViewModel: PassRecoveryViewModelProtocol {
         FirebaseManager.shared.recoverPassword(with: email) { error in
             completion(error)
         }
+    }
+    
+    func change(password: String) {
+        FirebaseManager.shared.change(password: password)
+    }
+    
+    func change(email: String) {
+        FirebaseManager.shared.change(email: email)
     }
 }

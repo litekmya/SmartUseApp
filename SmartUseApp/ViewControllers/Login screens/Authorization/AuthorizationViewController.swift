@@ -83,6 +83,7 @@ class AuthorizationViewController: UIViewController {
     
     @objc private func goToPassRecovery() {
         let passRecoveryVC = PassRecoveryViewController()
+        passRecoveryVC.contentView.titleLabel.text = Titles.passRecovery.rawValue
         present(passRecoveryVC, animated: true)
     }
     

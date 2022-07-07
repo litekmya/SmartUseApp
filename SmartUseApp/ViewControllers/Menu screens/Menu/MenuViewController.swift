@@ -7,10 +7,11 @@
 
 import UIKit
 
-enum Controllers {
-    case profileVC
-    case settingsVC
-    case about
+enum Controllers: String {
+    
+    case profile = "Профиль"
+    case settings = "Настройки"
+    case about = "О приложении"
 }
 
 class MenuViewController: UIViewController {
@@ -68,8 +69,27 @@ extension MenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let controller = viewModel.goToNextVC(at: indexPath.row)
-        let navController = UINavigationController(rootViewController: controller)
+        let title = viewModel.getTitleForNextView(at: indexPath.row)
+        print(title)
+        
+        switch Controllers(rawValue: title) {
+        case .profile:
+            goTo(controller: ProfileViewController(), title: title)
+        case .settings:
+            goTo(controller: SettingsViewController(), title: title)
+        case .about:
+            goTo(controller: AboutViewController(), title: title)
+        case .none:
+            break
+        }
+    }
+    
+    private func goTo(controller: UIViewController, title: String) {
+        let viewController = controller
+        viewController.title = title
+        print(viewController)
+        
+        let navController = UINavigationController(rootViewController: viewController)
         present(navController, animated: true)
     }
 }

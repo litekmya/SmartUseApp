@@ -57,12 +57,28 @@ extension ProfileViewController: UITableViewDataSource {
         cell.contentConfiguration = content
         return cell
     }
-    
-    
 }
 
 extension ProfileViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.row == 0 {
+            goToVC(with: Titles.changeEmail.rawValue)
+        } else if indexPath.row == 1 {
+            goToVC(with: Titles.changePassword.rawValue)
+        } else {
+            print("Удаление аккаунта")
+        }
+    }
+    
+    private func goToVC(with title: String) {
+        let controller = PassRecoveryViewController()
+        controller.contentView.titleLabel.text = title
+        
+        present(controller, animated: true)
+    }
 }
 
 

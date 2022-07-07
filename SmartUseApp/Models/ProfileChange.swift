@@ -13,6 +13,7 @@ struct ProfileChange {
     static func getData() -> [ProfileChange] {
         return [ProfileChange(title: "Изменить email"),
                 ProfileChange(title: "Изменить пароль"),
+                ProfileChange(title: "Выйти из профиля"),
                 ProfileChange(title: "Удалить профиль")]
     }
 }

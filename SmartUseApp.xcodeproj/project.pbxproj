@@ -55,6 +55,7 @@
 		3CB7A5AE2875B62B000E80E8 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A5AD2875B62B000E80E8 /* SettingsViewModel.swift */; };
 		3CB7A5B02875B65B000E80E8 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A5AF2875B65B000E80E8 /* AboutViewController.swift */; };
 		3CB7A5B22875B66C000E80E8 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A5B12875B66C000E80E8 /* AboutViewModel.swift */; };
+		3CB7A5B52875D470000E80E8 /* ChangeDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB7A5B42875D470000E80E8 /* ChangeDataController.swift */; };
 		3CB8F3D128368D0E00DAAAF4 /* UIButton + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */; };
 		3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */; };
 		3CB8F3D52836B2C100DAAAF4 /* UITextField + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */; };
@@ -125,6 +126,7 @@
 		3CB7A5AD2875B62B000E80E8 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3CB7A5AF2875B65B000E80E8 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		3CB7A5B12875B66C000E80E8 /* AboutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
+		3CB7A5B42875D470000E80E8 /* ChangeDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDataController.swift; sourceTree = "<group>"; };
 		3CB8F3D028368D0E00DAAAF4 /* UIButton + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D22836B18200DAAAF4 /* UILabel + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + extension.swift"; sourceTree = "<group>"; };
 		3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + extension.swift"; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 			children = (
 				3CB7A587287343A9000E80E8 /* Menu */,
 				3CB7A59B2875A137000E80E8 /* Profile */,
+				3CB7A5B32875D431000E80E8 /* ChangeData */,
 				3CB7A5A92875B5D3000E80E8 /* Settings */,
 				3CB7A5AA2875B5EB000E80E8 /* About */,
 			);
@@ -449,6 +452,14 @@
 				3CB7A5B12875B66C000E80E8 /* AboutViewModel.swift */,
 			);
 			path = About;
+			sourceTree = "<group>";
+		};
+		3CB7A5B32875D431000E80E8 /* ChangeData */ = {
+			isa = PBXGroup;
+			children = (
+				3CB7A5B42875D470000E80E8 /* ChangeDataController.swift */,
+			);
+			path = ChangeData;
 			sourceTree = "<group>";
 		};
 		3CB8F3CF28368CF100DAAAF4 /* Extensions */ = {
@@ -679,6 +690,7 @@
 				3CC472EB285B7894004792C8 /* ThingDescriptionViewController.swift in Sources */,
 				3CA9D769283D310D00CF88D2 /* PassRecoveryViewController.swift in Sources */,
 				3C6B09722851EE6F001B2552 /* NetworkManager.swift in Sources */,
+				3CB7A5B52875D470000E80E8 /* ChangeDataController.swift in Sources */,
 				3CB8F3DB28378CF400DAAAF4 /* RegistrationViewController.swift in Sources */,
 				3CB58EDA2835776D001A8DDB /* AppDelegate.swift in Sources */,
 				3CB8F3DD28378D0100DAAAF4 /* RegistrationViewModel.swift in Sources */,

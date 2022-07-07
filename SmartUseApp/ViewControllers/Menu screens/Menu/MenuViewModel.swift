@@ -15,6 +15,7 @@ protocol MenuViewModelProtocol {
     func getMenuDescriptionData()
     func getCellViewModel(at index: Int) -> MenuCellViewModelProtocol
     func goToNextVC(at index: Int) -> UIViewController
+    func getTitleForNextView(at index: Int) -> String
 }
 
 class MenuViewModel: MenuViewModelProtocol {
@@ -39,5 +40,10 @@ class MenuViewModel: MenuViewModelProtocol {
         let controller = menuDescriptions[index].controller
         
         return controller
+    }
+    
+    func getTitleForNextView(at index: Int) -> String {
+        let title = menuDescriptions[index].title
+        return title
     }
 }

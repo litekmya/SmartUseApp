@@ -20,18 +20,3 @@ class AlertController: UIAlertController {
     }
 }
 
-extension UIAlertController {
-    
-    func showAlert(title: String, message: String, completion: @escaping() -> Void ) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .destructive) { _ in
-            completion()
-        }
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
-        
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true)
-    }
-}

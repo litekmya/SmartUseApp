@@ -7,10 +7,16 @@
 
 import UIKit
 
+enum Titles: String {
+    case passRecovery = "Сброс пароля"
+    case changePassword = "Изменение пароля"
+    case changeEmail = "Изменение email"
+}
+
 class PassRecoveryViewController: UIViewController {
     
     //MARK: - Private properties
-    private let contentView = PassRecoveryView()    
+    let contentView = PassRecoveryView()    
     private var viewModel: PassRecoveryViewModelProtocol!
     
     //MARK: - Lifecycle
@@ -27,10 +33,8 @@ class PassRecoveryViewController: UIViewController {
         contentView.frame = view.frame
         contentView.resetPassButton.addTarget(self, action: #selector(resetPassButtonAction), for: .touchUpInside)
     }
-
-    //MARK: - @objc
-    @objc private func resetPassButtonAction() {
-        contentView.activityindicator.startAnimating()
+    
+    private func recoverPass() {
         viewModel.recoverPass(with: contentView.emailTextField.text ?? "") { error in
             if error != nil {
                 self.contentView.errorLabel.isHidden = false
@@ -39,6 +43,24 @@ class PassRecoveryViewController: UIViewController {
                 print("Dismiss")
                 self.dismiss(animated: true, completion: nil)
             }
+        }
+    }
+
+    //MARK: - @objc
+    @objc private func resetPassButtonAction() {
+        contentView.activityindicator.startAnimating()
+        
+        guard let title = contentView.titleLabel.text else {
+            print("Ошибка при присвоении значения в PassRecovery/titleLabel")
+            return
+        }
+        
+        switch Titles(rawValue: title) {
+        case .passRecovery:
+            recoverPass()
+        case .changeEmail: break
+        case .changePassword: break
+        case .none: break
         }
     }
 }
