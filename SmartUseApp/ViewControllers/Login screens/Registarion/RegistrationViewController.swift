@@ -44,6 +44,8 @@ class RegistrationViewController: UIViewController {
     }
     
     private func checkPasswords() -> Bool {
+        guard let text = contentView.emailTextField.text else { return false }
+        
         if contentView.firstPassTextField.text != contentView.secondPassTextField.text {
             reportAnError(text: ErrorText.passRegError.rawValue)
             print("Пароли не совпадают")
@@ -52,7 +54,7 @@ class RegistrationViewController: UIViewController {
             reportAnError(text: ErrorText.incorrectPassError.rawValue)
             print("Пароль должен содержать не менее 6 знаков")
             return false
-        } else if ((contentView.emailTextField.text?.contains("@")) != nil) {
+        } else if !text.contains("@") {
             reportAnError(text: ErrorText.emailRecoveryError.rawValue)
             print("Введен некоректный email адрес")
             return false

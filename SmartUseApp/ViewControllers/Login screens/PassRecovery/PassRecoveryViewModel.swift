@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PassRecoveryViewModelProtocol {
-
+    
     func recoverPass(with email: String, completion: @escaping(Error?) -> Void)
     func change(password: String)
     func change(email: String)
@@ -16,17 +16,19 @@ protocol PassRecoveryViewModelProtocol {
 
 class PassRecoveryViewModel: PassRecoveryViewModelProtocol {
     
+    private let firebaseManager = FirebaseManager.shared
+    
     func recoverPass(with email: String, completion: @escaping(Error?) -> Void) {
-        FirebaseManager.shared.recoverPassword(with: email) { error in
+        firebaseManager.recoverPassword(with: email) { error in
             completion(error)
         }
     }
     
     func change(password: String) {
-        FirebaseManager.shared.change(password: password)
+        firebaseManager.change(password: password)
     }
     
     func change(email: String) {
-        FirebaseManager.shared.change(email: email)
+        firebaseManager.change(email: email)
     }
 }

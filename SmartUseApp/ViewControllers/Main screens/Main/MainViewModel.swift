@@ -15,6 +15,7 @@ protocol MainViewModelProtocol {
     func returnNumberOfItemsInSection() -> Int
     func getCellViewModel(index: Int) -> MainCellViewModelProtocol
     func getDescriptionViewModel(index: Int) -> ThingDescriptionViewModelProtocol
+    func getUserFromFirebase()
 }
 
 
@@ -49,6 +50,10 @@ class MainViewModel: MainViewModelProtocol {
     func getDescriptionViewModel(index: Int) -> ThingDescriptionViewModelProtocol {
         let thing = things[index]
         return  ThingDescriptionViewModel(thing: thing)
+    }
+    
+    func getUserFromFirebase() {
+        FirebaseManager.shared.getUser()
     }
     
     private func getDataFromFirebase(completion:@escaping() -> Void) {

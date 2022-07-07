@@ -12,7 +12,8 @@ protocol ProfileViewModelProtocol {
     
     func getData()
     func returnNumberOfRows() -> Int
-    
+    func logOff()
+    func deleteUser()
 }
 
 class ProfileViewModel: ProfileViewModelProtocol {
@@ -28,5 +29,22 @@ class ProfileViewModel: ProfileViewModelProtocol {
         profileChanges.count
     }
     
+    func logOff() {
+        FirebaseManager.shared.signOut()
+    }
     
+    func deleteUser() {
+        FirebaseManager.shared.deleteUserFromAuth()
+        deleteAllThingsInCoreData()
+    }
+    
+    private func deleteAllThingsInCoreData() {
+        let things = CoreDataManager.shared.fetchData()
+        
+        for thing in things {
+            print(thing.name)
+//            FirebaseManager.shared.deleteImageFromFirebaseStorage(thing: thing)
+            CoreDataManager.shared.delete(thing: thing)
+        }
+    }
 }

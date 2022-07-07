@@ -13,8 +13,15 @@ class FirebaseManager {
     
     static let shared = FirebaseManager()
     let firebaseApp = FirebaseApp.self
+    var user: User!
+    var reference: DatabaseReference!
         
     private init() {}
+    
+    func getUser() {
+        user = Auth.auth().currentUser
+        reference = Database.database().reference().child("users").child(user.uid)
+    }
     
     //MARK: - Auth
     func createUser(with email: String, and password: String) {
@@ -24,7 +31,6 @@ class FirebaseManager {
             }
             
             guard let result = result else { return }
-            print(result.user.uid)
             
             Database.database().reference().child("users").child(result.user.uid).updateChildValues(["email": email, "password": password])
         }
@@ -74,7 +80,7 @@ class FirebaseManager {
     }
     
     func change(password: String) {
-        Auth.auth().currentUser?.updatePassword(to: password, completion: { error in
+        user.updatePassword(to: password, completion: { error in
             if let error = error {
                 print("Ошибка при смене пароля: \(error.localizedDescription)")
             }
@@ -82,37 +88,51 @@ class FirebaseManager {
     }
     
     func change(email: String) {
-        Auth.auth().currentUser?.updateEmail(to: email, completion: { error in
+        user.updateEmail(to: email, completion: { error in
             if let error = error {
                 print("Ошибка при смене email: \(error.localizedDescription)")
             }
         })
     }
     
+    //MARK: - Delete user
+    func deleteUserFromAuth() {
+        user?.delete(completion: { error in
+            if let error = error {
+                print("Ошибка при удалении профиля: \(error.localizedDescription)")
+                self.signOut()
+            }
+            
+            print("Профиль пользователя был удален")
+        })
+    }
+    
+    func deleteUserFromRealTimeDatabase() {
+        Database.database()
+            .reference()
+            .child("users")
+            .child(user.uid)
+            .removeValue()
+    }
+    
     //MARK: - Objects
     func addNewThing(thing: Thing, imageData: Data) {
-        guard let user = Auth.auth().currentUser else { return }
-        print(user.uid)
         uploadImage(data: imageData, user: user, thing: thing) { urlString in
             Database.database()
                 .reference()
                 .child("users")
-                .child(user.uid)
+                .child(self.user.uid)
                 .child("things")
                 .child("\(thing.name)")
                 .setValue(["name": thing.name,
                            "cost": thing.cost,
                            "date": thing.date,
                            "urlString": urlString])
-            print("Новая вещт была сохранена")
+            print("Новая вещь была сохранена")
         }
     }
     
     func getThingsFromDatabase(completion: @escaping([String: AnyObject]) -> Void) {
-        guard let user = Auth.auth().currentUser else {
-            print("Ошибка при получении текущего пользователя")
-            return }
-        
         Database.database()
             .reference()
             .child("users")
@@ -125,6 +145,35 @@ class FirebaseManager {
                 
                 completion(values)
             }
+    }
+    
+    func deleteThing(thing: CoreDataThing) {
+        deleteImageFromFirebaseStorage(thing: thing)
+        
+        Database.database()
+            .reference()
+            .child("users")
+            .child(user.uid)
+            .child("things")
+            .child(thing.name ?? "")
+            .removeValue()
+        
+        
+    }
+    
+    func deleteImageFromFirebaseStorage(thing: CoreDataThing) {
+        let reference = Storage.storage()
+            .reference()
+            .child("users")
+            .child(user.uid)
+            .child("things")
+            .child("\(thing.name)/image")
+        
+        reference.delete { error in
+            if let error = error {
+                print("Ошибка при удалении изображения из FirebaseStorage: \(error.localizedDescription)")
+            }
+        }
     }
     
     private func uploadImage(data: Data, user: User, thing: Thing, completion: @escaping(String) -> Void) {

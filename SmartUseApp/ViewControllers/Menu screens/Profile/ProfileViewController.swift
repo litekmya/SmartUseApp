@@ -68,16 +68,39 @@ extension ProfileViewController: UITableViewDelegate {
             goToVC(with: Titles.changeEmail.rawValue)
         } else if indexPath.row == 1 {
             goToVC(with: Titles.changePassword.rawValue)
+        } else if indexPath.row == 2 {
+            showAlert(message: "Вы пытаетесь выйти из профиля. Продолжить?") {
+                self.viewModel.logOff()
+            }
+            
         } else {
-            print("Удаление аккаунта")
+            showAlert(message: "Вы уверены, что хотите удалить профиль приложения? Его нельзя будет востановить") {
+                print("Пользователь пытается удалить профиль")
+                self.viewModel.deleteUser()
+            }
         }
     }
     
     private func goToVC(with title: String) {
         let controller = PassRecoveryViewController()
+        controller.modalPresentationStyle = .fullScreen
         controller.contentView.titleLabel.text = title
+//        controller.contentView.imageView.image = UIImage() Менять картинку при переходе
         
         present(controller, animated: true)
+    }
+}
+
+//MARK: - Alert
+extension ProfileViewController {
+    
+    private func showAlert(message: String, completion: @escaping() -> Void) {
+        let alert = AlertController(title: "Внимание", message: message, preferredStyle: .alert)
+        alert.showAlert {
+            completion()
+        }
+        
+        present(alert, animated: true)
     }
 }
 
