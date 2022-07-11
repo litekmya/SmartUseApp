@@ -48,7 +48,7 @@ class MainViewModel: MainViewModelProtocol {
     }
     
     func getDescriptionViewModel(index: Int) -> ThingDescriptionViewModelProtocol {
-        let thing = things[index]
+        let thing = coreDataThings[index]
         return  ThingDescriptionViewModel(thing: thing)
     }
     

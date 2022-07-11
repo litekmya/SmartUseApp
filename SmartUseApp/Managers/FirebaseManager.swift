@@ -14,13 +14,15 @@ class FirebaseManager {
     static let shared = FirebaseManager()
     let firebaseApp = FirebaseApp.self
     var user: User!
-    var reference: DatabaseReference!
+    var databaseReference: DatabaseReference!
+    var storageReference: StorageReference!
         
     private init() {}
     
     func getUser() {
         user = Auth.auth().currentUser
-        reference = Database.database().reference().child("users").child(user.uid)
+        databaseReference = Database.database().reference().child("users").child(user.uid)
+        storageReference = Storage.storage().reference().child("users").child(user.uid)
     }
     
     //MARK: - Auth
@@ -97,6 +99,8 @@ class FirebaseManager {
     
     //MARK: - Delete user
     func deleteUserFromAuth() {
+        deleteUserFromRealTimeDatabase()
+        
         user?.delete(completion: { error in
             if let error = error {
                 print("Ошибка при удалении профиля: \(error.localizedDescription)")
@@ -108,20 +112,13 @@ class FirebaseManager {
     }
     
     func deleteUserFromRealTimeDatabase() {
-        Database.database()
-            .reference()
-            .child("users")
-            .child(user.uid)
-            .removeValue()
+        databaseReference.removeValue()
     }
     
     //MARK: - Objects
     func addNewThing(thing: Thing, imageData: Data) {
-        uploadImage(data: imageData, user: user, thing: thing) { urlString in
-            Database.database()
-                .reference()
-                .child("users")
-                .child(self.user.uid)
+        uploadImage(data: imageData, user: user, thing: thing) {[unowned self] urlString in
+            self.databaseReference
                 .child("things")
                 .child("\(thing.name)")
                 .setValue(["name": thing.name,
@@ -133,10 +130,7 @@ class FirebaseManager {
     }
     
     func getThingsFromDatabase(completion: @escaping([String: AnyObject]) -> Void) {
-        Database.database()
-            .reference()
-            .child("users")
-            .child(user.uid)
+        databaseReference
             .child("things")
             .observeSingleEvent(of: .value) { snapshot in
                 guard let values = snapshot.value as? [String: AnyObject] else {
@@ -150,10 +144,7 @@ class FirebaseManager {
     func deleteThing(thing: CoreDataThing) {
         deleteImageFromFirebaseStorage(thing: thing)
         
-        Database.database()
-            .reference()
-            .child("users")
-            .child(user.uid)
+        databaseReference
             .child("things")
             .child(thing.name ?? "")
             .removeValue()
@@ -161,15 +152,15 @@ class FirebaseManager {
         
     }
     
+    //MARK: - Storage firebase
+    
     func deleteImageFromFirebaseStorage(thing: CoreDataThing) {
-        let reference = Storage.storage()
-            .reference()
-            .child("users")
-            .child(user.uid)
-            .child("things")
-            .child("\(thing.name)/image")
+        guard let thingName = thing.name else { return }
         
-        reference.delete { error in
+        storageReference
+            .child("things")
+            .child("\(thingName)/image")
+            .delete { error in
             if let error = error {
                 print("Ошибка при удалении изображения из FirebaseStorage: \(error.localizedDescription)")
             }
@@ -177,13 +168,7 @@ class FirebaseManager {
     }
     
     private func uploadImage(data: Data, user: User, thing: Thing, completion: @escaping(String) -> Void) {
-        let reference = Storage.storage()
-            .reference()
-            .child("users")
-            .child(user.uid)
-            .child("things")
-            .child("\(thing.name)/image")
-        
+        let reference = storageReference.child("things").child("\(thing.name)/image")
         reference.putData(data, metadata: nil) { _, error in
             if let error = error {
                 print("Error Firebase/uploadImage: \(error)")

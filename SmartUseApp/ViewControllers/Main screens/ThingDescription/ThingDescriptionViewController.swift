@@ -111,7 +111,9 @@ class ThingDescriptionViewController: UIViewController {
     @objc private func deleteButtonAction() {
         let alert = AlertController(title: "Внимание!", message: "Вы уверены, что хотите удалить данную вещь?", preferredStyle: .alert)
         alert.showAlert {
+            self.viewModel.deleteThing()
             print("Вещь была удалена")
+            self.dismiss(animated: true)
         }
         
         present(alert, animated: true)

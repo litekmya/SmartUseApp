@@ -21,6 +21,7 @@ class MainViewController: UIViewController {
     
     private var viewModel: MainViewModelProtocol! {
         didSet {
+            viewModel.getUserFromFirebase()
             viewModel.getData {
                 self.customizeCollectionView()
                 self.customizeUI()
@@ -45,7 +46,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel = MainViewModel()
-        viewModel.getUserFromFirebase()
+        collectionView.reloadData()
     }
     
     //MARK: - Private methods

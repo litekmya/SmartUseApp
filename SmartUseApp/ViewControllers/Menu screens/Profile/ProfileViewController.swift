@@ -9,6 +9,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    //MARK: - Private properties
     private var viewModel: ProfileViewModelProtocol! {
         didSet {
             viewModel.getData()
@@ -18,6 +19,7 @@ class ProfileViewController: UIViewController {
     private var tableView: UITableView!
     private let identifier = "Cell"
 
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         print("ProfileVC")
@@ -31,6 +33,7 @@ class ProfileViewController: UIViewController {
         print("ProfileVC deinit")
     }
     
+    //MARK: - Private methods
     private func customizeTableView() {
         tableView = UITableView(frame: view.frame)
         tableView.delegate = self
@@ -41,6 +44,7 @@ class ProfileViewController: UIViewController {
     }
 }
 
+//MARK: - UITableViewDataSource
 extension ProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,6 +63,7 @@ extension ProfileViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - UITableViewDelegate
 extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -72,7 +77,6 @@ extension ProfileViewController: UITableViewDelegate {
             showAlert(message: "Вы пытаетесь выйти из профиля. Продолжить?") {
                 self.viewModel.logOff()
             }
-            
         } else {
             showAlert(message: "Вы уверены, что хотите удалить профиль приложения? Его нельзя будет востановить") {
                 print("Пользователь пытается удалить профиль")

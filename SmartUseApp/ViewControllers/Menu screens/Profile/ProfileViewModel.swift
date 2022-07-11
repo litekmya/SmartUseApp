@@ -42,8 +42,7 @@ class ProfileViewModel: ProfileViewModelProtocol {
         let things = CoreDataManager.shared.fetchData()
         
         for thing in things {
-            print(thing.name)
-//            FirebaseManager.shared.deleteImageFromFirebaseStorage(thing: thing)
+            FirebaseManager.shared.deleteImageFromFirebaseStorage(thing: thing)
             CoreDataManager.shared.delete(thing: thing)
         }
     }

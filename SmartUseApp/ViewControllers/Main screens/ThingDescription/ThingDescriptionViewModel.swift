@@ -12,13 +12,15 @@ protocol ThingDescriptionViewModelProtocol {
     var imageData: Data? { get }
     var date: String { get }
     var cost: String { get }
-    init(thing: Thing)
+    
+    init(thing: CoreDataThing)
+    func deleteThing()
 }
 
 class ThingDescriptionViewModel: ThingDescriptionViewModelProtocol {
     
     var name: String {
-        thing.name
+        thing.name ?? ""
     }
     
     var imageData: Data? {
@@ -26,17 +28,22 @@ class ThingDescriptionViewModel: ThingDescriptionViewModelProtocol {
     }
     
     var date: String {
-        thing.date
+        thing.date ?? ""
     }
     
     var cost: String {
-        thing.cost
+        thing.cost ?? ""
     }
     
     
-    private var thing: Thing!
+    private var thing: CoreDataThing!
     
-    required init(thing: Thing) {
+    required init(thing: CoreDataThing) {
         self.thing = thing
+    }
+    
+    func deleteThing() {
+        FirebaseManager.shared.deleteThing(thing: thing)
+        CoreDataManager.shared.delete(thing: thing)
     }
 }
