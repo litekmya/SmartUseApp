@@ -98,21 +98,22 @@ class FirebaseManager {
     }
     
     //MARK: - Delete user
-    func deleteUserFromAuth() {
-        deleteUserFromRealTimeDatabase()
-        
-        user?.delete(completion: { error in
+    func deleteUserFromAuth(completion: @escaping() -> Void) {
+        user?.delete(completion: {[unowned self] error in
             if let error = error {
                 print("Ошибка при удалении профиля: \(error.localizedDescription)")
                 self.signOut()
+            } else {
+                self.deleteUserFromRealTimeDatabase()
+                print("Профиль пользователя был удален из Firebase/Authorization")
+                completion()
             }
-            
-            print("Профиль пользователя был удален")
         })
     }
     
     func deleteUserFromRealTimeDatabase() {
         databaseReference.removeValue()
+        print("Профиль пользователя был удален из Firebase/RealTimeDatabase")
     }
     
     //MARK: - Objects
@@ -148,12 +149,9 @@ class FirebaseManager {
             .child("things")
             .child(thing.name ?? "")
             .removeValue()
-        
-        
     }
     
     //MARK: - Storage firebase
-    
     func deleteImageFromFirebaseStorage(thing: CoreDataThing) {
         guard let thingName = thing.name else { return }
         
@@ -163,6 +161,8 @@ class FirebaseManager {
             .delete { error in
             if let error = error {
                 print("Ошибка при удалении изображения из FirebaseStorage: \(error.localizedDescription)")
+            } else {
+                print("\(thing.name) image был удален")
             }
         }
     }

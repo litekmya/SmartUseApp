@@ -48,6 +48,8 @@ class AuthorizationViewController: UIViewController {
         contentView.emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         contentView.passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
+        contentView.passwordTextField.showPassButton.addTarget(self, action: #selector(showPass), for: .touchUpInside)
+        
         contentView.signInWithAppleButton.addTarget(self, action: #selector(logInWithApple), for: .touchUpInside)
     }
     
@@ -71,6 +73,10 @@ class AuthorizationViewController: UIViewController {
     @objc private func goToRegistration() {
         let registrationVC = RegistrationViewController()
         present(registrationVC, animated: true)
+    }
+    
+    @objc private func showPass() {
+        contentView.passwordTextField.changeImageForButton()
     }
     
     @objc private func textFieldDidChange() {

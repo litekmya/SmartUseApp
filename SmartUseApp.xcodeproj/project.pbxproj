@@ -66,6 +66,7 @@
 		3CB8F3E128379BE700DAAAF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E028379BE700DAAAF4 /* MainViewController.swift */; };
 		3CB8F3E428379C3700DAAAF4 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E328379C3700DAAAF4 /* MainViewModel.swift */; };
 		3CB8F3E72837F5A100DAAAF4 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB8F3E62837F5A100DAAAF4 /* FirebaseManager.swift */; };
+		3CB99F22287D746E00E1A8F0 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB99F21287D746E00E1A8F0 /* PasswordTextField.swift */; };
 		3CC472D62854F1B4004792C8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC472D52854F1B4004792C8 /* CoreDataManager.swift */; };
 		3CC472DF2854F69B004792C8 /* Things.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3CC472DD2854F69B004792C8 /* Things.xcdatamodeld */; };
 		3CC472E52859192A004792C8 /* AppleAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC472E42859192A004792C8 /* AppleAuthManager.swift */; };
@@ -137,6 +138,7 @@
 		3CB8F3E028379BE700DAAAF4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3CB8F3E328379C3700DAAAF4 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		3CB8F3E62837F5A100DAAAF4 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		3CB99F21287D746E00E1A8F0 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 		3CC472D52854F1B4004792C8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		3CC472DE2854F69B004792C8 /* Things.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Things.xcdatamodel; sourceTree = "<group>"; };
 		3CC472E42859192A004792C8 /* AppleAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuthManager.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				3CB790942853E0EB00869268 /* UIImage + extension.swift */,
 				3CA9D754283A59DA00CF88D2 /* NavigationController + extension.swift */,
 				3CC472EE285B7E77004792C8 /* UIDatePicker + extension.swift */,
+				3CB99F21287D746E00E1A8F0 /* PasswordTextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 			files = (
 				3CA9D774284120D800CF88D2 /* NewObjectViewModel.swift in Sources */,
 				3CB8F3D32836B18200DAAAF4 /* UILabel + extension.swift in Sources */,
+				3CB99F22287D746E00E1A8F0 /* PasswordTextField.swift in Sources */,
 				3CB58EF428357B03001A8DDB /* AuthorizationViewModel.swift in Sources */,
 				3CB7A5AE2875B62B000E80E8 /* SettingsViewModel.swift in Sources */,
 				3CA9D7722841207800CF88D2 /* NewObjectViewController.swift in Sources */,

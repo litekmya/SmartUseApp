@@ -41,6 +41,9 @@ class RegistrationViewController: UIViewController {
         contentView.emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         contentView.firstPassTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         contentView.secondPassTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+        contentView.firstPassTextField.showPassButton.addTarget(self, action: #selector(showPassForFirstField), for: .touchUpInside)
+        contentView.secondPassTextField.showPassButton.addTarget(self, action: #selector(showPassForSecondField), for: .touchUpInside)
     }
     
     private func checkPasswords() -> Bool {
@@ -87,6 +90,14 @@ class RegistrationViewController: UIViewController {
         } else {
             contentView.registrationButton.isEnabled = false
         }
+    }
+    
+    @objc private func showPassForFirstField() {
+        contentView.firstPassTextField.changeImageForButton()
+    }
+    
+    @objc private func showPassForSecondField() {
+        contentView.secondPassTextField.changeImageForButton()
     }
 }
 

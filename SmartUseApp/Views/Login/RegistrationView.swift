@@ -13,8 +13,19 @@ class RegistrationView: UIView {
     let registrationLabel = UILabel()
     
     let emailTextField = UITextField()
-    let firstPassTextField = UITextField()
-    let secondPassTextField = UITextField()
+    let firstPassTextField: PasswordTextField = {
+        let field = PasswordTextField()
+        field.setup(keyType: .next)
+        
+        return field
+    }()
+    
+    let secondPassTextField: PasswordTextField = {
+        let field = PasswordTextField()
+        field.setup(keyType: .done)
+        
+        return field
+    }()
     
     let registrationButton = UIButton()
     var signInWithAppleButton: ASAuthorizationAppleIDButton!
@@ -64,22 +75,9 @@ class RegistrationView: UIView {
             left: TextFieldConstants.left.rawValue
         )
         
-        firstPassTextField.customize(
-            textField: firstPassTextField,
-            view: emailTextField,
-            placeholder: PlaceholderText.password.rawValue,
-            top: TextFieldConstants.top.rawValue,
-            left: TextFieldConstants.left.rawValue
-        )
-        
-        secondPassTextField.customize(
-            textField: secondPassTextField,
-            view: firstPassTextField,
-            placeholder: PlaceholderText.password.rawValue,
-            top: TextFieldConstants.top.rawValue,
-            left: TextFieldConstants.left.rawValue
-        )
-        
+        firstPassTextField.customizeLayout(topView: emailTextField)
+        secondPassTextField.customizeLayout(topView: firstPassTextField)
+
         registrationButton.customizeCenter(
             button: registrationButton,
             height: ButtonConstants.height.rawValue,

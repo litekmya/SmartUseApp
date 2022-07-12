@@ -15,7 +15,12 @@ class AuthorizationView: UIView {
     let registrationLabel = UILabel()
     
     let emailTextField = UITextField()
-    let passwordTextField = UITextField()
+    let passwordTextField: PasswordTextField = {
+        let field = PasswordTextField()
+        field.setup(keyType: .done)
+        
+        return field
+    }()
     
     let logInButton = UIButton()
     let forgotPassButton = UIButton()
@@ -72,14 +77,7 @@ class AuthorizationView: UIView {
         )
         emailTextField.setupTextInput(emailTextField, contentType: .emailAddress)
         
-        passwordTextField.customize(
-            textField: passwordTextField,
-            view: emailTextField,
-            placeholder: PlaceholderText.password.rawValue,
-            top: TextFieldConstants.top.rawValue,
-            left: TextFieldConstants.left.rawValue
-        )
-        passwordTextField.setupTextInput(passwordTextField, contentType: .password)
+        passwordTextField.customizeLayout(topView: emailTextField)
         
         logInButton.setup(
             button: logInButton,

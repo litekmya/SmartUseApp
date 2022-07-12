@@ -34,11 +34,12 @@ class ProfileViewModel: ProfileViewModelProtocol {
     }
     
     func deleteUser() {
-        FirebaseManager.shared.deleteUserFromAuth()
-        deleteAllThingsInCoreData()
+        FirebaseManager.shared.deleteUserFromAuth { [unowned self] in
+            self.deleteAllThings()
+        }
     }
     
-    private func deleteAllThingsInCoreData() {
+    private func deleteAllThings() {
         let things = CoreDataManager.shared.fetchData()
         
         for thing in things {
