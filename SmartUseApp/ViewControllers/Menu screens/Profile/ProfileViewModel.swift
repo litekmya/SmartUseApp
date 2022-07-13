@@ -13,7 +13,8 @@ protocol ProfileViewModelProtocol {
     func getData()
     func returnNumberOfRows() -> Int
     func logOff()
-    func deleteUser()
+    func deleteUser(completion: @escaping(Bool) -> Void)
+    func deleteAllThings()
 }
 
 class ProfileViewModel: ProfileViewModelProtocol {
@@ -33,13 +34,14 @@ class ProfileViewModel: ProfileViewModelProtocol {
         FirebaseManager.shared.signOut()
     }
     
-    func deleteUser() {
-        FirebaseManager.shared.deleteUserFromAuth { [unowned self] in
-            self.deleteAllThings()
+    func deleteUser(completion: @escaping(Bool) -> Void) {
+        FirebaseManager.shared.deleteUserFromAuth { boolian in
+            print(boolian)
+            completion(boolian)
         }
     }
     
-    private func deleteAllThings() {
+    func deleteAllThings() {
         let things = CoreDataManager.shared.fetchData()
         
         for thing in things {

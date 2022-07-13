@@ -54,7 +54,7 @@ class MainViewCell: UICollectionViewCell {
             parrentView: self,
             topView: imageView,
             text: "Sometext",
-            top: -6,
+            top: 10,
             left: 8
         )
     }

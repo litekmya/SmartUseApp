@@ -26,7 +26,6 @@ class ProfileViewController: UIViewController {
         title = "Профиль"
         viewModel = ProfileViewModel()
         customizeTableView()
-        
     }
     
     deinit {
@@ -70,7 +69,7 @@ extension ProfileViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row == 0 {
-            goToVC(with: Titles.changeEmail.rawValue)
+//            goToVC(with: Titles.changeEmail.rawValue)
         } else if indexPath.row == 1 {
             goToVC(with: Titles.changePassword.rawValue)
         } else if indexPath.row == 2 {
@@ -80,7 +79,17 @@ extension ProfileViewController: UITableViewDelegate {
         } else {
             showAlert(message: "Вы уверены, что хотите удалить профиль приложения? Его нельзя будет востановить") {
                 print("Пользователь пытается удалить профиль")
-                self.viewModel.deleteUser()
+                self.viewModel.deleteUser {[unowned self] boolian in
+                    if boolian {
+                        self.viewModel.deleteAllThings()
+                        print(1)
+                    } else {
+                        print(2)
+                        self.showAlertWithOneButton {
+                            self.viewModel.logOff()
+                        }
+                    }
+                }
             }
         }
     }
@@ -106,6 +115,23 @@ extension ProfileViewController {
         
         present(alert, animated: true)
     }
+    
+    private func showAlertWithOneButton(completion: @escaping() -> Void) {
+        let alert = AlertController(
+            title: "Внимание",
+            message: "Для изменения или удаления профиля необходимо авторизоваться. Повторите попытку после повторной авторизации",
+            preferredStyle: .alert
+        )
+        alert.showAlertWithOneButton {
+            completion()
+        }
+        
+        present(alert, animated: true)
+    }
+    
+//    private func showAlertWithTextField() {
+//        let alert = AlertController(title: <#T##String?#>, message: <#T##String?#>, preferredStyle: <#T##UIAlertController.Style#>)
+//    }
 }
 
 

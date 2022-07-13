@@ -18,5 +18,35 @@ class AlertController: UIAlertController {
         addAction(okAction)
         addAction(cancelAction)
     }
+    
+    func showAlertWithOneButton(completion: @escaping() -> Void) {
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            completion()
+        }
+        
+        addAction(okAction)
+    }
+    
+    func showAlertWithTextField(placeholder: String, completion: @escaping(String, String) -> Void) {
+        let changeAction = UIAlertAction(title: "Изменить", style: .default) {[unowned self] _ in
+            guard
+                let firstText = self.textFields?.first?.text,
+                let secondText = self.textFields?.last?.text
+            else { return }
+            
+            completion(firstText, secondText)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        addTextField { textField in
+            textField.placeholder = placeholder
+        }
+        addTextField { textField in
+            textField.placeholder = placeholder
+        }
+        
+        addAction(changeAction)
+        addAction(cancelAction)
+    }
 }
 

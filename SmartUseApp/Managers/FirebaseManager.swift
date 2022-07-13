@@ -53,8 +53,7 @@ class FirebaseManager {
                 completion(error)
             }
             
-            guard let result = result else { return }
-            print(result.user.uid)
+//            guard let result = result else { return }
             completion(error)
         }
     }
@@ -74,7 +73,7 @@ class FirebaseManager {
             if let error = error {
                 print("Error Firebase/recoverPass: \(error.localizedDescription)")
             } else {
-                print("Востановление пользователя")
+                print("Востановление пароля")
             }
             
             completion(error)
@@ -98,15 +97,16 @@ class FirebaseManager {
     }
     
     //MARK: - Delete user
-    func deleteUserFromAuth(completion: @escaping() -> Void) {
+    func deleteUserFromAuth(completion: @escaping(Bool) -> Void) {
         user?.delete(completion: {[unowned self] error in
             if let error = error {
                 print("Ошибка при удалении профиля: \(error.localizedDescription)")
-                self.signOut()
+                completion(false)
+//                self.signOut()
             } else {
                 self.deleteUserFromRealTimeDatabase()
                 print("Профиль пользователя был удален из Firebase/Authorization")
-                completion()
+                completion(true)
             }
         })
     }

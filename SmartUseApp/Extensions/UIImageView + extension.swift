@@ -18,6 +18,6 @@ extension UIImageView {
         }
         
         imageView.layer.cornerRadius = CGFloat(height / 2)
-        imageView.backgroundColor = .blue
+//        imageView.backgroundColor = .blue
     }
 }
