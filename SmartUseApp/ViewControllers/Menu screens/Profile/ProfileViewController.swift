@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     
     private var tableView: UITableView!
     private let identifier = "Cell"
+    private let logOffMessage = "Для изменения или удаления профиля необходимо авторизоваться. Повторите попытку после повторной авторизации"
 
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -69,38 +70,50 @@ extension ProfileViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row == 0 {
-//            goToVC(with: Titles.changeEmail.rawValue)
+            showAlertWithTextField(placeholder: "Email") { email in
+                self.viewModel.change(email: email) { error in
+                    self.check(error: error) {
+                        
+                    }
+                }
+            }
         } else if indexPath.row == 1 {
-            goToVC(with: Titles.changePassword.rawValue)
+            showAlertWithTextField(placeholder: "Password") {[unowned self] password in
+                self.viewModel.change(password: password) { error in
+                    print(error)
+                }
+            }
         } else if indexPath.row == 2 {
             showAlert(message: "Вы пытаетесь выйти из профиля. Продолжить?") {
                 self.viewModel.logOff()
             }
         } else {
-            showAlert(message: "Вы уверены, что хотите удалить профиль приложения? Его нельзя будет востановить") {
-                print("Пользователь пытается удалить профиль")
-                self.viewModel.deleteUser {[unowned self] boolian in
+            showAlert(message: "Вы уверены, что хотите удалить профиль приложения? Его нельзя будет востановить") {[unowned self] in
+                self.viewModel.deleteUser { boolian in
                     if boolian {
                         self.viewModel.deleteAllThings()
-                        print(1)
                     } else {
-                        print(2)
-                        self.showAlertWithOneButton {
-                            self.viewModel.logOff()
-                        }
+                        self.repeatAuthoriation()
                     }
                 }
             }
         }
     }
     
-    private func goToVC(with title: String) {
-        let controller = PassRecoveryViewController()
-        controller.modalPresentationStyle = .fullScreen
-        controller.contentView.titleLabel.text = title
-//        controller.contentView.imageView.image = UIImage() Менять картинку при переходе
-        
-        present(controller, animated: true)
+    private func repeatAuthoriation() {
+        showAlertWithOneButton(message: logOffMessage) { [unowned self] in
+            self.viewModel.logOff()
+        }
+    }
+    
+    private func check(error: Error?, completion: () -> Void) {
+        if error != nil {
+            showAlertWithOneButton(message: logOffMessage) { [unowned self] in
+                self.viewModel.logOff()
+            }
+        } else {
+            completion()
+        }
     }
 }
 
@@ -116,10 +129,10 @@ extension ProfileViewController {
         present(alert, animated: true)
     }
     
-    private func showAlertWithOneButton(completion: @escaping() -> Void) {
+    private func showAlertWithOneButton(message: String, completion: @escaping() -> Void) {
         let alert = AlertController(
             title: "Внимание",
-            message: "Для изменения или удаления профиля необходимо авторизоваться. Повторите попытку после повторной авторизации",
+            message: message,
             preferredStyle: .alert
         )
         alert.showAlertWithOneButton {
@@ -129,9 +142,21 @@ extension ProfileViewController {
         present(alert, animated: true)
     }
     
-//    private func showAlertWithTextField() {
-//        let alert = AlertController(title: <#T##String?#>, message: <#T##String?#>, preferredStyle: <#T##UIAlertController.Style#>)
-//    }
+    private func showAlertWithTextField(placeholder: String, completion: @escaping( String) -> Void) {
+        let alert = AlertController(title: "Введите новые данные", message: "", preferredStyle: .alert)
+        
+        alert.showAlertWithTextField(placeholder: placeholder) { text, secondText in
+            if !self.viewModel.checkForIdentity(firstPass: text, secondPass: secondText) {
+                self.showAlertWithOneButton(message: AlertError.passwordMismatch.rawValue) {}
+            } else if !self.viewModel.check(password: text) {
+                self.showAlertWithOneButton(message: AlertError.shortPassword.rawValue) {}
+            } else {
+                completion(text)
+            }
+        }
+        
+        present(alert, animated: true)
+    }
 }
 
 

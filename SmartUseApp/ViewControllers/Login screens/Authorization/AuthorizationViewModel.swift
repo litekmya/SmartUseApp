@@ -9,7 +9,8 @@ import Foundation
 import AuthenticationServices
 
 protocol AuthorizationViewModelProtocol {
-
+    
+    func checkFieldsForFullness(email: String, password: String) -> Bool
     func logIn(email: String, password: String, completion: @escaping (Error?) -> Void)
     func logInWithApple(delegate: ASAuthorizationControllerDelegate, contextController: ASAuthorizationControllerPresentationContextProviding)
     func getNonce() -> String?
@@ -17,6 +18,14 @@ protocol AuthorizationViewModelProtocol {
 }
 
 class AuthorizationViewModel: AuthorizationViewModelProtocol {
+    
+    func checkFieldsForFullness(email: String, password: String) -> Bool {
+        if Validator.shared.checkFullness(first: email, second: password, third: "some") {
+            return true
+        }
+        
+        return false
+    }
 
     func logIn(email: String, password: String, completion: @escaping (Error?) -> Void) {
         FirebaseManager.shared.signIn(with: email, and: password) { error in

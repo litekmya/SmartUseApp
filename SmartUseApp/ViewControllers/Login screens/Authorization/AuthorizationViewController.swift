@@ -80,11 +80,11 @@ class AuthorizationViewController: UIViewController {
     }
     
     @objc private func textFieldDidChange() {
-        if (contentView.emailTextField.text != "" && contentView.passwordTextField.text != "") {
-            contentView.logInButton.isEnabled = true
-        } else {
-            contentView.logInButton.isEnabled = false
-        }
+        let isEnabled = viewModel.checkFieldsForFullness(
+            email: contentView.emailTextField.text ?? "",
+            password: contentView.passwordTextField.text ?? ""
+        )
+        contentView.logInButton.isEnabled = isEnabled
     }
     
     @objc private func goToPassRecovery() {

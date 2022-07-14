@@ -9,6 +9,11 @@ import Foundation
 import Firebase
 import FirebaseStorage
 
+enum AuthResult {
+    case success
+    case failure(Error)
+}
+
 class FirebaseManager {
     
     static let shared = FirebaseManager()
@@ -27,11 +32,12 @@ class FirebaseManager {
     
     //MARK: - Auth
     func createUser(with email: String, and password: String) {
+        
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("Error Firebase/createUser: \(error.localizedDescription)")
             }
-            
+                        
             guard let result = result else { return }
             
             Database.database().reference().child("users").child(result.user.uid).updateChildValues(["email": email, "password": password])
@@ -53,7 +59,6 @@ class FirebaseManager {
                 completion(error)
             }
             
-//            guard let result = result else { return }
             completion(error)
         }
     }
@@ -80,19 +85,25 @@ class FirebaseManager {
         }
     }
     
-    func change(password: String) {
+    func change(password: String, completion: @escaping(Error?) -> Void) {
+        databaseReference.updateChildValues(["password": password])
+        
         user.updatePassword(to: password, completion: { error in
             if let error = error {
                 print("Ошибка при смене пароля: \(error.localizedDescription)")
             }
+            
+            completion(error)
         })
     }
     
-    func change(email: String) {
+    func change(email: String, completion: @escaping(Error?) -> Void) {
         user.updateEmail(to: email, completion: { error in
             if let error = error {
                 print("Ошибка при смене email: \(error.localizedDescription)")
             }
+            
+            completion(error)
         })
     }
     
@@ -102,7 +113,6 @@ class FirebaseManager {
             if let error = error {
                 print("Ошибка при удалении профиля: \(error.localizedDescription)")
                 completion(false)
-//                self.signOut()
             } else {
                 self.deleteUserFromRealTimeDatabase()
                 print("Профиль пользователя был удален из Firebase/Authorization")
@@ -161,8 +171,6 @@ class FirebaseManager {
             .delete { error in
             if let error = error {
                 print("Ошибка при удалении изображения из FirebaseStorage: \(error.localizedDescription)")
-            } else {
-                print("\(thing.name) image был удален")
             }
         }
     }

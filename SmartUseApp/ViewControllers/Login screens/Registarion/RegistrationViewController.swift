@@ -46,26 +46,40 @@ class RegistrationViewController: UIViewController {
         contentView.secondPassTextField.showPassButton.addTarget(self, action: #selector(showPassForSecondField), for: .touchUpInside)
     }
     
-    private func checkPasswords() -> Bool {
-        guard let text = contentView.emailTextField.text else { return false }
+    private func checkPasswords() -> (Bool) {
+        guard let email = contentView.emailTextField.text else { return false }
+        guard let firstPass = contentView.firstPassTextField.text else { return false }
+        guard let secondPass = contentView.secondPassTextField.text else { return false }
+        var passedExam = true
         
-        if contentView.firstPassTextField.text != contentView.secondPassTextField.text {
-            reportAnError(text: ErrorText.passRegError.rawValue)
-            print("Пароли не совпадают")
-            return false
-        } else if contentView.firstPassTextField.text?.count ?? 0 < 5 {
-            reportAnError(text: ErrorText.incorrectPassError.rawValue)
-            print("Пароль должен содержать не менее 6 знаков")
-            return false
-        } else if !text.contains("@") {
-            reportAnError(text: ErrorText.emailRecoveryError.rawValue)
-            print("Введен некоректный email адрес")
-            return false
-        } else {
-            contentView.errorLabel.isHidden = true
-            
-            return true
+        viewModel.check(email: email) { result in
+            switch result {
+            case .success: break
+            case .failure(let error):
+                self.reportAnError(text: error.localizedDescription)
+                passedExam = false
+            }
         }
+        
+        viewModel.check(password: firstPass) { result in
+            switch result {
+            case .success: break
+            case .failure(let error):
+                self.reportAnError(text: error.localizedDescription)
+                passedExam = false
+            }
+        }
+        
+        viewModel.checkForIdentity(firstPass: firstPass, secondPass: secondPass) { result in
+            switch result {
+            case .success: break
+            case .failure(let error):
+                self.reportAnError(text: error.localizedDescription)
+                passedExam = false
+            }
+        }
+        
+        return passedExam
     }
     
     private func reportAnError(text: String) {
@@ -80,16 +94,19 @@ class RegistrationViewController: UIViewController {
     @objc private func registerUser() {
         if checkPasswords() {
             print("Пользователь пытается зарегистрироваться")
-            viewModel.register(email: contentView.emailTextField.text ?? "", password: contentView.firstPassTextField.text ?? "")
+            viewModel.register(email: contentView.emailTextField.text ?? "", password: contentView.firstPassTextField.text ?? "") { authResult in
+                    
+            }
         }
     }
     
     @objc private func textFieldDidChange() {
-        if (contentView.emailTextField.text != "" && contentView.firstPassTextField.text != "" && contentView.secondPassTextField.text != "") {
-            contentView.registrationButton.isEnabled = true
-        } else {
-            contentView.registrationButton.isEnabled = false
-        }
+        let isEnabled = viewModel.checkFieldsForFullness(
+            email: contentView.emailTextField.text ?? "",
+            fisrtPass: contentView.firstPassTextField.text ?? "",
+            secondPass: contentView.secondPassTextField.text ?? "")
+        
+        contentView.registrationButton.isEnabled = isEnabled
     }
     
     @objc private func showPassForFirstField() {

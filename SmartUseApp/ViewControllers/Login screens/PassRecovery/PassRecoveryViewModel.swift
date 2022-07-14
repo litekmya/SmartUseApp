@@ -8,27 +8,24 @@
 import Foundation
 
 protocol PassRecoveryViewModelProtocol {
-    
+    func check(email: String) -> Bool
     func recoverPass(with email: String, completion: @escaping(Error?) -> Void)
-    func change(password: String)
-    func change(email: String)
 }
 
 class PassRecoveryViewModel: PassRecoveryViewModelProtocol {
     
     private let firebaseManager = FirebaseManager.shared
     
+    func check(email: String) -> Bool {
+        if Validator.shared.check(email: email) {
+            return true
+        }
+        return false
+    }
+    
     func recoverPass(with email: String, completion: @escaping(Error?) -> Void) {
         firebaseManager.recoverPassword(with: email) { error in
             completion(error)
         }
-    }
-    
-    func change(password: String) {
-        firebaseManager.change(password: password)
-    }
-    
-    func change(email: String) {
-        firebaseManager.change(email: email)
     }
 }

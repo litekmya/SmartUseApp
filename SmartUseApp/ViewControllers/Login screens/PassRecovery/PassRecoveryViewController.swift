@@ -47,7 +47,7 @@ class PassRecoveryViewController: UIViewController {
     }
 
     //MARK: - @objc
-    @objc private func resetPassButtonAction() {
+    @objc private func resetPassButtonAction() { // Исправить данный метод
         contentView.activityindicator.startAnimating()
         
         guard let title = contentView.titleLabel.text else {
@@ -55,12 +55,14 @@ class PassRecoveryViewController: UIViewController {
             return
         }
         
-        switch Titles(rawValue: title) {
-        case .passRecovery:
-            recoverPass()
-        case .changeEmail: break
-        case .changePassword: break
-        case .none: break
+        if viewModel.check(email: contentView.emailTextField.text ?? "") {
+            switch Titles(rawValue: title) {
+            case .passRecovery:
+                recoverPass()
+            case .changeEmail: break
+            case .changePassword: break
+            case .none: break
+            }
         }
     }
 }
