@@ -7,12 +7,6 @@
 
 import UIKit
 
-enum Titles: String {
-    case passRecovery = "Сброс пароля"
-    case changePassword = "Изменение пароля"
-    case changeEmail = "Изменение email"
-}
-
 class PassRecoveryViewController: UIViewController {
     
     //MARK: - Private properties
@@ -30,40 +24,38 @@ class PassRecoveryViewController: UIViewController {
         view.addSubview(contentView)
         view.backgroundColor = .white
         
+        customizeContentView()
+    }
+    
+    private func customizeContentView() {
         contentView.frame = view.frame
         contentView.resetPassButton.addTarget(self, action: #selector(resetPassButtonAction), for: .touchUpInside)
+        contentView.emailTextField.delegate = self
+        contentView.emailTextField.becomeFirstResponder()
     }
     
     private func recoverPass() {
-        viewModel.recoverPass(with: contentView.emailTextField.text ?? "") { error in
+        viewModel.recoverPass(with: contentView.emailTextField.text ?? "") { [unowned self] error in
             if error != nil {
-                self.contentView.errorLabel.isHidden = false
-                self.contentView.activityindicator.stopAnimating()
+                self.showErrorLabel()
             } else {
-                print("Dismiss")
-                self.dismiss(animated: true, completion: nil)
+                showAlert {
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
     }
+    
+    private func showErrorLabel() {
+        contentView.errorLabel.text = AlertError.invalidEmail.rawValue
+        contentView.errorLabel.isHidden = false
+        contentView.activityindicator.stopAnimating()
+    }
 
     //MARK: - @objc
-    @objc private func resetPassButtonAction() { // Исправить данный метод
+    @objc private func resetPassButtonAction() {
         contentView.activityindicator.startAnimating()
-        
-        guard let title = contentView.titleLabel.text else {
-            print("Ошибка при присвоении значения в PassRecovery/titleLabel")
-            return
-        }
-        
-        if viewModel.check(email: contentView.emailTextField.text ?? "") {
-            switch Titles(rawValue: title) {
-            case .passRecovery:
-                recoverPass()
-            case .changeEmail: break
-            case .changePassword: break
-            case .none: break
-            }
-        }
+        recoverPass()
     }
 }
 
@@ -76,9 +68,23 @@ extension PassRecoveryViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == contentView.emailTextField {
+            contentView.emailTextField.resignFirstResponder()
             resetPassButtonAction()
         }
 
         return true
+    }
+}
+
+extension PassRecoveryViewController {
+    
+    private func showAlert(completion: @escaping() -> Void) {
+        let alert = AlertController(title: "Ссылка для сброса пароля была отправлена на email",
+                                    message: "",
+                                    preferredStyle: .alert)
+        alert.showAlertWithOneButton {
+            completion()
+        }
+        present(alert, animated: true)
     }
 }
