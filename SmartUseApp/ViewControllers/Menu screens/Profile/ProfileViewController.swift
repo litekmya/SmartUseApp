@@ -70,17 +70,19 @@ extension ProfileViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row == 0 {
-            showAlertWithTextField(placeholder: "Email") { email in
+            showAlertWithOneTextField(placeholder: "New email") {[unowned self] email in
                 self.viewModel.change(email: email) { error in
                     self.check(error: error) {
-                        
+                        self.showAlertWithOneButton(message: "Email был успешно изменен") {}
                     }
                 }
             }
         } else if indexPath.row == 1 {
-            showAlertWithTextField(placeholder: "Password") {[unowned self] password in
+            showAlertWithTwoTextField(placeholder: "New password") {[unowned self] password in
                 self.viewModel.change(password: password) { error in
-                    print(error)
+                    self.check(error: error) {
+                        self.showAlertWithOneButton(message: "Пароль был успешно изменен") {}
+                    }
                 }
             }
         } else if indexPath.row == 2 {
@@ -130,11 +132,7 @@ extension ProfileViewController {
     }
     
     private func showAlertWithOneButton(message: String, completion: @escaping() -> Void) {
-        let alert = AlertController(
-            title: "Внимание",
-            message: message,
-            preferredStyle: .alert
-        )
+        let alert = AlertController(title: "Внимание", message: message, preferredStyle: .alert)
         alert.showAlertWithOneButton {
             completion()
         }
@@ -142,16 +140,29 @@ extension ProfileViewController {
         present(alert, animated: true)
     }
     
-    private func showAlertWithTextField(placeholder: String, completion: @escaping( String) -> Void) {
+    private func showAlertWithTwoTextField(placeholder: String, completion: @escaping( String) -> Void) {
         let alert = AlertController(title: "Введите новые данные", message: "", preferredStyle: .alert)
         
-        alert.showAlertWithTextField(placeholder: placeholder) { text, secondText in
+        alert.showAlertWithTwoTextField(placeholder: placeholder) { text, secondText in
             if !self.viewModel.checkForIdentity(firstPass: text, secondPass: secondText) {
                 self.showAlertWithOneButton(message: AlertError.passwordMismatch.rawValue) {}
             } else if !self.viewModel.check(password: text) {
                 self.showAlertWithOneButton(message: AlertError.shortPassword.rawValue) {}
             } else {
                 completion(text)
+            }
+        }
+        
+        present(alert, animated: true)
+    }
+    
+    private func showAlertWithOneTextField(placeholder: String, completion: @escaping(String) -> Void) {
+        let alert = AlertController(title: "Введите новые данные", message: "", preferredStyle: .alert)
+        alert.showAlertWithOneTextField(placeholder: placeholder) {[unowned self] text in
+            if self.viewModel.check(email: text) {
+                completion(text)
+            } else {
+                self.showAlertWithOneButton(message: AlertError.invalidEmail.rawValue) {}
             }
         }
         

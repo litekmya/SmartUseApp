@@ -27,7 +27,7 @@ class AlertController: UIAlertController {
         addAction(okAction)
     }
     
-    func showAlertWithTextField(placeholder: String, completion: @escaping(String, String) -> Void) {
+    func showAlertWithTwoTextField(placeholder: String, completion: @escaping(String, String) -> Void) {
         let changeAction = UIAlertAction(title: "Изменить", style: .default) {[unowned self] _ in
             guard
                 let firstText = self.textFields?.first?.text,
@@ -41,6 +41,21 @@ class AlertController: UIAlertController {
         addTextField { textField in
             textField.placeholder = placeholder
         }
+        addTextField { textField in
+            textField.placeholder = placeholder
+        }
+        
+        addAction(changeAction)
+        addAction(cancelAction)
+    }
+    
+    func showAlertWithOneTextField(placeholder: String, completion: @escaping(String) -> Void) {
+        let changeAction = UIAlertAction(title: "Изменить", style: .default) { _ in
+            guard let text = self.textFields?.first?.text else { return }
+            completion(text)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
         addTextField { textField in
             textField.placeholder = placeholder
         }

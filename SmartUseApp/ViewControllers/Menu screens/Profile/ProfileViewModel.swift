@@ -31,7 +31,6 @@ class ProfileViewModel: ProfileViewModelProtocol {
     
     func getData() {
         profileChanges = ProfileChange.getData()
-        
     }
     
     func returnNumberOfRows() -> Int {

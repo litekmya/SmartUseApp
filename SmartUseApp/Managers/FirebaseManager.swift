@@ -98,6 +98,7 @@ class FirebaseManager {
     }
     
     func change(email: String, completion: @escaping(Error?) -> Void) {
+        databaseReference.updateChildValues(["email": email])
         user.updateEmail(to: email, completion: { error in
             if let error = error {
                 print("Ошибка при смене email: \(error.localizedDescription)")
