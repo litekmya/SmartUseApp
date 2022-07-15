@@ -14,7 +14,13 @@ class AuthorizationView: UIView {
     let authLabel = UILabel()
     let registrationLabel = UILabel()
     
-    let emailTextField = UITextField()
+    let emailTextField: UITextField = {
+        let field = UITextField()
+        field.setupTextInput(placeholderText: "Email", contentType: .emailAddress, keyboard: .emailAddress)
+        
+        return field
+    }()
+    
     let passwordTextField: PasswordTextField = {
         let field = PasswordTextField()
         field.setup(keyType: .done)
@@ -22,13 +28,37 @@ class AuthorizationView: UIView {
         return field
     }()
     
-    let logInButton = UIButton()
-    let forgotPassButton = UIButton()
-    let registrationButton = UIButton()
+    let logInButton: UIButton = {
+        let button = UIButton()
+        button.setup(title: Text.logInButtonTitle.rawValue, buttonIsEnabled: false)
+        button.customizeCenter(height: ButtonConstants.height.rawValue, width: ButtonConstants.wigth.rawValue)
+        
+        return button
+    }()
+    let forgotPassButton: UIButton = {
+        let button = UIButton()
+        button.setup(title: Text.forgotPassButonTitle.rawValue, buttonIsEnabled: true)
+        button.customizeCenter(height: ButtonConstants.height.rawValue, width: 250)
+        
+        return button
+    }()
+    let registrationButton: UIButton = {
+        let button = UIButton()
+        button.setup(title: Text.registrationButtonTitle.rawValue, buttonIsEnabled: true)
+        button.customizeCenter(height: ButtonConstants.height.rawValue, width: 250)
+        
+        return button
+    }()
     let errorLabel = UILabel()
     var signInWithAppleButton: ASAuthorizationAppleIDButton!
     
-    var activityIndicator = UIActivityIndicatorView()
+    var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.hidesWhenStopped = true
+        indicator.style = .large
+        
+        return indicator
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,113 +82,63 @@ class AuthorizationView: UIView {
         addSubview(errorLabel)
         addSubview(activityIndicator)
         
-        imageView.customize(
-            imageView: imageView,
-            view: self,
-            top: ImageConstants.topAndHeight.rawValue,
-            height: ImageConstants.topAndHeight.rawValue
-        )
-        
+        customizeImageView()
+        customizeLabels()
+        customizeTextFields()
+        customizeButtons()
+        customizeIndictor()
+    }
+    
+    private func customizeImageView() {
+        imageView.customize(from: self)
+    }
+    
+    private func customizeLabels() {
         authLabel.customize(
-            label: authLabel,
             parrentView: self,
             topView: imageView,
-            text: Text.auth.rawValue,
+            newText: Text.auth.rawValue,
             top: LabelsConstants.top.rawValue,
             left: LabelsConstants.left.rawValue
-        )
-        
-        emailTextField.customize(
-            textField: emailTextField,
-            view: authLabel,
-            placeholder: PlaceholderText.email.rawValue,
-            top: TextFieldConstants.top.rawValue,
-            left: TextFieldConstants.left.rawValue
-        )
-        emailTextField.setupTextInput(emailTextField, contentType: .emailAddress)
-        
-        passwordTextField.customizeLayout(topView: emailTextField)
-        
-        logInButton.setup(
-            button: logInButton,
-            title: Text.logInButtonTitle.rawValue,
-            isEnabled: false
-        )
-        
-        logInButton.customizeCenter(
-            button: logInButton,
-            height: ButtonConstants.height.rawValue,
-            width: ButtonConstants.wigth.rawValue
-        )
-        
-        logInButton.adjust(
-            button: logInButton,
-            view: passwordTextField,
-            top: ButtonConstants.centerTop.rawValue,
-            bottom: nil
-        )
-        
-        forgotPassButton.setup(
-            button: forgotPassButton,
-            title: Text.forgotPassButonTitle.rawValue,
-            isEnabled: true
-        )
-        
-        forgotPassButton.customizeCenter(
-            button: forgotPassButton,
-            height: ButtonConstants.height.rawValue,
-            width: 250
-        )
-        
-        forgotPassButton.adjust(
-            button: forgotPassButton,
-            view: logInButton,
-            top: ButtonConstants.centerTop.rawValue,
-            bottom: nil
         )
         
         registrationLabel.customize(
-            label: registrationLabel,
             parrentView: self,
             topView: forgotPassButton,
-            text: Text.registratonLabelText.rawValue,
+            newText: Text.registratonLabelText.rawValue,
             top: LabelsConstants.top.rawValue,
             left: LabelsConstants.left.rawValue
         )
         
-        registrationButton.setup(
-            button: registrationButton,
-            title: Text.registrationButtonTitle.rawValue,
-            isEnabled: true
-        )
-        
-        registrationButton.customizeCenter(
-            button: registrationButton,
-            height: ButtonConstants.height.rawValue,
-            width: 250
-        )
-        
-        registrationButton.adjust(button: registrationButton, view: registrationLabel, top: 8, bottom: nil)
-        
         errorLabel.customize(
-            label: errorLabel,
             parrentView: self,
             topView: registrationButton,
-            text: Text.errorLabelText.rawValue,
+            newText: Text.errorLabelText.rawValue,
             top: -15,
             left: LabelsConstants.left.rawValue
         )
-        errorLabel.textColor = .red //Скрыть
+        errorLabel.textColor = .red
+    }
+    
+    private func customizeTextFields() {
+        emailTextField.customize(topView: authLabel)
+        passwordTextField.customizeLayout(topView: emailTextField)
+    }
+    
+    private func customizeButtons() {
+        logInButton.adjustOnAxisY(view: passwordTextField, top: ButtonConstants.centerTop.rawValue, bottom: nil)
+        forgotPassButton.adjustOnAxisY(view: forgotPassButton, top: ButtonConstants.centerTop.rawValue, bottom: nil)
+        registrationButton.adjustOnAxisY(view: registrationLabel, top: 8, bottom: nil)
         
         signInWithAppleButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
         addSubview(signInWithAppleButton)
-        signInWithAppleButton.setupLayout(button: signInWithAppleButton, with: self)
-        
+        signInWithAppleButton.setupLayout(from: self)
+    }
+    
+    private func customizeIndictor() {
         activityIndicator.snp.makeConstraints { make in
             make.centerX.equalTo(self)
             make.centerY.equalTo(self)
         }
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = .large
     }
 }

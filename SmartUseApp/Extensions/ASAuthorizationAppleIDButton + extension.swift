@@ -10,8 +10,8 @@ import AuthenticationServices
 
 extension ASAuthorizationAppleIDButton {
 
-    func setupLayout(button: ASAuthorizationAppleIDButton, with view: UIView){
-        button.snp.makeConstraints { make in
+    func setupLayout(from view: UIView){
+        snp.makeConstraints { make in
             make.bottom.equalTo(view).inset(30)
             make.centerX.equalTo(view)
             make.width.equalTo(300)

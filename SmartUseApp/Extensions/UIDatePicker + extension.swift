@@ -9,11 +9,11 @@ import UIKit
 
 extension UIDatePicker {
     
-    func customize(datePicker: UIDatePicker, view: UIView, dateLabel: UILabel) {
-        datePicker.snp.makeConstraints { make in
-            make.trailing.equalTo(view.snp.trailing).inset(30)
+    func customize(parentView: UIView, dateLabel: UILabel) {
+        snp.makeConstraints { make in
+            make.trailing.equalTo(parentView.snp.trailing).inset(30)
             make.centerY.equalTo(dateLabel)
         }
-        datePicker.datePickerMode = .date
+        datePickerMode = .date
     }
 }

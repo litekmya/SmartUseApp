@@ -14,95 +14,39 @@ protocol NewObjectViewControllerDelegate: AnyObject {
 class NewObjectViewController: UIViewController, UINavigationControllerDelegate {
             
     //MARK: - Private properties
-    private let imageView = UIImageView()
-    private let nameTextField = UITextField()
-    private let costTextField = UITextField()
-    
-    private var dateLabel = UILabel()
-    private let datePicker = UIDatePicker()
+    private let contentView = NewObjectView()
     
     private var dismissButton: UIBarButtonItem!
     private var saveButton: UIBarButtonItem!
-    private var addImageButton = UIButton()
     
     var viewModel: NewObjectViewModelProtocol!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        customizeView()
-        addSubviews()
-        customizeUI()
-        
         viewModel = NewObjectViewModel()
     }
     
+    override func viewDidLayoutSubviews() {
+        customizeUI()
+    }
+    
     //MARK: - Private methods
-    private func customizeView() {
+    private func customizeUI() {
         view.backgroundColor = .white
         title = "someTitle"
-    }
-    
-    private func addSubviews() {
-        view.addSubview(imageView)
-        view.addSubview(addImageButton)
-        view.addSubview(nameTextField)
-        view.addSubview(costTextField)
-        view.addSubview(dateLabel)
-        view.addSubview(datePicker)
-    }
-    
-    private func customizeUI() {
-        imageView.customize(
-            imageView: imageView,
-            view: view,
-            top: ImageConstants.topAndHeight.rawValue,
-            height: 150
-        )
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        view.addSubview(contentView)
         
-        customizeTextFields()
-        customizeDateObjects()
+        customizeContentView()
         setupButtons()
+        addTargetsAndDelegates()
     }
     
-    private func customizeTextFields() {
-        nameTextField.customize(
-            textField: nameTextField,
-            view: imageView,
-            placeholder: PlaceholderText.name.rawValue,
-            top: TextFieldConstants.top.rawValue,
-            left: TextFieldConstants.left.rawValue
-        )
-        nameTextField.setupTextInput(nameTextField, contentType: .name)
-        nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .allEditingEvents)
-        
-        costTextField.customize(
-            textField: costTextField,
-            view: nameTextField,
-            placeholder: PlaceholderText.cost.rawValue,
-            top: TextFieldConstants.top.rawValue,
-            left: TextFieldConstants.left.rawValue
-        )
-        costTextField.setupTextInput(costTextField, contentType: .telephoneNumber)
-        costTextField.keyboardType = .numberPad
-        costTextField.addTarget(self, action: #selector(textFieldDidChange), for: .allEditingEvents)
-    }
-    
-    private func customizeDateObjects() {
-        dateLabel.customizeDate(label: dateLabel, view: view, topView: costTextField)
-        datePicker.customize(datePicker: datePicker, view: view, dateLabel: dateLabel)
+    private func customizeContentView() {
+        contentView.frame = view.frame
     }
     
     private func setupButtons() {
-        addImageButton.snp.makeConstraints { make in
-            make.center.equalTo(imageView)
-            make.width.equalTo(ImageConstants.topAndHeight.rawValue)
-            make.height.equalTo(ImageConstants.topAndHeight.rawValue)
-        }
-        addImageButton.addTarget(self, action: #selector(addImageButtonAction), for: .touchUpInside)
-       
         dismissButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissButtonAction))
         saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
         saveButton.isEnabled = false
@@ -111,29 +55,32 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
         navigationItem.leftBarButtonItem = dismissButton
     }
     
+    private func addTargetsAndDelegates() {
+        contentView.addImageButton.addTarget(self, action: #selector(addImageButtonAction), for: .touchUpInside)
+        contentView.nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        contentView.costTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+        contentView.nameTextField.delegate = self
+        contentView.costTextField.delegate = self
+    }
+    
     //MARK: - @objc
     @objc private func dismissButtonAction() {
         dismiss(animated: true)
     }
     
     @objc private func saveButtonAction() {
-        print("Нажата кнопка сохранения")
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .none
         dateFormatter.dateStyle = .short
+        let dateString = dateFormatter.string(from: contentView.datePicker.date)
         
-        let dateString = dateFormatter.string(from: datePicker.date)
-        guard let imageData = imageView.image?.pngData() else {
-            print("Не получилось преобразовать image")
-            return }
-        
-        viewModel.save(
-            name: nameTextField.text ?? "",
-            cost: costTextField.text ?? "",
-            date: dateString, urlString: "",
-            imageData: imageData
-        )
-        
+        guard let imageData = contentView.imageView.image?.pngData() else { return }
+        guard let name = contentView.nameTextField.text else { return }
+        guard let cost = contentView.costTextField.text else { return }
+
+        viewModel.save(name: name, cost: cost, date: dateString, urlString: "", imageData: imageData)
+
         self.dismiss(animated: true)
     }
     
@@ -150,11 +97,10 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
     }
     
     @objc func textFieldDidChange() {
-        if nameTextField.text != "" && costTextField.text != "" {
-            saveButton.isEnabled = true
-        } else {
-            saveButton.isEnabled = false
-        }
+        let isEnabled = viewModel.checkFieldsForFullness(name: contentView.nameTextField.text ?? "",
+                                                         cost: contentView.costTextField.text ?? "")
+        
+        saveButton.isEnabled = isEnabled
     }
 }
 
@@ -163,7 +109,7 @@ extension NewObjectViewController: NewObjectViewControllerDelegate {
     
     func update(image: UIImage) {
         print(image.size)
-        imageView.image = image
+        contentView.imageView.image = image
         print("delegate сработал")
     }
 }
@@ -175,5 +121,12 @@ extension NewObjectViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == contentView.nameTextField {
+            contentView.nameTextField.resignFirstResponder()
+            contentView.costTextField.becomeFirstResponder()
+        }
+        
+        return true
+    }
 }

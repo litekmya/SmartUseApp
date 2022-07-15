@@ -55,10 +55,9 @@ class AcquaintanceViewCell: UICollectionViewCell {
         titleLabel.font = UIFont.systemFont(ofSize: 24)
         
         textLabel.customize(
-            label: textLabel,
             parrentView: self,
             topView: titleLabel,
-            text: "viewModel.text",
+            newText: "viewModel.text",
             top: 71,
             left: 16
         )

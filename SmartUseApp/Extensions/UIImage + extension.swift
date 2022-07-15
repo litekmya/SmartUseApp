@@ -9,10 +9,10 @@ import UIKit
 
 extension UIImage {
     
-    func resize(image: UIImage, scaledTo newSize: CGSize) -> UIImage {
+    func resize(scaledTo newSize: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(newSize, false, 1)
         
-        image.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
         guard let scaledImage = UIGraphicsGetImageFromCurrentImageContext() else { return UIImage()}
         
         UIGraphicsEndImageContext()

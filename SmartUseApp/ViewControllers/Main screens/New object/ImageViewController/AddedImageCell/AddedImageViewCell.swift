@@ -15,14 +15,7 @@ class AddedImageViewCell: UICollectionViewCell {
         }
     }
     
-    private var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.layer.cornerRadius = CGFloat(ImageConstants.topAndHeight.rawValue / 2)
-        imageView.backgroundColor = .red
-        imageView.clipsToBounds = true
-        
-        return imageView
-    }()
+    private var imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

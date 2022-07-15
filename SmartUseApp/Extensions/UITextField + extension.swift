@@ -10,21 +10,21 @@ import SnapKit
 
 extension UITextField {
     
-    func customize(textField: UITextField, view: UIView, placeholder: String, top: Int, left: Int) {
-        textField.snp.makeConstraints { maker in
+    func customize(topView: UIView) {
+        snp.makeConstraints { maker in
             maker.left.right.equalToSuperview().inset(32)
-            maker.top.equalTo(view.snp.bottom).inset(-16)
+            maker.top.equalTo(topView.snp.bottom).inset(-16)
         }
-        
-        textField.placeholder = placeholder
-        textField.borderStyle = .roundedRect
-        textField.clearButtonMode = .always
     }
     
-    func setupTextInput(_ textField: UITextField, contentType: UITextContentType) {
-        textField.textContentType = contentType
-        textField.returnKeyType = .done
-        textField.autocapitalizationType = .none
-        textField.autocorrectionType = .no
+    func setupTextInput(placeholderText: String, contentType: UITextContentType, keyboard: UIKeyboardType) {
+        textContentType = contentType
+        keyboardType = keyboard
+        returnKeyType = .done
+        autocapitalizationType = .none
+        autocorrectionType = .no
+        placeholder = placeholderText
+        borderStyle = .roundedRect
+        clearButtonMode = .always
     }
 }

@@ -10,14 +10,11 @@ import SnapKit
 
 extension UIImageView {
     
-    func customize(imageView: UIImageView, view: UIView, top: Int, height: Int) {
-        imageView.snp.makeConstraints { make in
+    func customize(from view: UIView) {
+        snp.makeConstraints { make in
             make.centerX.equalTo(view)
-            make.height.width.equalTo(height)
+            make.height.width.equalTo(90)
             make.top.equalTo(view.safeAreaLayoutGuide).inset(30)
         }
-        
-        imageView.layer.cornerRadius = CGFloat(height / 2)
-//        imageView.backgroundColor = .blue
     }
 }

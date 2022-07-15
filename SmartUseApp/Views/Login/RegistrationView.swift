@@ -27,10 +27,22 @@ class RegistrationView: UIView {
         return field
     }()
     
-    let registrationButton = UIButton()
+    let registrationButton: UIButton = {
+        let button = UIButton()
+        button.customizeCenter(height: ButtonConstants.height.rawValue, width: ButtonConstants.wigth.rawValue)
+        button.setup(title: Text.registration.rawValue, buttonIsEnabled: false)
+        
+        return button
+    }()
     var signInWithAppleButton: ASAuthorizationAppleIDButton!
     
-    let errorLabel = UILabel()
+    let errorLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .red
+        label.isHidden = true
+        
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,65 +63,45 @@ class RegistrationView: UIView {
         addSubview(registrationButton)
         addSubview(errorLabel)
         
-        imageView.customize(
-            imageView: imageView,
-            view: self,
-            top: ImageConstants.topAndHeight.rawValue,
-            height: ImageConstants.topAndHeight.rawValue
-        )
+        customizeImageView()
+        customizeLabels()
+        customizeTextFields()
+        customizeButtons()
+    }
+    
+    private func customizeImageView() {
+        imageView.customize(from: self)
+    }
         
+    private func customizeLabels() {
         registrationLabel.customize(
-            label: registrationLabel,
-            parrentView: self,
-            topView: imageView,
-            text: Text.regText.rawValue,
-            top: LabelsConstants.top.rawValue,
-            left: LabelsConstants.left.rawValue
-        )
-        
-        emailTextField.customize(
-            textField: emailTextField,
-            view: registrationLabel,
-            placeholder: PlaceholderText.email.rawValue,
-            top: TextFieldConstants.top.rawValue,
-            left: TextFieldConstants.left.rawValue
-        )
-        
-        firstPassTextField.customizeLayout(topView: emailTextField)
-        secondPassTextField.customizeLayout(topView: firstPassTextField)
-
-        registrationButton.customizeCenter(
-            button: registrationButton,
-            height: ButtonConstants.height.rawValue,
-            width: ButtonConstants.wigth.rawValue
-        )
-        
-        registrationButton.setup(
-            button: registrationButton,
-            title: Text.registration.rawValue,
-            isEnabled: false
-        )
-        
-        registrationButton.adjust(
-            button: registrationButton,
-            view: secondPassTextField,
-            top: ButtonConstants.centerTop.rawValue,
-            bottom: nil
+                parrentView: self,
+                topView: imageView,
+                newText: Text.regText.rawValue,
+                top: LabelsConstants.top.rawValue,
+                left: LabelsConstants.left.rawValue
         )
         
         errorLabel.customize(
-            label: errorLabel,
             parrentView: self,
             topView: registrationButton,
-            text: ErrorText.passRegError.rawValue,
+            newText: ErrorText.passRegError.rawValue,
             top: LabelsConstants.errorTop.rawValue,
             left: LabelsConstants.errorLeft.rawValue
         )
-        errorLabel.textColor = .red
-        errorLabel.isHidden = true
+    }
+    
+    private func customizeTextFields() {
+        emailTextField.customize(topView: registrationLabel)
+        firstPassTextField.customizeLayout(topView: emailTextField)
+        secondPassTextField.customizeLayout(topView: firstPassTextField)
+    }
+    
+    private func customizeButtons() {
+        registrationButton.adjustOnAxisY(view: secondPassTextField, top: ButtonConstants.centerTop.rawValue, bottom: nil)
         
         signInWithAppleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .black)
         addSubview(signInWithAppleButton)
-        signInWithAppleButton.setupLayout(button: signInWithAppleButton, with: self)
+        signInWithAppleButton.setupLayout(from: self)
     }
 }

@@ -10,26 +10,25 @@ import SnapKit
 
 extension UIButton {
     
-    func setup(button: UIButton, title: String, isEnabled: Bool) {
-        button.setTitleColor(.lightGray, for: .disabled)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.setTitle(title, for: .normal)
-        button.isEnabled = isEnabled
+    func setup(title: String, buttonIsEnabled: Bool) {
+        setTitleColor(.lightGray, for: .disabled)
+        setTitleColor(.systemBlue, for: .normal)
+        setTitle(title, for: .normal)
+        isEnabled = buttonIsEnabled
     }
     
-    func customizeCenter(button: UIButton, height: Int, width: Int) {
-        button.snp.makeConstraints { make in
+    func customizeCenter(height: Int, width: Int) {
+        snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.height.equalTo(height)
             make.width.equalTo(width)
         }
     }
     
-    func adjust(button: UIButton, view: UIView, top: Int?, bottom: Int?) {
-        button.snp.makeConstraints { make in
+    func adjustOnAxisY(view: UIView, top: Int?, bottom: Int?) {
+        snp.makeConstraints { make in
             if top == nil {
                 guard let bottom = bottom else { return }
-
                 make.bottom.equalTo(view).inset(bottom)
             } else {
                 guard let top = top else { return }
@@ -38,8 +37,8 @@ extension UIButton {
         }
     }
     
-    func adjust(button: UIButton, view: UIView, leading: Int?, trailing: Int?) {
-        button.snp.makeConstraints { make in
+    func adjustOnAxisX(view: UIView, leading: Int?, trailing: Int?) {
+        snp.makeConstraints { make in
             if leading == nil {
                 guard let trailing = trailing else { return }
 

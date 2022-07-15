@@ -16,6 +16,7 @@ extension Icon {
     
     static func getIcons() -> [Icon] {
         let icons: [Icon] = [
+            Icon(imageName: "icon9"),
             Icon(imageName: "icons8-cocktail-60"),
             Icon(imageName: "icons8-cocktail-60"),
             Icon(imageName: "icons8-cocktail-60"),
@@ -27,8 +28,7 @@ extension Icon {
             Icon(imageName: "icons8-cocktail-60"),
             Icon(imageName: "icons8-cocktail-60"),
             Icon(imageName: "icons8-cocktail-60"),
-            Icon(imageName: "icons8-cocktail-60"),
-            Icon(imageName: "icons8-женский-торс-50")
+            Icon(imageName: "icon8")
         ]
         
         return icons

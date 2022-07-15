@@ -41,21 +41,12 @@ class MainViewCell: UICollectionViewCell {
         addSubview(titleLabel)
     }
     
-    private func cusomizeUI() {
-        imageView.customize(
-            imageView: imageView,
-            view: self,
-            top: 0,
-            height: 90
-        )
+    private func cusomizeUI() {        
+        imageView.snp.makeConstraints { make in
+            make.center.equalTo(self)
+            make.height.width.equalTo(90)
+        }
         
-        titleLabel.customize(
-            label: titleLabel,
-            parrentView: self,
-            topView: imageView,
-            text: "Sometext",
-            top: 10,
-            left: 8
-        )
+        titleLabel.customize(parrentView: self, topView: imageView, newText: "Sometext", top: 10, left: 8)
     }
 }

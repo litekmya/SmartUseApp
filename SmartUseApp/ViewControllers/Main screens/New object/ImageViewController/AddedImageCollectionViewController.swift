@@ -26,6 +26,7 @@ class AddedImageCollectionViewController: UICollectionViewController {
     }
     
     private var currentImage: UIImage!
+    private let imagePlug = "icon8"
     private var viewModel: AddedImageViewModelProtocol! {
         didSet {
             viewModel.getIcons()
@@ -75,7 +76,7 @@ class AddedImageCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let icon = viewModel.icons[indexPath.row]
-        if icon.imageName == "icons8-женский-торс-50" { // Изменить на константу
+        if icon.imageName == imagePlug { 
             presentPHPicker()
         } else {
             self.currentImage = UIImage(named: icon.imageName)
@@ -114,7 +115,7 @@ extension AddedImageCollectionViewController: PHPickerViewControllerDelegate {
                     
                     DispatchQueue.main.async {
                         if var image = image as? UIImage {
-                            image = image.resize(image: image, scaledTo: CGSize(width: 200, height: 200))
+                            image = image.resize(scaledTo: CGSize(width: 200, height: 200))
                             guard let imageData = image.jpegData(compressionQuality: 1) else { return }
                             
                             self.currentImage = UIImage(data: imageData)

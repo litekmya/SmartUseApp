@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		052B9B54CCE02A8EF0C7BEDC /* Pods_SmartUseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3F5E247A714F4A925064C7 /* Pods_SmartUseApp.framework */; };
 		3C00FA29287F70C600BBAFDB /* ErrorEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00FA28287F70C600BBAFDB /* ErrorEnums.swift */; };
+		3C00FA2B2880BDF300BBAFDB /* NewObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00FA2A2880BDF300BBAFDB /* NewObjectView.swift */; };
 		3C09F051285F633D00E71D86 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C09F050285F633C00E71D86 /* GoogleService-Info.plist */; };
 		3C10AEB92844C776002A1ED0 /* AddedImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEB82844C776002A1ED0 /* AddedImageCollectionViewController.swift */; };
 		3C10AEBB2844C785002A1ED0 /* AddedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEBA2844C785002A1ED0 /* AddedImageViewModel.swift */; };
@@ -18,7 +19,6 @@
 		3C10AEF1284654D3002A1ED0 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEF0284654D3002A1ED0 /* Thing.swift */; };
 		3C6B09722851EE6F001B2552 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6B09712851EE6F001B2552 /* NetworkManager.swift */; };
 		3CA3AE99287F64F500F67107 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA3AE98287F64F500F67107 /* Validator.swift */; };
-		3CA9D755283A59DA00CF88D2 /* NavigationController + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D754283A59DA00CF88D2 /* NavigationController + extension.swift */; };
 		3CA9D758283BB5C900CF88D2 /* AcquaintanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D757283BB5C900CF88D2 /* AcquaintanceViewController.swift */; };
 		3CA9D75A283BB5E400CF88D2 /* AcquaintanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D759283BB5E400CF88D2 /* AcquaintanceViewModel.swift */; };
 		3CA9D75D283BC00700CF88D2 /* AcquaintanceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA9D75C283BC00700CF88D2 /* AcquaintanceViewCell.swift */; };
@@ -81,6 +81,7 @@
 /* Begin PBXFileReference section */
 		099D3760E00188D1A0D5F240 /* Pods-SmartUseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartUseApp.debug.xcconfig"; path = "Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp.debug.xcconfig"; sourceTree = "<group>"; };
 		3C00FA28287F70C600BBAFDB /* ErrorEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorEnums.swift; sourceTree = "<group>"; };
+		3C00FA2A2880BDF300BBAFDB /* NewObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewObjectView.swift; sourceTree = "<group>"; };
 		3C09F050285F633C00E71D86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3C10AEB82844C776002A1ED0 /* AddedImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedImageCollectionViewController.swift; sourceTree = "<group>"; };
 		3C10AEBA2844C785002A1ED0 /* AddedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedImageViewModel.swift; sourceTree = "<group>"; };
@@ -90,7 +91,6 @@
 		3C10AEF0284654D3002A1ED0 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		3C6B09712851EE6F001B2552 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3CA3AE98287F64F500F67107 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		3CA9D754283A59DA00CF88D2 /* NavigationController + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController + extension.swift"; sourceTree = "<group>"; };
 		3CA9D757283BB5C900CF88D2 /* AcquaintanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcquaintanceViewController.swift; sourceTree = "<group>"; };
 		3CA9D759283BB5E400CF88D2 /* AcquaintanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcquaintanceViewModel.swift; sourceTree = "<group>"; };
 		3CA9D75C283BC00700CF88D2 /* AcquaintanceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcquaintanceViewCell.swift; sourceTree = "<group>"; };
@@ -440,6 +440,7 @@
 			children = (
 				3CB7A58F287373D9000E80E8 /* MainView.swift */,
 				3CB7A57D2871D084000E80E8 /* DescriptionView.swift */,
+				3C00FA2A2880BDF300BBAFDB /* NewObjectView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -487,7 +488,6 @@
 				3CB8F3D42836B2C100DAAAF4 /* UITextField + extension.swift */,
 				3CB8F3D62836B3C000DAAAF4 /* UIImageView + extension.swift */,
 				3CB790942853E0EB00869268 /* UIImage + extension.swift */,
-				3CA9D754283A59DA00CF88D2 /* NavigationController + extension.swift */,
 				3CC472EE285B7E77004792C8 /* UIDatePicker + extension.swift */,
 				3CB99F21287D746E00E1A8F0 /* PasswordTextField.swift */,
 			);
@@ -720,6 +720,7 @@
 				3CA9D75D283BC00700CF88D2 /* AcquaintanceViewCell.swift in Sources */,
 				3CA9D758283BB5C900CF88D2 /* AcquaintanceViewController.swift in Sources */,
 				3CB8F3D72836B3C000DAAAF4 /* UIImageView + extension.swift in Sources */,
+				3C00FA2B2880BDF300BBAFDB /* NewObjectView.swift in Sources */,
 				3CB7A58D287344FC000E80E8 /* ContainerViewController.swift in Sources */,
 				3CA9D764283D2DD400CF88D2 /* MainViewCell.swift in Sources */,
 				3CC472ED285B78AC004792C8 /* ThingDescriptionViewModel.swift in Sources */,
@@ -736,7 +737,6 @@
 				3CB8F3D52836B2C100DAAAF4 /* UITextField + extension.swift in Sources */,
 				3CB7A5842871EAF7000E80E8 /* RegistrationView.swift in Sources */,
 				3C10AEF1284654D3002A1ED0 /* Thing.swift in Sources */,
-				3CA9D755283A59DA00CF88D2 /* NavigationController + extension.swift in Sources */,
 				3CB7A5A62875A856000E80E8 /* ProfileChange.swift in Sources */,
 				3CB7A59328741BC5000E80E8 /* MenuViewCell.swift in Sources */,
 				3CB7A5B22875B66C000E80E8 /* AboutViewModel.swift in Sources */,

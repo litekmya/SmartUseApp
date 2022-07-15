@@ -36,30 +36,18 @@ class PassRecoveryView: UIView {
         addSubview(activityindicator)
         
         
-        imageView.customize(
-            imageView: imageView,
-            view: self,
-            top: ImageConstants.topAndHeight.rawValue,
-            height: ImageConstants.topAndHeight.rawValue
-        )
+        imageView.customize(from: self)
         
         titleLabel.customize(
-            label: titleLabel,
             parrentView: self,
             topView: imageView,
-            text: "Сброс пароля",
+            newText: "Сброс пароля",
             top: LabelsConstants.top.rawValue,
             left: LabelsConstants.left.rawValue
         )
         
-        emailTextField.customize(
-            textField: emailTextField,
-            view: titleLabel,
-            placeholder: PlaceholderText.email.rawValue,
-            top: TextFieldConstants.top.rawValue,
-            left: TextFieldConstants.left.rawValue
-        )
-        emailTextField.setupTextInput(emailTextField, contentType: .emailAddress)
+        emailTextField.customize(topView: titleLabel)
+        emailTextField.setupTextInput(placeholderText: "Email", contentType: .emailAddress, keyboard: .emailAddress)
         
         resetPassButton.snp.makeConstraints { make in
             make.centerX.equalTo(emailTextField)
@@ -67,24 +55,14 @@ class PassRecoveryView: UIView {
             make.width.equalTo(ButtonConstants.wigth.rawValue)
         }
         
-        resetPassButton.setup(
-            button: resetPassButton,
-            title: Text.resetPassButtonTitle.rawValue,
-            isEnabled: true
-        )
+        resetPassButton.setup(title: Text.resetPassButtonTitle.rawValue, buttonIsEnabled: true)
         
-        resetPassButton.adjust(
-            button: resetPassButton,
-            view: emailTextField,
-            top: -5,
-            bottom: nil
-        )
+        resetPassButton.adjustOnAxisY(view: emailTextField, top: -5, bottom: nil)
 
         errorLabel.customize(
-            label: errorLabel,
             parrentView: self,
             topView: resetPassButton,
-            text: ErrorText.emailRecoveryError.rawValue,
+            newText: ErrorText.emailRecoveryError.rawValue,
             top: 30,
             left: LabelsConstants.errorLeft.rawValue
         )

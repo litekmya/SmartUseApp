@@ -57,11 +57,11 @@ class AcquaintanceViewController: UICollectionViewController {
     }
     
     private func customizeButtons() {
-        previewButton.setup(button: previewButton, title: "Начать", isEnabled: true)
-        previewButton.adjust(button: previewButton, view: stackView, leading: 16, trailing: nil)
+        previewButton.setup(title: "Начать", buttonIsEnabled: true)
+        previewButton.adjustOnAxisX(view: stackView, leading: 16, trailing: nil)
         
-        nextViewButton.setup(button: nextViewButton, title: "Вперед", isEnabled: true)
-        nextViewButton.adjust(button: nextViewButton, view: stackView, leading: nil, trailing: 16)
+        nextViewButton.setup(title: "Вперед", buttonIsEnabled: true)
+        nextViewButton.adjustOnAxisX(view: stackView, leading: nil, trailing: 16)
     }
     
     private func customizePageControl() {
