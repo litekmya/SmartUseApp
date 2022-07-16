@@ -11,7 +11,7 @@ protocol NewObjectViewControllerDelegate: AnyObject {
     func update(image: UIImage)
 }
 
-class NewObjectViewController: UIViewController, UINavigationControllerDelegate {
+class NewObjectViewController: UIViewController {
             
     //MARK: - Private properties
     private let contentView = NewObjectView()
@@ -25,16 +25,12 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = NewObjectViewModel()
-    }
-    
-    override func viewDidLayoutSubviews() {
         customizeUI()
     }
     
     //MARK: - Private methods
     private func customizeUI() {
-        view.backgroundColor = .white
-        title = "someTitle"
+        view.backgroundColor = UIColor.lightOlive
         view.addSubview(contentView)
         
         customizeContentView()
@@ -85,7 +81,6 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
     }
     
     @objc private func addImageButtonAction() {
-        print("Нажата кнопка добавления картинки")
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: view.frame.width, height: view.frame.height)
 
@@ -99,7 +94,6 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
     @objc func textFieldDidChange() {
         let isEnabled = viewModel.checkFieldsForFullness(name: contentView.nameTextField.text ?? "",
                                                          cost: contentView.costTextField.text ?? "")
-        
         saveButton.isEnabled = isEnabled
     }
 }
@@ -108,9 +102,7 @@ class NewObjectViewController: UIViewController, UINavigationControllerDelegate 
 extension NewObjectViewController: NewObjectViewControllerDelegate {
     
     func update(image: UIImage) {
-        print(image.size)
         contentView.imageView.image = image
-        print("delegate сработал")
     }
 }
 

@@ -59,7 +59,6 @@ class MainViewController: UIViewController {
     private func customizeUI() {
         customizeContentView()
         customizeButtons()
-        
     }
     
     private func customizeContentView() {
@@ -80,7 +79,7 @@ class MainViewController: UIViewController {
     }
     
     private func customizeButtons() {
-        contentView.menuButton.addTarget(self, action: #selector(logOff), for: .touchUpInside)
+        contentView.menuButton.addTarget(self, action: #selector(displayMenu), for: .touchUpInside)
         contentView.addButton.addTarget(self, action: #selector(addButtonAction), for: .touchUpInside)
     }
     
@@ -92,20 +91,17 @@ class MainViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MainViewCell.self, forCellWithReuseIdentifier: MainViewCell.reuseIdentifier)
+        collectionView.backgroundColor = UIColor.lightOlive
     }
     
     //MARK: - @objc
-    @objc private func logOff() {
-//        FirebaseManager.shared.signOut()
-//        print("Пользователь вышел")
-        
+    @objc private func displayMenu() {
         delegate.toggleMenu()
     }
     
     @objc private func addButtonAction() {
         print("Кнопкa нажата")
         let newObjectVC = NewObjectViewController()
-        newObjectVC.modalPresentationStyle = .fullScreen
         
         let navController = UINavigationController(rootViewController: newObjectVC)
         navController.modalPresentationStyle = .fullScreen
@@ -129,14 +125,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("GLGGLGLGLGLGLGLGLLGLGL")
         let thingDescriptionVC = ThingDescriptionViewController()
         thingDescriptionVC.viewModel = viewModel.getDescriptionViewModel(index: indexPath.row)
         
         let navC = UINavigationController(rootViewController: thingDescriptionVC)
         navC.modalPresentationStyle = .fullScreen
         present(navC, animated: true)
-//        navigationController?.pushViewController(thingDescriptionVC, animated: true)
     }
 }
 

@@ -13,17 +13,26 @@ class MainViewCell: UICollectionViewCell {
     var thing: Thing!
     var viewModel: MainCellViewModelProtocol! {
         didSet {
+            activityIndicator.startAnimating()
             titleLabel.text = viewModel.title
-           
-                self.viewModel.getImageData { data in
-                    let image = UIImage(data: data)
-                    self.imageView.image = image
-                }
+            
+            self.viewModel.getImageData { [unowned self] data in
+                let image = UIImage(data: data)
+                self.imageView.image = image
+                self.activityIndicator.stopAnimating()
+            }
         }
     }
     
     private let imageView = UIImageView()
     private let titleLabel = UILabel()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.hidesWhenStopped = true
+        
+        return indicator
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,6 +48,7 @@ class MainViewCell: UICollectionViewCell {
     private func addSubviews() {
         addSubview(imageView)
         addSubview(titleLabel)
+        addSubview(activityIndicator)
     }
     
     private func cusomizeUI() {        
@@ -48,5 +58,9 @@ class MainViewCell: UICollectionViewCell {
         }
         
         titleLabel.customize(parrentView: self, topView: imageView, newText: "Sometext", top: 10, left: 8)
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalTo(imageView)
+        }
     }
 }

@@ -11,12 +11,14 @@ class MainView: UIView {
     
     let menuButton: UIButton = {
         let button = UIButton()
+        button.setImage(UIImage(named: "icon4"), for: .normal)
         
         return button
     }()
     
     let addButton: UIButton = {
         let button = UIButton()
+        button.setImage(UIImage(named: "icon5"), for: .normal)
         
         return button
     }()
@@ -38,6 +40,8 @@ class MainView: UIView {
     }
     
     private func customizeUI() {
+        backgroundColor = UIColor.lightOlive
+        
         addSubview(menuButton)
         addSubview(addButton)
         addSubview(titleLabel)
@@ -50,18 +54,14 @@ class MainView: UIView {
         menuButton.snp.makeConstraints { make in
             make.leading.equalTo(self).inset(30)
             make.top.equalTo(self).inset(70)
-            make.height.width.equalTo(45)
+            make.height.width.equalTo(30)
         }
-        menuButton.setImage(UIImage(systemName: "star"), for: .normal)
-        menuButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
         
         addButton.snp.makeConstraints { make in
             make.centerY.equalTo(menuButton)
             make.trailing.equalTo(self).inset(30)
-            make.height.width.equalTo(45)
+            make.height.width.equalTo(30)
         }
-        addButton.setImage(UIImage(systemName: "plus"), for: .normal)
-        addButton.setImage(UIImage(systemName: "plus.square"), for: .highlighted)
     }
     
     private func customizeTitlelabel() {

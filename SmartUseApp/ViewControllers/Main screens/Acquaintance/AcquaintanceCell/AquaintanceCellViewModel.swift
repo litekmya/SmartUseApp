@@ -26,7 +26,7 @@ class AcquaintanceCellViewModel: AcquaintanceCellViewModelProtocol {
     }
     
     var imageURL: String {
-        page.image
+        page.imageName
     }
     
     private var page: Page

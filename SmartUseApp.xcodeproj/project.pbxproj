@@ -10,6 +10,7 @@
 		052B9B54CCE02A8EF0C7BEDC /* Pods_SmartUseApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3F5E247A714F4A925064C7 /* Pods_SmartUseApp.framework */; };
 		3C00FA29287F70C600BBAFDB /* ErrorEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00FA28287F70C600BBAFDB /* ErrorEnums.swift */; };
 		3C00FA2B2880BDF300BBAFDB /* NewObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00FA2A2880BDF300BBAFDB /* NewObjectView.swift */; };
+		3C00FA2D2881C79300BBAFDB /* UIColor + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C00FA2C2881C79300BBAFDB /* UIColor + extension.swift */; };
 		3C09F051285F633D00E71D86 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C09F050285F633C00E71D86 /* GoogleService-Info.plist */; };
 		3C10AEB92844C776002A1ED0 /* AddedImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEB82844C776002A1ED0 /* AddedImageCollectionViewController.swift */; };
 		3C10AEBB2844C785002A1ED0 /* AddedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C10AEBA2844C785002A1ED0 /* AddedImageViewModel.swift */; };
@@ -82,6 +83,7 @@
 		099D3760E00188D1A0D5F240 /* Pods-SmartUseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartUseApp.debug.xcconfig"; path = "Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp.debug.xcconfig"; sourceTree = "<group>"; };
 		3C00FA28287F70C600BBAFDB /* ErrorEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorEnums.swift; sourceTree = "<group>"; };
 		3C00FA2A2880BDF300BBAFDB /* NewObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewObjectView.swift; sourceTree = "<group>"; };
+		3C00FA2C2881C79300BBAFDB /* UIColor + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + extension.swift"; sourceTree = "<group>"; };
 		3C09F050285F633C00E71D86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3C10AEB82844C776002A1ED0 /* AddedImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedImageCollectionViewController.swift; sourceTree = "<group>"; };
 		3C10AEBA2844C785002A1ED0 /* AddedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedImageViewModel.swift; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 				3CB790942853E0EB00869268 /* UIImage + extension.swift */,
 				3CC472EE285B7E77004792C8 /* UIDatePicker + extension.swift */,
 				3CB99F21287D746E00E1A8F0 /* PasswordTextField.swift */,
+				3C00FA2C2881C79300BBAFDB /* UIColor + extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				3CB7A5892873441B000E80E8 /* MenuViewController.swift in Sources */,
 				3C10AEEF28463E15002A1ED0 /* Icon.swift in Sources */,
 				3CB7A59D2875A237000E80E8 /* ProfileViewController.swift in Sources */,
+				3C00FA2D2881C79300BBAFDB /* UIColor + extension.swift in Sources */,
 				3CC472D62854F1B4004792C8 /* CoreDataManager.swift in Sources */,
 				3CB7A59528741BDB000E80E8 /* MenuCellViewModel.swift in Sources */,
 				3C10AEBB2844C785002A1ED0 /* AddedImageViewModel.swift in Sources */,

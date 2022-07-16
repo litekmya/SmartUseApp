@@ -31,25 +31,32 @@ class AuthorizationView: UIView {
     let logInButton: UIButton = {
         let button = UIButton()
         button.setup(title: Text.logInButtonTitle.rawValue, buttonIsEnabled: false)
-        button.customizeCenter(height: ButtonConstants.height.rawValue, width: ButtonConstants.wigth.rawValue)
         
         return button
     }()
+    
     let forgotPassButton: UIButton = {
         let button = UIButton()
         button.setup(title: Text.forgotPassButonTitle.rawValue, buttonIsEnabled: true)
-        button.customizeCenter(height: ButtonConstants.height.rawValue, width: 250)
         
         return button
     }()
+    
     let registrationButton: UIButton = {
         let button = UIButton()
         button.setup(title: Text.registrationButtonTitle.rawValue, buttonIsEnabled: true)
-        button.customizeCenter(height: ButtonConstants.height.rawValue, width: 250)
         
         return button
     }()
-    let errorLabel = UILabel()
+    
+    let errorLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .red
+        label.isHidden = true
+        
+        return label
+    }()
+    
     var signInWithAppleButton: ASAuthorizationAppleIDButton!
     
     var activityIndicator: UIActivityIndicatorView = {
@@ -71,6 +78,8 @@ class AuthorizationView: UIView {
     }
     
     private func customizeUI() {
+        backgroundColor = UIColor.lightOlive
+        
         addSubview(imageView)
         addSubview(authLabel)
         addSubview(emailTextField)
@@ -117,7 +126,6 @@ class AuthorizationView: UIView {
             top: -15,
             left: LabelsConstants.left.rawValue
         )
-        errorLabel.textColor = .red
     }
     
     private func customizeTextFields() {
@@ -127,8 +135,13 @@ class AuthorizationView: UIView {
     
     private func customizeButtons() {
         logInButton.adjustOnAxisY(view: passwordTextField, top: ButtonConstants.centerTop.rawValue, bottom: nil)
-        forgotPassButton.adjustOnAxisY(view: forgotPassButton, top: ButtonConstants.centerTop.rawValue, bottom: nil)
+        logInButton.customizeCenter(height: ButtonConstants.height.rawValue, width: ButtonConstants.wigth.rawValue)
+        
+        forgotPassButton.adjustOnAxisY(view: logInButton, top: ButtonConstants.centerTop.rawValue, bottom: nil)
+        forgotPassButton.customizeCenter(height: ButtonConstants.height.rawValue, width: 250)
+        
         registrationButton.adjustOnAxisY(view: registrationLabel, top: 8, bottom: nil)
+        registrationButton.customizeCenter(height: ButtonConstants.height.rawValue, width: 250)
         
         signInWithAppleButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
         addSubview(signInWithAppleButton)

@@ -28,6 +28,8 @@ class DescriptionView: UIView {
     }
     
     private func customizeUI() {
+        backgroundColor = UIColor.lightOlive
+        
         addSubview(imageView)
         addSubview(costLabel)
         addSubview(dateLabel)

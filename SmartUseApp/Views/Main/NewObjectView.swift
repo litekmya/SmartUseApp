@@ -29,6 +29,8 @@ class NewObjectView: UIView {
     }
     
     private func customizeUI() {
+        backgroundColor = UIColor.lightOlive
+        
         addSubview(imageView)
         addSubview(nameTextField)
         addSubview(costTextField)

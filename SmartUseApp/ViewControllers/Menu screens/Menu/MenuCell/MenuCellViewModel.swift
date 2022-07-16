@@ -22,7 +22,7 @@ class MenuCellViewModel: MenuCellViewModelProtocol {
     }
 
     var image: String {
-        menuDescription.image
+        menuDescription.imageName
     }
     
     private let menuDescription: MenuDescription

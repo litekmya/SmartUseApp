@@ -29,7 +29,6 @@ class RegistrationView: UIView {
     
     let registrationButton: UIButton = {
         let button = UIButton()
-        button.customizeCenter(height: ButtonConstants.height.rawValue, width: ButtonConstants.wigth.rawValue)
         button.setup(title: Text.registration.rawValue, buttonIsEnabled: false)
         
         return button
@@ -55,6 +54,8 @@ class RegistrationView: UIView {
     }
     
     private func customizeUI() {
+        backgroundColor = UIColor.lightOlive
+        
         addSubview(imageView)
         addSubview(registrationLabel)
         addSubview(emailTextField)
@@ -99,6 +100,8 @@ class RegistrationView: UIView {
     
     private func customizeButtons() {
         registrationButton.adjustOnAxisY(view: secondPassTextField, top: ButtonConstants.centerTop.rawValue, bottom: nil)
+        registrationButton.customizeCenter(height: ButtonConstants.height.rawValue, width: ButtonConstants.wigth.rawValue)
+
         
         signInWithAppleButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signUp, authorizationButtonStyle: .black)
         addSubview(signInWithAppleButton)

@@ -18,7 +18,6 @@ class AuthorizationViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentView.errorLabel.isHidden = true
         viewModel = AuthorizationViewModel()
     }
     
@@ -31,7 +30,6 @@ class AuthorizationViewController: UIViewController {
     //MARK: - Private methods
     private func customizeUI() {
         view.addSubview(contentView)
-        view.backgroundColor = .white
         contentView.frame = view.frame
     }
     

@@ -33,7 +33,6 @@ class ThingDescriptionViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = viewModel.name
         
-        view.backgroundColor = .white
         view.addSubview(scrollView)
     }
     
@@ -41,6 +40,7 @@ class ThingDescriptionViewController: UIViewController {
         scrollView.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
+        scrollView.backgroundColor = UIColor.lightOlive
         scrollView.addSubview(contentView)
     }
     

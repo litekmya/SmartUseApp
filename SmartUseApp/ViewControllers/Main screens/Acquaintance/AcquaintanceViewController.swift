@@ -46,7 +46,7 @@ class AcquaintanceViewController: UICollectionViewController {
     
     private func setupStackView() {
         stackView = UIStackView(arrangedSubviews: [previewButton, pageControl, nextViewButton])
-        }
+    }
     
     private func customizeStackViewLayout() {
         stackView.snp.makeConstraints { make in
@@ -109,9 +109,7 @@ class AcquaintanceViewController: UICollectionViewController {
         if button.title(for: .normal) == "Начать" {
             let mainVC = UINavigationController(rootViewController: ContainerViewController())
             mainVC.modalPresentationStyle = .fullScreen
-            present(mainVC, animated: true) {
-                // Возможно понадобится
-            }
+            present(mainVC, animated: true)
         }
     }
     

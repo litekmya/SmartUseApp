@@ -12,15 +12,14 @@ class MenuViewCell: UITableViewCell {
     static let identifier = "MenuViewCell"
     var viewModel: MenuCellViewModelProtocol! {
         didSet {
-            imageView?.image = UIImage(systemName: viewModel.image)
+            iconImageView.image = UIImage(named: viewModel.image)
             titleLabel.text = viewModel.title
         }
     }
     
     let iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 10
+        imageView.contentMode = .scaleAspectFit
         
         return imageView
     }()
@@ -46,7 +45,7 @@ class MenuViewCell: UITableViewCell {
         iconImageView.snp.makeConstraints { make in
             make.leading.equalTo(self).inset(16)
             make.centerY.equalTo(self)
-            make.width.height.equalTo(50)
+            make.height.width.equalTo(30)
         }
         
         titleLabel.snp.makeConstraints { make in

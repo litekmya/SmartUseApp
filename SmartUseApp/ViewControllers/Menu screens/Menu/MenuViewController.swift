@@ -43,7 +43,7 @@ class MenuViewController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.rowHeight = 60
-        tableView.backgroundColor = .red
+        tableView.backgroundColor = UIColor.olive
         view.addSubview(tableView)
     }
 }

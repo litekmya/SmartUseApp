@@ -28,6 +28,8 @@ class PassRecoveryView: UIView {
     }
     
     private func customizeUI() {
+        backgroundColor = UIColor.lightOlive
+        
         addSubview(imageView)
         addSubview(titleLabel)
         addSubview(emailTextField)
