@@ -12,14 +12,11 @@ protocol NewObjectViewControllerDelegate: AnyObject {
 }
 
 class NewObjectViewController: UIViewController {
+    
+    var viewModel: NewObjectViewModelProtocol!
             
     //MARK: - Private properties
     private let contentView = NewObjectView()
-    
-    private var dismissButton: UIBarButtonItem!
-    private var saveButton: UIBarButtonItem!
-    
-    var viewModel: NewObjectViewModelProtocol!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -30,11 +27,11 @@ class NewObjectViewController: UIViewController {
     
     //MARK: - Private methods
     private func customizeUI() {
+        title = "Не забудь выбрать картинку"
         view.backgroundColor = UIColor.lightOlive
         view.addSubview(contentView)
         
         customizeContentView()
-        setupButtons()
         addTargetsAndDelegates()
     }
     
@@ -42,16 +39,11 @@ class NewObjectViewController: UIViewController {
         contentView.frame = view.frame
     }
     
-    private func setupButtons() {
-        dismissButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissButtonAction))
-        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonAction))
-        saveButton.isEnabled = false
-        
-        navigationItem.rightBarButtonItem = saveButton
-        navigationItem.leftBarButtonItem = dismissButton
-    }
-    
     private func addTargetsAndDelegates() {
+        contentView.backButton.addTarget(self, action: #selector(dismissButtonAction), for: .touchUpInside)
+        contentView.saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
+        contentView.saveButton.isEnabled = false
+        
         contentView.addImageButton.addTarget(self, action: #selector(addImageButtonAction), for: .touchUpInside)
         contentView.nameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         contentView.costTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -92,9 +84,11 @@ class NewObjectViewController: UIViewController {
     }
     
     @objc func textFieldDidChange() {
-        let isEnabled = viewModel.checkFieldsForFullness(name: contentView.nameTextField.text ?? "",
-                                                         cost: contentView.costTextField.text ?? "")
-        saveButton.isEnabled = isEnabled
+        let isEnabled = viewModel.checkFieldsForFullness(
+            name: contentView.nameTextField.text ?? "",
+            cost: contentView.costTextField.text ?? ""
+        )
+        contentView.saveButton.isEnabled = isEnabled
     }
 }
 

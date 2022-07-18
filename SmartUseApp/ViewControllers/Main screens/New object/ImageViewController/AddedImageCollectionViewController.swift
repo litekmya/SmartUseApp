@@ -14,7 +14,7 @@ class AddedImageCollectionViewController: UICollectionViewController {
     
     //MARK: - Private properties
     private let reuseIdentifier = "AddImageCell"
-    private var saveBarButtonItem: UIBarButtonItem!
+    
     private var picker: PHPickerViewController {
         var config = PHPickerConfiguration()
         config.filter = .images
@@ -22,11 +22,13 @@ class AddedImageCollectionViewController: UICollectionViewController {
 
         let picker = PHPickerViewController(configuration: config)
         picker.delegate = self
+        
         return picker
     }
     
     private var currentImage: UIImage!
     private let imagePlug = "icon8"
+    
     private var viewModel: AddedImageViewModelProtocol! {
         didSet {
             viewModel.getIcons()
@@ -36,27 +38,26 @@ class AddedImageCollectionViewController: UICollectionViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Иконки"
         viewModel = AddedImageViewModel()
-        self.collectionView!.register(AddedImageViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        customizeUI()
+    }
+    
+    private func customizeUI() {
+        title = "Иконки"
         navigationController?.navigationBar.prefersLargeTitles = true
-        customizeSaveBarButtonItem()
+        
+        collectionView!.register(AddedImageViewCell.self,
+                                      forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.backgroundColor = UIColor.lightOlive
     }
     
     //MARK: - Private methods
     private func presentPHPicker() {
-        print("presentPicker")
         present(picker, animated: true)
     }
     
-    private func customizeSaveBarButtonItem() {
-        saveBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBarButtonItemAction))
-        navigationItem.rightBarButtonItem = saveBarButtonItem
-    }
-    
-    //MARK: - @objc
-    @objc private func saveBarButtonItemAction() {
-        print("save button")
+    private func sendAPicture() {
         delegate?.update(image: currentImage)
         dismiss(animated: true)
     }
@@ -80,7 +81,7 @@ class AddedImageCollectionViewController: UICollectionViewController {
             presentPHPicker()
         } else {
             self.currentImage = UIImage(named: icon.imageName)
-            saveBarButtonItemAction()
+            sendAPicture()
         }
     }
 }
@@ -119,7 +120,7 @@ extension AddedImageCollectionViewController: PHPickerViewControllerDelegate {
                             guard let imageData = image.jpegData(compressionQuality: 1) else { return }
                             
                             self.currentImage = UIImage(data: imageData)
-                            self.saveBarButtonItemAction()
+                            self.sendAPicture()
                         }
                     }
                 }

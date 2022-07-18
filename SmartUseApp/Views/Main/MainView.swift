@@ -25,6 +25,7 @@ class MainView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.customizeAppearanceWith(title: "Hello world")
         
         return label
     }()
@@ -51,25 +52,11 @@ class MainView: UIView {
     }
     
     private func customizeButtons() {
-        menuButton.snp.makeConstraints { make in
-            make.leading.equalTo(self).inset(30)
-            make.top.equalTo(self).inset(70)
-            make.height.width.equalTo(30)
-        }
-        
-        addButton.snp.makeConstraints { make in
-            make.centerY.equalTo(menuButton)
-            make.trailing.equalTo(self).inset(30)
-            make.height.width.equalTo(30)
-        }
+        menuButton.customizeLeftBarButton(parentView: self)
+        addButton.customizeRightBarButton(parentView: self)
     }
     
     private func customizeTitlelabel() {
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(menuButton.snp.bottom).offset(16)
-            make.leading.equalTo(self).inset(30)
-        }
-        titleLabel.text = "Hello, world"
-        titleLabel.font = UIFont.systemFont(ofSize: 40, weight: .heavy)
+        titleLabel.customizeLayoutWithTitle(topView: menuButton, parrentView: self)
     }
 }

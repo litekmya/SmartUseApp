@@ -15,24 +15,20 @@ class ThingDescriptionViewController: UIViewController {
     //MARK: - Private properties
     private let scrollView = UIScrollView()
     private let contentView = DescriptionView()
-    private var editButton: UIBarButtonItem!
-    private var backButton: UIBarButtonItem!
 
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeView()
         customizeScrollView()
         customizeContentView()
-        customizeButtons()
+        addTargetsAndDelegates()
         getData()
         getDataForCharts()
     }
     
     //MARK: - Private methods layout
     private func customizeView() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        title = viewModel.name
-        
         view.addSubview(scrollView)
     }
     
@@ -49,18 +45,13 @@ class ThingDescriptionViewController: UIViewController {
             make.top.bottom.equalTo(scrollView)
             make.leading.trailing.equalTo(view)
         }
-        
-        contentView.chart.delegate = self
     }
     
-    private func customizeButtons() {
-        editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonAction))
-        backButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(backButtonAction))
-        
-        navigationItem.rightBarButtonItem = editButton
-        navigationItem.leftBarButtonItem = backButton
-        
+    private func addTargetsAndDelegates() {
         contentView.deleteButton.addTarget(self, action: #selector(deleteButtonAction), for: .touchUpInside)
+        contentView.backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
+        
+        contentView.chart.delegate = self
     }
     
     //MARK: - Private methods
@@ -109,14 +100,19 @@ class ThingDescriptionViewController: UIViewController {
     }
     
     @objc private func deleteButtonAction() {
-        let alert = AlertController(title: "Внимание!", message: "Вы уверены, что хотите удалить данную вещь?", preferredStyle: .alert)
-        alert.showAlert {
-            self.viewModel.deleteThing()
-            print("Вещь была удалена")
-            self.dismiss(animated: true)
-        }
+//        let alert = AlertController(title: "Внимание!", message: "Вы уверены, что хотите удалить данную вещь?", preferredStyle: .alert)
+//        alert.showAlert {
+//            self.viewModel.deleteThing()
+//            print("Вещь была удалена")
+//            self.dismiss(animated: true)
+//        }
+//
+//        present(alert, animated: true)
         
-        present(alert, animated: true)
+        let statisticsVC = StatisticsViewController()
+        statisticsVC.modalPresentationStyle = .fullScreen
+        
+        present(statisticsVC, animated: true)
     }
 }
 

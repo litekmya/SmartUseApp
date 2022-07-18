@@ -30,5 +30,18 @@ extension UILabel {
         
         text = "Дата покупки:"
     }
+    
+    func customizeLayoutWithTitle(topView: UIView, parrentView: UIView) {
+        snp.makeConstraints { make in
+            make.top.equalTo(topView.snp.bottom).offset(16)
+            make.leading.equalTo(parrentView).inset(30)
+        }
+    }
+    
+    func customizeAppearanceWith(title: String) {
+        font = UIFont.systemFont(ofSize: 40, weight: .heavy)
+        text = title
+        // Добавить цвет текста
+    }
 }
 

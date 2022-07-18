@@ -9,7 +9,27 @@ import UIKit
 
 class NewObjectView: UIView {
     
-    let imageView = UIImageView()
+    let backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "backArrow"), for: .normal)
+        
+        return button
+    }()
+    
+    let saveButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "checkMark"), for: .normal)
+        
+        return button
+    }()
+    
+    let imageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "icon8")
+        
+        return view
+    }()
+    
     let nameTextField = UITextField()
     let costTextField = UITextField()
     
@@ -31,6 +51,8 @@ class NewObjectView: UIView {
     private func customizeUI() {
         backgroundColor = UIColor.lightOlive
         
+        addSubview(backButton)
+        addSubview(saveButton)
         addSubview(imageView)
         addSubview(nameTextField)
         addSubview(costTextField)
@@ -38,15 +60,25 @@ class NewObjectView: UIView {
         addSubview(datePicker)
         addSubview(addImageButton)
         
+        customizeButtons()
         customizeImageView()
         customizeTextFields()
         customizeDateObjects()
-        customizeButton()
+    }
+    
+    private func customizeButtons() {
+        backButton.customizeLeftBarButton(parentView: self)
+        saveButton.customizeRightBarButton(parentView: self)
+        
+        addImageButton.snp.makeConstraints { make in
+            make.top.equalTo(imageView)
+            make.centerX.equalTo(imageView)
+            make.height.width.equalTo(imageView)
+        }
     }
     
     private func customizeImageView() {
-        imageView.customize(from: self)
-        imageView.image = UIImage(named: "icon8")
+        imageView.customizeWithoutBar(topView: backButton, parrentView: self)
     }
     
     private func customizeTextFields() {
@@ -63,11 +95,5 @@ class NewObjectView: UIView {
         datePicker.customize(parentView: self, dateLabel: dateLabel)
     }
     
-    private func customizeButton() {
-        addImageButton.snp.makeConstraints { make in
-            make.top.equalTo(imageView)
-            make.centerX.equalTo(imageView)
-            make.height.width.equalTo(imageView)
-        }
-    }
+    
 }

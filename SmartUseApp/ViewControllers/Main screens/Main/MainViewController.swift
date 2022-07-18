@@ -11,13 +11,13 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    var delegate: MainViewControllerDelegate!
+    
     //MARK: - Private properties
     private let contentView = MainView()
     
     private var collectionView: UICollectionView!
     private var coreDataIsEmpty = true
-    
-    var delegate: MainViewControllerDelegate!
     
     private var viewModel: MainViewModelProtocol! {
         didSet {
@@ -26,13 +26,11 @@ class MainViewController: UIViewController {
                 self.customizeCollectionView()
                 self.customizeUI()
                 self.coreDataIsEmpty = false
-                print("%")
             }
             
             if coreDataIsEmpty {
                 self.customizeCollectionView()
                 self.customizeUI()
-                print("^")
             }
         }
     }
@@ -102,11 +100,9 @@ class MainViewController: UIViewController {
     @objc private func addButtonAction() {
         print("Кнопкa нажата")
         let newObjectVC = NewObjectViewController()
+        newObjectVC.modalPresentationStyle = .fullScreen
         
-        let navController = UINavigationController(rootViewController: newObjectVC)
-        navController.modalPresentationStyle = .fullScreen
-        
-        present(navController, animated: true)
+        present(newObjectVC, animated: true)
     }
 }
 
@@ -127,10 +123,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let thingDescriptionVC = ThingDescriptionViewController()
         thingDescriptionVC.viewModel = viewModel.getDescriptionViewModel(index: indexPath.row)
+        thingDescriptionVC.modalPresentationStyle = .fullScreen
         
-        let navC = UINavigationController(rootViewController: thingDescriptionVC)
-        navC.modalPresentationStyle = .fullScreen
-        present(navC, animated: true)
+        present(thingDescriptionVC, animated: true)
     }
 }
 

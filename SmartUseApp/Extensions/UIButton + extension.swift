@@ -25,6 +25,22 @@ extension UIButton {
         }
     }
     
+    func customizeLeftBarButton(parentView: UIView) {
+        snp.makeConstraints { make in
+            make.top.equalTo(parentView).inset(70)
+            make.leading.equalTo(parentView).inset(30)
+            make.width.height.equalTo(30)
+        }
+    }
+    
+    func customizeRightBarButton(parentView: UIView) {
+        snp.makeConstraints { make in
+            make.trailing.equalTo(parentView).inset(30)
+            make.top.equalTo(parentView).inset(70)
+            make.height.width.equalTo(30)
+        }
+    }
+    
     func adjustOnAxisY(view: UIView, top: Int?, bottom: Int?) {
         snp.makeConstraints { make in
             if top == nil {

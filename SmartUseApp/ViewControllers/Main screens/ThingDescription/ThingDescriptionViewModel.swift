@@ -35,7 +35,6 @@ class ThingDescriptionViewModel: ThingDescriptionViewModelProtocol {
         thing.cost ?? ""
     }
     
-    
     private var thing: CoreDataThing!
     
     required init(thing: CoreDataThing) {

@@ -77,6 +77,9 @@
 		3CC472EB285B7894004792C8 /* ThingDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC472EA285B7894004792C8 /* ThingDescriptionViewController.swift */; };
 		3CC472ED285B78AC004792C8 /* ThingDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC472EC285B78AC004792C8 /* ThingDescriptionViewModel.swift */; };
 		3CC472EF285B7E78004792C8 /* UIDatePicker + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC472EE285B7E77004792C8 /* UIDatePicker + extension.swift */; };
+		3CC6684F28831FEF00794525 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6684E28831FEF00794525 /* StatisticsViewController.swift */; };
+		3CC668512883204300794525 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC668502883204300794525 /* StatisticsViewModel.swift */; };
+		3CC668532883207C00794525 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC668522883207C00794525 /* StatisticsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +156,9 @@
 		3CC472EA285B7894004792C8 /* ThingDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingDescriptionViewController.swift; sourceTree = "<group>"; };
 		3CC472EC285B78AC004792C8 /* ThingDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingDescriptionViewModel.swift; sourceTree = "<group>"; };
 		3CC472EE285B7E77004792C8 /* UIDatePicker + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDatePicker + extension.swift"; sourceTree = "<group>"; };
+		3CC6684E28831FEF00794525 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		3CC668502883204300794525 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
+		3CC668522883207C00794525 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		962348B23283D938C4AF18F2 /* Pods-SmartUseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartUseApp.release.xcconfig"; path = "Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp.release.xcconfig"; sourceTree = "<group>"; };
 		DD3F5E247A714F4A925064C7 /* Pods_SmartUseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartUseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -282,6 +288,7 @@
 				3CB8F3E228379C0400DAAAF4 /* Main */,
 				3CA9D7702841201A00CF88D2 /* New object */,
 				3CC472E9285B7832004792C8 /* ThingDescription */,
+				3CC6684D28831FB600794525 /* Statistics */,
 			);
 			path = "Main screens";
 			sourceTree = "<group>";
@@ -443,6 +450,7 @@
 				3CB7A58F287373D9000E80E8 /* MainView.swift */,
 				3CB7A57D2871D084000E80E8 /* DescriptionView.swift */,
 				3C00FA2A2880BDF300BBAFDB /* NewObjectView.swift */,
+				3CC668522883207C00794525 /* StatisticsView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -544,6 +552,15 @@
 				3CC472EC285B78AC004792C8 /* ThingDescriptionViewModel.swift */,
 			);
 			path = ThingDescription;
+			sourceTree = "<group>";
+		};
+		3CC6684D28831FB600794525 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				3CC6684E28831FEF00794525 /* StatisticsViewController.swift */,
+				3CC668502883204300794525 /* StatisticsViewModel.swift */,
+			);
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -688,6 +705,7 @@
 				3CB7A5AE2875B62B000E80E8 /* SettingsViewModel.swift in Sources */,
 				3CA9D7722841207800CF88D2 /* NewObjectViewController.swift in Sources */,
 				3CB7A5892873441B000E80E8 /* MenuViewController.swift in Sources */,
+				3CC668512883204300794525 /* StatisticsViewModel.swift in Sources */,
 				3C10AEEF28463E15002A1ED0 /* Icon.swift in Sources */,
 				3CB7A59D2875A237000E80E8 /* ProfileViewController.swift in Sources */,
 				3C00FA2D2881C79300BBAFDB /* UIColor + extension.swift in Sources */,
@@ -705,6 +723,7 @@
 				3CB7A5B02875B65B000E80E8 /* AboutViewController.swift in Sources */,
 				3CC472E828592119004792C8 /* ASAuthorizationAppleIDButton + extension.swift in Sources */,
 				3CB7A58B2873442B000E80E8 /* MenuViewModel.swift in Sources */,
+				3CC668532883207C00794525 /* StatisticsView.swift in Sources */,
 				3C00FA29287F70C600BBAFDB /* ErrorEnums.swift in Sources */,
 				3CA9D766283D2DE500CF88D2 /* MainCellViewModel.swift in Sources */,
 				3CB7A57E2871D084000E80E8 /* DescriptionView.swift in Sources */,
@@ -720,6 +739,7 @@
 				3CB8F3DD28378D0100DAAAF4 /* RegistrationViewModel.swift in Sources */,
 				3CB7A59F2875A249000E80E8 /* ProfileViewModel.swift in Sources */,
 				3CC472DF2854F69B004792C8 /* Things.xcdatamodeld in Sources */,
+				3CC6684F28831FEF00794525 /* StatisticsViewController.swift in Sources */,
 				3C10AEBE2844CCC8002A1ED0 /* AddedImageViewCell.swift in Sources */,
 				3CA9D75D283BC00700CF88D2 /* AcquaintanceViewCell.swift in Sources */,
 				3CA9D758283BB5C900CF88D2 /* AcquaintanceViewController.swift in Sources */,

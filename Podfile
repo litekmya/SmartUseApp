@@ -13,4 +13,5 @@ target 'SmartUseApp' do
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Storage'
   pod 'Charts'
+  pod 'BulletinBoard'
 end

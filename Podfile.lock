@@ -1,4 +1,5 @@
 PODS:
+  - BulletinBoard (5.0.0)
   - Charts (4.0.3):
     - Charts/Core (= 4.0.3)
   - Charts/Core (4.0.3):
@@ -127,6 +128,7 @@ PODS:
   - SwiftAlgorithms (1.0.0)
 
 DEPENDENCIES:
+  - BulletinBoard
   - Charts
   - Firebase/Analytics
   - Firebase/Auth
@@ -138,6 +140,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - BulletinBoard
     - Charts
     - Firebase
     - FirebaseAnalytics
@@ -159,6 +162,7 @@ SPEC REPOS:
     - SwiftAlgorithms
 
 SPEC CHECKSUMS:
+  BulletinBoard: dba77053c2a7b64953f63073f7534165af2edd21
   Charts: d959d6723c8eedfdd0735dfc28cb0a71762ac4d9
   Firebase: 629510f1a9ddb235f3a7c5c8ceb23ba887f0f814
   FirebaseAnalytics: 5506ea8b867d8423485a84b4cd612d279f7b0b8a
@@ -179,6 +183,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: 721a1523e0ac8f25f5a68dee423e6dd385e91208
+PODFILE CHECKSUM: a95f05a64a177395c7121ea93935720d778b86db
 
 COCOAPODS: 1.11.3
