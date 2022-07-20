@@ -33,17 +33,17 @@ class StatisticsView: UIView {
     
     let chart: BarChartView = {
         let chart = BarChartView()
-//        chart.rightAxis.enabled = false
-//        chart.xAxis.labelPosition = .bottom
-//        chart.xAxis.labelFont = .boldSystemFont(ofSize: 16)
-//        chart.leftAxis.labelFont = .boldSystemFont(ofSize: 16)
-//        chart.animate(xAxisDuration: 2)
+        chart.rightAxis.enabled = false
+        chart.xAxis.labelPosition = .bottom
+        chart.xAxis.labelFont = .boldSystemFont(ofSize: 16)
+        chart.leftAxis.labelFont = .boldSystemFont(ofSize: 16)
+        chart.animate(xAxisDuration: 2)
         
         return chart
     }()
     
-    let stackView: UIStackView = {
-        let view = UIStackView()
+    let dailyView: DailyStatisticsView = {
+        let view = DailyStatisticsView()
 
         return view
     }()
@@ -65,13 +65,13 @@ class StatisticsView: UIView {
         addSubview(titleLabel)
         addSubview(segmentedControl)
         addSubview(chart)
-        addSubview(stackView)
+        addSubview(dailyView)
         
         customizeButton()
         customizeTitle()
         customizeSegmentedControl()
         customizeChart()
-        customizeStackView()
+        customizeDailyView()
     }
     
     private func customizeButton() {
@@ -97,14 +97,14 @@ class StatisticsView: UIView {
         }
     }
     
-    private func customizeStackView() {
-        stackView.snp.makeConstraints { make in
+    private func customizeDailyView() {
+        dailyView.snp.makeConstraints { make in
             make.top.equalTo(chart.snp.bottom).offset(30)
-            make.height.equalTo(600)
-            make.width.equalTo(self)
-            make.bottom.equalTo(self)
+            make.leading.equalTo(self).inset(16)
+            make.trailing.equalTo(self).inset(16)
+            make.bottom.equalTo(self).inset(30)
         }
         
-        stackView.backgroundColor = .green
+        dailyView.backgroundColor = .green
     }
 }

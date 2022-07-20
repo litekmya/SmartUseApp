@@ -21,13 +21,6 @@ class StatisticsViewController: UIViewController {
         addTargetsAndDelegates()
     }
     
-    override func viewDidLayoutSubviews() {
-        customizeView()
-        customizeScrollView()
-        customizeContentView()
-        addTargetsAndDelegates()
-    }
-    
     private func customizeView() {
         view.addSubview(scrollView)
     }

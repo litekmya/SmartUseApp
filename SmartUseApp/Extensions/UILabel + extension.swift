@@ -43,5 +43,34 @@ extension UILabel {
         text = title
         // Добавить цвет текста
     }
+    
+    func customizeStaticStatisticsLabel(parentView: UIView, topView: UIView, left: Bool) {
+        snp.makeConstraints { make in
+            
+            make.top.equalTo(topView.snp.bottom).offset(16)
+            make.bottom.equalTo(parentView.snp.centerY).inset(4)
+            
+            checkSide(left: left)
+        }
+    }
+    
+    func customizeStatisticsLabel(parentView: UIView, left: Bool) {
+        snp.makeConstraints { make in
+            make.top.equalTo(parentView.snp.centerY).offset(4)
+            make.bottom.equalTo(parentView).inset(8)
+            
+            checkSide(left: left)
+        }
+    }
+    
+    private func checkSide(left: Bool) {
+        snp.makeConstraints { make in
+            if left {
+                make.leading.equalToSuperview().inset(8)
+            } else {
+                make.trailing.equalToSuperview().inset(8)
+            }
+        }
+    }
 }
 
