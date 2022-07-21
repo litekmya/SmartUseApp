@@ -57,7 +57,7 @@ extension UILabel {
     func customizeStatisticsLabel(parentView: UIView, left: Bool) {
         snp.makeConstraints { make in
             make.top.equalTo(parentView.snp.centerY).offset(4)
-            make.bottom.equalTo(parentView).inset(8)
+            make.bottom.equalTo(parentView)
             
             checkSide(left: left)
         }

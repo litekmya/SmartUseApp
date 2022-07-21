@@ -9,6 +9,7 @@ import UIKit
 
 class DailyStatisticsView: UIView {
     
+    //MARK: - Views
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -39,12 +40,17 @@ class DailyStatisticsView: UIView {
     let staticAmountPerDayLabel: UILabel = {
         let label = UILabel()
         // использовать новый созданный метод
+        label.text = "Сколько \n дней \n владеете"
+        label.textAlignment = .right
+        label.numberOfLines = 0
         
         return label
     }()
     
     let amountPerDayLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .right
+        label.text = "5"
         
         return label
     }()
@@ -56,6 +62,7 @@ class DailyStatisticsView: UIView {
         return view
     }()
     
+    //MARK: - LifeCycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         customizeUI()
@@ -66,8 +73,13 @@ class DailyStatisticsView: UIView {
         customizeUI()
     }
     
+    //MARK: - Private methods - Layout
     private func customizeUI() {
-        backgroundColor = .red // добавить полупрозрачный белый цвет
+        backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3) // добавить полупрозрачный белый цвет
+        layer.cornerRadius = 24
+        layer.borderWidth = 3
+        layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
+        
         addSubview(titleLabel)
         addSubview(staticCurrentDayCountLabel)
         addSubview(currentDayCountLabel)

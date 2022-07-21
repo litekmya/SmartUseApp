@@ -15,6 +15,7 @@ protocol ThingDescriptionViewModelProtocol {
     
     init(thing: CoreDataThing)
     func deleteThing()
+    func getStatisticsViewModel() -> StatisticsViewModelProtocol
 }
 
 class ThingDescriptionViewModel: ThingDescriptionViewModelProtocol {
@@ -44,5 +45,9 @@ class ThingDescriptionViewModel: ThingDescriptionViewModelProtocol {
     func deleteThing() {
         FirebaseManager.shared.deleteThing(thing: thing)
         CoreDataManager.shared.delete(thing: thing)
+    }
+    
+    func getStatisticsViewModel() -> StatisticsViewModelProtocol {
+        return StatisticsViewModel(thing: thing)
     }
 }

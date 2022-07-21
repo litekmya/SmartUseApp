@@ -70,7 +70,6 @@ extension MenuViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let title = viewModel.getTitleForNextView(at: indexPath.row)
-        print(title)
         
         switch Controllers(rawValue: title) {
         case .profile:

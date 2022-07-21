@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Charts
 
 class DescriptionView: UIView {
     
@@ -17,11 +16,7 @@ class DescriptionView: UIView {
         return button
     }()
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        
-        return label
-    }()
+    let titleLabel = UILabel()
     
     let imageView = UIImageView()
     let costLabel: UILabel = {
@@ -47,18 +42,7 @@ class DescriptionView: UIView {
         return picker
     }()
     
-    let chart: BarChartView = {
-        let chart = BarChartView()
-        chart.rightAxis.enabled = false
-        chart.xAxis.labelPosition = .bottom
-        chart.xAxis.labelFont = .boldSystemFont(ofSize: 16)
-        chart.leftAxis.labelFont = .boldSystemFont(ofSize: 16)
-        chart.animate(xAxisDuration: 2)
-        
-        return chart
-    }()
-    
-    let deleteButton: UIButton = {
+    let moreButton: UIButton = {
         let button = UIButton()
         button.setTitle("Подробнее", for: .normal)
         button.setTitleColor(.red, for: .normal)
@@ -86,14 +70,12 @@ class DescriptionView: UIView {
         addSubview(costLabel)
         addSubview(dateLabel)
         addSubview(datePicker)
-        addSubview(chart)
-        addSubview(deleteButton)
+        addSubview(moreButton)
         
         customizeButtons()
         customizeImageView()
         customizeLabels()
         customizeDatePicker()
-        customizeChart()
     }
     
     private func customizeImageView() {
@@ -121,20 +103,12 @@ class DescriptionView: UIView {
         }
     }
     
-    private func customizeChart() {
-        chart.snp.makeConstraints { make in
-            make.width.equalTo(self)
-            make.height.equalTo(chart.snp.width)
-            make.top.equalTo(costLabel.snp.bottom).offset(30)
-        }
-    }
-    
     private func customizeButtons() {
         backButton.customizeLeftBarButton(parentView: self)
         
-        deleteButton.snp.makeConstraints { make in
+        moreButton.snp.makeConstraints { make in
             make.centerX.equalTo(self)
-            make.top.equalTo(chart.snp.bottom).offset(30)
+            make.top.equalTo(costLabel.snp.bottom).offset(30)
             make.bottom.equalTo(self).inset(16)
         }
     }

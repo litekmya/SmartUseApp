@@ -25,7 +25,7 @@ class StatisticsView: UIView {
     }()
     
     let segmentedControl: UISegmentedControl = {
-        let items = ["Week", "Month", "Year", "Now"]
+        let items = ["Week", "Month", "Year"]
         let control = UISegmentedControl(items: items)
     
         return control
@@ -38,6 +38,16 @@ class StatisticsView: UIView {
         chart.xAxis.labelFont = .boldSystemFont(ofSize: 16)
         chart.leftAxis.labelFont = .boldSystemFont(ofSize: 16)
         chart.animate(xAxisDuration: 2)
+        chart.dragEnabled = false
+        chart.xAxis.drawGridLinesEnabled = false
+        chart.xAxis.drawAxisLineEnabled = false
+        chart.leftAxis.drawAxisLineEnabled = false
+        chart.leftAxis.drawGridLinesEnabled = false
+        
+        chart.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
+        chart.layer.borderWidth = 3
+        chart.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
+        chart.layer.cornerRadius = 24
         
         return chart
     }()
@@ -59,7 +69,7 @@ class StatisticsView: UIView {
     }
     
     private func customizeUI() {
-        backgroundColor = UIColor.lightOlive
+        backgroundColor = UIColor.olive
         
         addSubview(backButton)
         addSubview(titleLabel)
@@ -82,9 +92,17 @@ class StatisticsView: UIView {
         titleLabel.customizeLayoutWithTitle(topView: backButton, parrentView: self)
     }
     
+    private func customizeDailyView() {
+        dailyView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(30)
+            make.leading.equalTo(self).inset(30)
+            make.trailing.equalTo(self).inset(30)
+        }
+    }
+    
     private func customizeSegmentedControl() {
         segmentedControl.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(30)
+            make.top.equalTo(dailyView.snp.bottom).offset(30)
             make.leading.trailing.equalTo(self).inset(30)
         }
     }
@@ -94,17 +112,7 @@ class StatisticsView: UIView {
             make.top.equalTo(segmentedControl.snp.bottom).offset(30)
             make.leading.trailing.equalTo(self).inset(30)
             make.height.equalTo(chart.snp.width)
+            make.bottom.equalTo(self).inset(16)
         }
-    }
-    
-    private func customizeDailyView() {
-        dailyView.snp.makeConstraints { make in
-            make.top.equalTo(chart.snp.bottom).offset(30)
-            make.leading.equalTo(self).inset(16)
-            make.trailing.equalTo(self).inset(16)
-            make.bottom.equalTo(self).inset(30)
-        }
-        
-        dailyView.backgroundColor = .green
     }
 }
