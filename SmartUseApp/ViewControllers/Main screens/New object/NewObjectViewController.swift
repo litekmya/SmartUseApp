@@ -58,10 +58,8 @@ class NewObjectViewController: UIViewController {
     }
     
     @objc private func saveButtonAction() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .none
-        dateFormatter.dateStyle = .short
-        let dateString = dateFormatter.string(from: contentView.datePicker.date)
+        let formatter = CustomDateFormatter()
+        let dateString = formatter.convertToString(date: contentView.datePicker.date)
         
         guard let imageData = contentView.imageView.image?.pngData() else { return }
         guard let name = contentView.nameTextField.text else { return }

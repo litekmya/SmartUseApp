@@ -49,7 +49,7 @@ class NewObjectView: UIView {
     }
     
     private func customizeUI() {
-        backgroundColor = UIColor.lightOlive
+        backgroundColor = UIColor.olive
         
         addSubview(backButton)
         addSubview(saveButton)

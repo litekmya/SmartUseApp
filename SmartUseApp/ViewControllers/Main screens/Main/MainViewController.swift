@@ -51,7 +51,6 @@ class MainViewController: UIViewController {
     private func setupView() {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Hello"
-        view.backgroundColor = .white
     }
     
     private func customizeUI() {
@@ -89,7 +88,7 @@ class MainViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MainViewCell.self, forCellWithReuseIdentifier: MainViewCell.reuseIdentifier)
-        collectionView.backgroundColor = UIColor.lightOlive
+        collectionView.backgroundColor = UIColor.olive
     }
     
     //MARK: - @objc

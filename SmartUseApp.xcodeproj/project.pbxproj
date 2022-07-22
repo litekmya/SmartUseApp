@@ -80,7 +80,8 @@
 		3CC6684F28831FEF00794525 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC6684E28831FEF00794525 /* StatisticsViewController.swift */; };
 		3CC668512883204300794525 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC668502883204300794525 /* StatisticsViewModel.swift */; };
 		3CC668532883207C00794525 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC668522883207C00794525 /* StatisticsView.swift */; };
-		3CC668612888961700794525 /* DailyStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC668602888961700794525 /* DailyStatisticsView.swift */; };
+		3CC668612888961700794525 /* CustomInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC668602888961700794525 /* CustomInformationView.swift */; };
+		3CC66863288AE2B800794525 /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC66862288AE2B800794525 /* CustomDateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,7 +161,8 @@
 		3CC6684E28831FEF00794525 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		3CC668502883204300794525 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		3CC668522883207C00794525 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
-		3CC668602888961700794525 /* DailyStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStatisticsView.swift; sourceTree = "<group>"; };
+		3CC668602888961700794525 /* CustomInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInformationView.swift; sourceTree = "<group>"; };
+		3CC66862288AE2B800794525 /* CustomDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
 		962348B23283D938C4AF18F2 /* Pods-SmartUseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartUseApp.release.xcconfig"; path = "Target Support Files/Pods-SmartUseApp/Pods-SmartUseApp.release.xcconfig"; sourceTree = "<group>"; };
 		DD3F5E247A714F4A925064C7 /* Pods_SmartUseApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartUseApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -503,6 +505,7 @@
 				3CC472EE285B7E77004792C8 /* UIDatePicker + extension.swift */,
 				3CB99F21287D746E00E1A8F0 /* PasswordTextField.swift */,
 				3C00FA2C2881C79300BBAFDB /* UIColor + extension.swift */,
+				3CC66862288AE2B800794525 /* CustomDateFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -569,7 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				3CC668522883207C00794525 /* StatisticsView.swift */,
-				3CC668602888961700794525 /* DailyStatisticsView.swift */,
+				3CC668602888961700794525 /* CustomInformationView.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				3CC472EB285B7894004792C8 /* ThingDescriptionViewController.swift in Sources */,
 				3CA9D769283D310D00CF88D2 /* PassRecoveryViewController.swift in Sources */,
 				3C6B09722851EE6F001B2552 /* NetworkManager.swift in Sources */,
+				3CC66863288AE2B800794525 /* CustomDateFormatter.swift in Sources */,
 				3CB7A5B52875D470000E80E8 /* ChangeDataController.swift in Sources */,
 				3CB8F3DB28378CF400DAAAF4 /* RegistrationViewController.swift in Sources */,
 				3CB58EDA2835776D001A8DDB /* AppDelegate.swift in Sources */,
@@ -778,7 +782,7 @@
 				3CC472E52859192A004792C8 /* AppleAuthManager.swift in Sources */,
 				3CB8F3D128368D0E00DAAAF4 /* UIButton + extension.swift in Sources */,
 				3CB7A5802871D7BA000E80E8 /* AuthorizationView.swift in Sources */,
-				3CC668612888961700794525 /* DailyStatisticsView.swift in Sources */,
+				3CC668612888961700794525 /* CustomInformationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

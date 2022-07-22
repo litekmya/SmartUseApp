@@ -48,6 +48,10 @@ class MainViewModel: MainViewModelProtocol {
     }
     
     func getDescriptionViewModel(index: Int) -> ThingDescriptionViewModelProtocol {
+        if coreDataThings == [] {
+            coreDataThings = CoreDataManager.shared.fetchData()
+        }
+        
         let thing = coreDataThings[index]
         return  ThingDescriptionViewModel(thing: thing)
     }
@@ -79,6 +83,7 @@ class MainViewModel: MainViewModelProtocol {
                 self.things.append(thing)
                 print("Данные из firebase получены")
             }
+            
             
             completion()
         }

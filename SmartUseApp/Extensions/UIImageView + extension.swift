@@ -22,7 +22,7 @@ extension UIImageView {
         snp.makeConstraints { make in
             make.top.equalTo(topView.snp.bottom).offset(30)
             make.centerX.equalTo(parrentView)
-            make.height.width.equalTo(90)
+            make.height.width.equalTo(150)
         }
     }
 }

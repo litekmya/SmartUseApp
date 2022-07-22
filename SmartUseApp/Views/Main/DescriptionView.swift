@@ -16,37 +16,25 @@ class DescriptionView: UIView {
         return button
     }()
     
-    let titleLabel = UILabel()
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.customizeAppearanceWith(title: "")
+                
+        return label
+    }()
     
     let imageView = UIImageView()
-    let costLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .red
-        
-        return label
-    }()
-    
-    let dateLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .red
-        label.text = "Дата покупки:"
-        
-        return label
-    }()
-    
-    let datePicker: UIDatePicker = {
-        let picker = UIDatePicker()
-        picker.locale = Locale.autoupdatingCurrent
-        picker.datePickerMode = .date
-        
-        return picker
-    }()
+    let informationView = CustomInformationView()
     
     let moreButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Подробнее", for: .normal)
-        button.setTitleColor(.red, for: .normal)
+        button.setTitle("Статистика", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        button.layer.cornerRadius = 10
+        button.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
+        button.layer.borderWidth = 3
+        button.backgroundColor = UIColor.darkOlive
+        button.setTitleColor(UIColor.newBlue, for: .normal)
         
         return button
     }()
@@ -62,53 +50,44 @@ class DescriptionView: UIView {
     }
     
     private func customizeUI() {
-        backgroundColor = UIColor.lightOlive
-        
         addSubview(backButton)
         addSubview(titleLabel)
         addSubview(imageView)
-        addSubview(costLabel)
-        addSubview(dateLabel)
-        addSubview(datePicker)
+        
+        addSubview(informationView)
         addSubview(moreButton)
         
         customizeButtons()
+        customizeTitle()
         customizeImageView()
-        customizeLabels()
-        customizeDatePicker()
+        customizeInformationView()
+    }
+    
+    private func customizeTitle() {
+        titleLabel.customizeLayoutWithTitle(topView: backButton, parrentView: self)
     }
     
     private func customizeImageView() {
         imageView.customizeWithoutBar(topView: titleLabel, parrentView: self)
     }
     
-    private func customizeLabels() {
-        titleLabel.customizeLayoutWithTitle(topView: backButton, parrentView: self)
-        
-        dateLabel.snp.makeConstraints { make in
+    private func customizeInformationView() {
+        informationView.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(30)
-            make.left.equalTo(self).inset(30)
+            make.leading.trailing.equalTo(self).inset(30)
         }
         
-        costLabel.snp.makeConstraints { make in
-            make.top.equalTo(dateLabel.snp.bottom).offset(30)
-            make.centerX.equalTo(self)
-        }
-    }
-    
-    private func customizeDatePicker() {
-        datePicker.snp.makeConstraints { make in
-            make.centerY.equalTo(dateLabel)
-            make.trailing.equalTo(self).inset(30)
-        }
+        informationView.staticLeftLabel.text = "Цена"
+        informationView.rightStaticLabel.text = "Дата"
     }
     
     private func customizeButtons() {
         backButton.customizeLeftBarButton(parentView: self)
         
         moreButton.snp.makeConstraints { make in
-            make.centerX.equalTo(self)
-            make.top.equalTo(costLabel.snp.bottom).offset(30)
+            make.leading.trailing.equalTo(self).inset(60)
+            make.top.equalTo(informationView.snp.bottom).offset(30)
+            make.width.equalTo(80)
             make.bottom.equalTo(self).inset(16)
         }
     }

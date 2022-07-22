@@ -15,6 +15,7 @@ class StatisticsViewController: UIViewController {
     //MARK: - Private properties
     private let scrollView = UIScrollView()
     private let contentView = StatisticsView()
+    private var daysCount: Int!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -28,6 +29,10 @@ class StatisticsViewController: UIViewController {
         getData()
     }
     
+    deinit {
+        print("Deinit")
+    }
+    
     //MARK: - Layout
     private func customizeView() {
         view.addSubview(scrollView)
@@ -37,7 +42,7 @@ class StatisticsViewController: UIViewController {
         scrollView.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
-        scrollView.backgroundColor = UIColor.lightOlive
+        scrollView.backgroundColor = UIColor.olive
         scrollView.addSubview(contentView)
     }
     
@@ -62,7 +67,8 @@ class StatisticsViewController: UIViewController {
     
     //MARK: - Private methods
     private func getData() {
-        contentView.dailyView.currentDayCountLabel.text = calculateNumberOfDays()
+        contentView.dailyView.leftLabel.text = calculateNumberOfDays()
+        contentView.dailyView.rightLabel.text = calculateAmountForCurrentDay()
     }
     private func getDataForChart(count: Int) {
         let cost = viewModel.cost
@@ -83,13 +89,26 @@ class StatisticsViewController: UIViewController {
     }
     
     private func calculateNumberOfDays() -> String {
-        let dateFormatter = DateFormatter() // Возможно, нужно убрать в отдельное расширение
-        dateFormatter.dateStyle = .short
+        let formatter = CustomDateFormatter()
         
-        guard let previusDate = dateFormatter.date(from: viewModel.date) else { return "" }
-        guard let days = Calendar.current.dateComponents([.day], from: previusDate, to: Date()).day else { return "" }
+        let previusDate = formatter.convertToDate(string: viewModel.date)
         
-        return String(days)
+        guard let days = Calendar.current.dateComponents([.day], from: previusDate, to: Date()).day else {
+            print("Ошибка! Не получилось преобразовать в дату2")
+            return ""
+        }
+        
+        daysCount = days
+        return String(daysCount)
+    }
+    
+    private func calculateAmountForCurrentDay() -> String {
+        if daysCount == 0 {
+            daysCount = 1
+        }
+        let amount = (Float(viewModel.cost) ?? 0) / Float(daysCount)
+        print(amount)
+        return String(format: "%.2f", amount)
     }
 
     //MARK: - @objc

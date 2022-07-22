@@ -41,7 +41,7 @@ class MainView: UIView {
     }
     
     private func customizeUI() {
-        backgroundColor = UIColor.lightOlive
+        backgroundColor = UIColor.olive
         
         addSubview(menuButton)
         addSubview(addButton)

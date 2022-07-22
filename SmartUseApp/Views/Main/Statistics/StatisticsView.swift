@@ -52,8 +52,8 @@ class StatisticsView: UIView {
         return chart
     }()
     
-    let dailyView: DailyStatisticsView = {
-        let view = DailyStatisticsView()
+    let dailyView: CustomInformationView = {
+        let view = CustomInformationView()
 
         return view
     }()

@@ -28,13 +28,13 @@ class ThingDescriptionViewController: UIViewController {
     //MARK: - Private methods layout
     private func customizeView() {
         view.addSubview(scrollView)
+        view.backgroundColor = UIColor.olive
     }
     
     private func customizeScrollView() {
         scrollView.snp.makeConstraints { make in
             make.edges.equalTo(view)
         }
-        scrollView.backgroundColor = UIColor.lightOlive
         scrollView.addSubview(contentView)
     }
     
@@ -53,21 +53,13 @@ class ThingDescriptionViewController: UIViewController {
     //MARK: - Private methods
     private func getData() {
         let image = UIImage()
+        contentView.titleLabel.text = viewModel.name
         contentView.imageView.image = image.getImage(from: viewModel.imageData)
-                
-        let dateFormatter = DateFormatter() // Возможно, нужно убрать в отдельное расширение
-        dateFormatter.dateStyle = .short
-        guard let date = dateFormatter.date(from: viewModel.date) else { return }
-        contentView.datePicker.date = date
-        
-        contentView.costLabel.text = viewModel.cost
+        contentView.informationView.leftLabel.text = viewModel.cost
+        contentView.informationView.rightLabel.text = viewModel.date
     }
     
     //MARK: - @objc
-    @objc private func editButtonAction() {
-        
-    }
-    
     @objc private func backButtonAction() {
         dismiss(animated: true)
     }
